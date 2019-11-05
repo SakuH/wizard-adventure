@@ -4,32 +4,43 @@ using UnityEngine;
 
 public class WallProximityChecker : MonoBehaviour
 {
-    Quaternion rotation;
+    
     private bool touchingWall;
-    public LayerMask layerMask;
-    void Awake()
-    {
-        rotation = transform.rotation;
-    }
+    public LayerMask raycastWallLayer;
+    public PlayerMovement player;
+    public float raycastToWallLength;
     void Update()
     {
+        raycastToWallLength = player.raycastToWallLength;
 
     }
-    void fixedUpdate()
+    void FixedUpdate()
+    {
+        
+        wallCheck();
+    }
+    public void wallCheck()
     {
         RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.up) * 5.0f, Color.yellow);
-        
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+
+        if (Physics.Raycast(transform.position, Vector3.forward, out hit, raycastToWallLength, raycastWallLayer))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            Debug.Log("Did Hit");
+            Debug.Log("1");
+        }
+        if (Physics.Raycast(transform.position, Vector3.right, out hit, raycastToWallLength, raycastWallLayer))
+        {
+            Debug.Log("2");
+        }
+        if (Physics.Raycast(transform.position, Vector3.left, out hit, raycastToWallLength, raycastWallLayer))
+        {
+            Debug.Log("3");
+        }
+        if (Physics.Raycast(transform.position, Vector3.back, out hit, raycastToWallLength, raycastWallLayer))
+        {
+            Debug.Log("4");
         }
     }
-    void LateUpdate()
-    {
-        transform.rotation = rotation;
-    }
+
 
 }

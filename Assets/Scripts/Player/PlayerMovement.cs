@@ -18,8 +18,12 @@ public class PlayerMovement : MonoBehaviour
     public float slopeForce;
     public float slopeForceRayLength;
 
-    public LayerMask raycastLayerToHit;
+    public LayerMask raycastWallLayer;
+    public LayerMask raycastGroundLayer;
     public float raycastToWallLength;
+    public float raycastToGroundLength;
+    public float raycastOriginPoint;
+    public bool grounded;
 
     void Start()
     {
@@ -54,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-
+        groundCheck();
         wallCheck();
         rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y ,moveVelocity.z);
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -88,7 +92,8 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit hit;
        
 
-        if (Physics.Raycast(transform.position, Vector3.forward, out hit, raycastToWallLength, raycastLayerToHit))
+        //if (Physics.Raycast(transform.position, Vector3.forward, out hit, raycastToWallLength, raycastWallLayer))
+        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y - raycastOriginPoint, transform.position.z), Vector3.forward, out hit, raycastToWallLength, raycastWallLayer))
         {
             Debug.Log("Front");
             if (moveVelocity.z >= 0)
@@ -96,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
                 moveVelocity.z = 0;
             }
         }
-        if (Physics.Raycast(transform.position, Vector3.right, out hit, raycastToWallLength, raycastLayerToHit))
+        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y - raycastOriginPoint, transform.position.z), Vector3.right, out hit, raycastToWallLength, raycastWallLayer))
         {
             if (moveVelocity.x >= 0)
             {
@@ -104,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
             }
             Debug.Log("Right");
         }
-        if (Physics.Raycast(transform.position, Vector3.left, out hit, raycastToWallLength, raycastLayerToHit))
+        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y - raycastOriginPoint, transform.position.z), Vector3.left, out hit, raycastToWallLength, raycastWallLayer))
         {
             if (moveVelocity.x <= 0)
             {
@@ -112,13 +117,26 @@ public class PlayerMovement : MonoBehaviour
             }
             Debug.Log("Left");
         }
-        if (Physics.Raycast(transform.position, Vector3.back, out hit, raycastToWallLength, raycastLayerToHit))
+        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y - raycastOriginPoint, transform.position.z), Vector3.back, out hit, raycastToWallLength, raycastWallLayer))
         {
             if (moveVelocity.z <= 0)
             {
                 moveVelocity.z = 0;
             }
             Debug.Log("Back");
+        }
+    }
+    public void groundCheck()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit, raycastToGroundLength, raycastGroundLayer))
+        {
+           // Debug.Log("Grounded");
+            grounded = true;
+        }
+        else
+        {
+            grounded = false;
         }
     }
   
