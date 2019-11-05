@@ -17,8 +17,9 @@ public class PlayerMovement : MonoBehaviour
 
     public float slopeForce;
     public float slopeForceRayLength;
-    
-   
+
+    public LayerMask raycastLayerToHit;
+    public float raycastToWallLength;
 
     void Start()
     {
@@ -44,14 +45,17 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-      
+       
+
+
 
 
     }
 
     void FixedUpdate()
     {
-        
+
+        wallCheck();
         rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y ,moveVelocity.z);
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
@@ -66,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
+       
 
         // transform.Translate(movementSpeed*Input.GetAxis("Horizontal")*Time.deltaTime,0f, movementSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
         /*
@@ -78,5 +83,43 @@ public class PlayerMovement : MonoBehaviour
         */
     }
 
+    public void wallCheck()
+    {
+        RaycastHit hit;
+       
+
+        if (Physics.Raycast(transform.position, Vector3.forward, out hit, raycastToWallLength, raycastLayerToHit))
+        {
+            Debug.Log("Front");
+            if (moveVelocity.z >= 0)
+            {
+                moveVelocity.z = 0;
+            }
+        }
+        if (Physics.Raycast(transform.position, Vector3.right, out hit, raycastToWallLength, raycastLayerToHit))
+        {
+            if (moveVelocity.x >= 0)
+            {
+                moveVelocity.x = 0;
+            }
+            Debug.Log("Right");
+        }
+        if (Physics.Raycast(transform.position, Vector3.left, out hit, raycastToWallLength, raycastLayerToHit))
+        {
+            if (moveVelocity.x <= 0)
+            {
+                moveVelocity.x = 0;
+            }
+            Debug.Log("Left");
+        }
+        if (Physics.Raycast(transform.position, Vector3.back, out hit, raycastToWallLength, raycastLayerToHit))
+        {
+            if (moveVelocity.z <= 0)
+            {
+                moveVelocity.z = 0;
+            }
+            Debug.Log("Back");
+        }
+    }
   
 }

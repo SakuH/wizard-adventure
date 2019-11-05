@@ -25,7 +25,7 @@ public class GunController : MonoBehaviour
         if(isFiring){
 
             shotCounter -= Time.deltaTime;
-
+ 
             if(shotCounter <= 0)
             {
                 shotCounter = timeBetweenShots;
