@@ -33,6 +33,8 @@ public class GunController : MonoBehaviour
                 newBullet.setX = 0;
                 newBullet.setY = 0;
                 newBullet.setZ = 1;
+                newBullet.bulletspeed = bulletSpeed;
+
 
                 Bullet newBullet2 = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
                 newBullet2.setX = 0;
@@ -44,10 +46,22 @@ public class GunController : MonoBehaviour
                 newBullet3.setX = 0;
                 newBullet3.setY = 1;
                 newBullet3.setZ = 1;
+                newBullet3.bulletspeed = bulletSpeed;
+
+                 Bullet newBullet4 = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
+                newBullet4.setX = 0;
+                newBullet4.setY = -0.5f;
+                newBullet4.setZ = 1;
+                newBullet4.bulletspeed = bulletSpeed;
+
+                Bullet newBullet5 = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
+                newBullet5.setX = 0;
+                newBullet5.setY = 0.5f;
+                newBullet5.setZ = 1;
+                newBullet5.bulletspeed = bulletSpeed;
+
                 
-                // firePoint.Rotate(new Vector3(3,0,0));
-                // firePoint.SetPositionAndRotation(firePoint.position,new Quaternion().se);
-               // Bullet newBullet2 = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
+                
                 
             }
 
