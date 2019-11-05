@@ -108,6 +108,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletspeed: 10
+  setX: 0
+  setY: 0
+  setZ: 1
 --- !u!54 &4401874671244627829
 Rigidbody:
   m_ObjectHideFlags: 0
