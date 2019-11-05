@@ -300,7 +300,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7737388202299718564, guid: 30b6750028185bb4db22440ceb3d9d91,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.71
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8214343058113623185, guid: 30b6750028185bb4db22440ceb3d9d91, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 30b6750028185bb4db22440ceb3d9d91, type: 3}
 --- !u!1 &195066135
 GameObject:
@@ -550,7 +556,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946619055}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.24, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3957256}
@@ -601,6 +607,8 @@ MonoBehaviour:
   rightRooms:
   - {fileID: 7453657418141316699, guid: 98a756178db40e844a324de154874314, type: 3}
   - {fileID: 3049284444320603447, guid: 6d597f9ae3ae4ec44a3f3b1e26ea1cea, type: 3}
+  closedRoom: {fileID: 8524228207191354405, guid: 79f4d4f0f0287fd4b9614c2a959b31e8,
+    type: 3}
 --- !u!4 &1042550964
 Transform:
   m_ObjectHideFlags: 0
