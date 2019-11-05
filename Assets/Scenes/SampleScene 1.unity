@@ -164,8 +164,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 7.7285266, z: 1}
+  m_Center: {x: 0, y: 3.364263, z: 0}
 --- !u!23 &10910794
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -729,6 +729,8 @@ MonoBehaviour:
   movementSpeed: 17
   mainCamera: {fileID: 963194227}
   weapon: {fileID: 412298267}
+  slopeForce: 0
+  slopeForceRayLength: 0
 --- !u!1 &857508283
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,8 +965,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 7.7285266, z: 1}
+  m_Center: {x: 0, y: 3.364263, z: 0}
 --- !u!23 &1122722454
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1147,8 +1149,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 7.7285266, z: 1}
+  m_Center: {x: 0, y: 3.364263, z: 0}
 --- !u!23 &1185773819
 MeshRenderer:
   m_ObjectHideFlags: 0

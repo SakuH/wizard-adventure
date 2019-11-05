@@ -15,6 +15,11 @@ public class PlayerMovement : MonoBehaviour
 
     public GunController weapon;
 
+    public float slopeForce;
+    public float slopeForceRayLength;
+    
+   
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -39,9 +44,11 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
+      
 
 
     }
+
     void FixedUpdate()
     {
         
@@ -71,4 +78,5 @@ public class PlayerMovement : MonoBehaviour
         */
     }
 
+  
 }
