@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
 
@@ -30,17 +30,83 @@ public class MainMenu : MonoBehaviour
     public Camera mainCam;
     private float cameraPositionOptions;
     private float cameraPositionDefault;
-    
+
+    Resolution[] resolutions;
+    public GameObject resolution;
+    public GameObject fullScreen;
+
+    public Dropdown resolutionDropdown;
+    TextMesh resolutionMesh;
+    TextMesh fullScreenMesh;
+
+    public bool hideDropdown = true;
+
+
+
     void Start()
     {
-       
+        
+        if (isResolutionText)
+        {
+            resolutionMesh =resolution.GetComponent<TextMesh>();
+            resolutionMesh.text = "Resolution<" + Screen.width + " x "+Screen.height+">";
+        }
+        if (isFullScreenText)
+        {
+            fullScreenMesh = fullScreen.GetComponent<TextMesh>();
+            if (Screen.fullScreen)
+            {
+                
+                fullScreenMesh.text = "Fullscreen";           
+            }else
+            {
+                fullScreenMesh.text = "windowed";
 
+            }
+
+        }
+
+        
+       
+        
         cameraPositionDefault = -1.32f;
         cameraPositionOptions = 33.41f;
     GetComponent<TextMesh>().color = Color.white;
         if(mainCam != null)
         mainCam.transform.position = new Vector3(cameraPositionDefault, 15.0f, 0.52f);
 
+        if (isResolutionText)
+        {
+            resolutions = Screen.resolutions;
+
+            resolutionDropdown.gameObject.SetActive(false);
+
+            resolutionDropdown.ClearOptions();
+
+
+            int currentResolutionIndex = 0;
+
+            List<string> options = new List<string>();
+
+            for (int i = 0; i < resolutions.Length; i++)
+            {
+                string option = resolutions[i].width + " x " + resolutions[i].height;
+                options.Add(option);
+
+                if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+                {
+                    currentResolutionIndex = i;
+                }
+            }
+
+
+
+            resolutionDropdown.AddOptions(options);
+            resolutionDropdown.value = currentResolutionIndex;
+            resolutionDropdown.RefreshShownValue();
+
+        }
+       
     }
 
     void Update()
@@ -124,19 +190,22 @@ public class MainMenu : MonoBehaviour
         }
         if (isOptions)
         {
-            if (mainCam != null)
+            if (isResolutionText)
             {
                 
-                
-                   
-                    mainCam.transform.position = new Vector3(cameraPositionOptions, 15.0f, 0.52f);
 
+            }
+            if (mainCam != null)
+            {             
                 
+                mainCam.transform.position = new Vector3(cameraPositionOptions, 15.0f, 0.52f);
+                resolutionDropdown.gameObject.SetActive(true);
             }
         }
         if (isBackText)
         {
             mainCam.transform.position = new Vector3(cameraPositionDefault, 15.0f, 0.52f);
+            resolutionDropdown.gameObject.SetActive(false);
 
         }
         if (isFullScreenText)
@@ -144,22 +213,31 @@ public class MainMenu : MonoBehaviour
             if (Screen.fullScreen)
             {
                 setFullscreen(false);
+                fullScreenMesh.text = "Windowed";
                 Debug.Log("windowed");
             }
             else
             {
                 setFullscreen(true);
+                fullScreenMesh.text = "Fullscreen";
+
                 Debug.Log("Fullscreen");
             }
         }
         if (isResolutionText)
         {
            
+
         }
     }
 
     public void setFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
+    }
+    public void setResolution(int resolutionIndex)
+    {
+        Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 }
