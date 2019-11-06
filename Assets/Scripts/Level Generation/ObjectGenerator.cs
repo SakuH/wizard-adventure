@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObjectGenerator : MonoBehaviour
 {
+    public GameObject parentRoom;
     public GameObject[] objects;
     void Start()
     {
