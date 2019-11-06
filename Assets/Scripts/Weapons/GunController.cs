@@ -21,11 +21,16 @@ public class GunController : MonoBehaviour
     public Rotator rotator;
 
     public Transform firePoint;
+
+    private Quaternion originalRotation;
     // Start is called before the first frame update
     void Start()
     {
+        //mainPlayer = GameObject.Find ("GameObjectHand");
+        
         weapon = GameObject.Find("WeaponShotgun");
       rotator =  weapon.GetComponent<Rotator>();
+      originalRotation = weapon.transform.rotation;
     }
 
     // Update is called once per frame
@@ -153,8 +158,11 @@ public class GunController : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("MainPlayer"))
         {
-           // weapon.transform.parent = mainPlayer.transform;
             rotator.isRotating = false;
+            weapon.transform.parent = mainPlayer.transform;
+            weapon.transform.rotation = originalRotation;
+            weapon.transform.position = mainPlayer.transform.position;
+            
             
         }
     }

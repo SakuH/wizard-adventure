@@ -409,7 +409,7 @@ PrefabInstance:
         type: 3}
       propertyPath: mainPlayer
       value: 
-      objectReference: {fileID: 801737033}
+      objectReference: {fileID: 1592408849}
     - target: {fileID: 3789602533598380132, guid: e152f4436604bee488f457cec27209a3,
         type: 3}
       propertyPath: weapon
@@ -1194,7 +1194,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1592408849}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.84, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 801737038}
