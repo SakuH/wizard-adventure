@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6166424788288338780}
   - component: {fileID: 3957035135894951334}
   m_Layer: 0
-  m_Name: Spawn Point
+  m_Name: Room Spawn Point
   m_TagString: RoomSpawnPoint
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed63d2c9bb91124d998270400902be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openingDirection: 0
+  waitTime: 4
 --- !u!65 &6166424788288338780
 BoxCollider:
   m_ObjectHideFlags: 0

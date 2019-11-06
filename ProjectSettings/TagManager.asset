@@ -9,6 +9,8 @@ TagManager:
   - Rooms
   - Weapon
   - MainPlayer
+  - Door
+  - Enemy
   layers:
   - Default
   - TransparentFX

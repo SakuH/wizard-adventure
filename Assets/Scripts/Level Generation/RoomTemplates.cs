@@ -15,14 +15,14 @@ public class RoomTemplates : MonoBehaviour
 
     public float waitTime;
     private bool spawnedBoss;
-    public GameObject boss;
+    public GameObject bossTeleporter;
 
     private void Update()
     {
         if(waitTime <= 0 && spawnedBoss == false)
         {
             
-            Instantiate(boss, rooms[rooms.Count - 1].transform.position + new Vector3(0,2), Quaternion.identity);
+            Instantiate(bossTeleporter, rooms[rooms.Count - 1].transform.position + new Vector3(0,2), Quaternion.identity);
             spawnedBoss = true;
         }
         else
