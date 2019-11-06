@@ -1243,6 +1243,7 @@ MonoBehaviour:
   isFiring: 0
   bullet: {fileID: 5604830854780157620, guid: 5b5b0655eff366e4db919037ff851a39, type: 3}
   bulletSpeed: 26
+  equipedWeapon: 0
   timeBetweenShots: 0.1
   firePoint: {fileID: 1253004241}
 --- !u!1 &439589493
@@ -1846,7 +1847,7 @@ MonoBehaviour:
   raycastToGroundLength: 1.13
   raycastOriginPoint: 1
   grounded: 0
-  downForce: 5
+  downForce: 4
 --- !u!1 &927469815
 GameObject:
   m_ObjectHideFlags: 0

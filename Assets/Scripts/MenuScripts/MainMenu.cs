@@ -10,16 +10,37 @@ public class MainMenu : MonoBehaviour
     public bool isStart;
     public bool isQuit;
     public bool isOptions;
+
+    public bool isResolution;
+    public bool isFullScreen;
+    public bool isSound;
+    public bool isBGMt;
+    public bool isBack;
+
     public bool isStartText;
     public bool isQuitText;
     public bool isOptionsText;
-    public Renderer textRenderer;
 
+    public bool isResolutionText;
+    public bool isFullScreenText;
+    public bool isSoundText;
+    public bool isBGMText;
+    public bool isBackText;
 
+    public Camera mainCam;
+    private float cameraPositionOptions;
+    private float cameraPositionDefault;
     
     void Start()
     {
-        GetComponent<TextMesh>().color = Color.white;
+       
+
+        cameraPositionDefault = -1.32f;
+        cameraPositionOptions = 33.41f;
+    GetComponent<TextMesh>().color = Color.white;
+        if(mainCam != null)
+        mainCam.transform.position = new Vector3(cameraPositionDefault, 15.0f, 0.52f);
+
     }
 
     void Update()
@@ -41,7 +62,21 @@ public class MainMenu : MonoBehaviour
         {
             isStart = true;
         }
-    }
+        if (isResolutionText)
+        {
+            isResolution = true;
+        }
+        if (isFullScreenText)
+        {
+           isFullScreen = true;
+        }
+        if (isBackText)
+        {
+           isBack = true;
+        }
+
+ 
+}
 
     void OnMouseExit()
     {
@@ -57,6 +92,18 @@ public class MainMenu : MonoBehaviour
         if (isStartText)
         {
             isStart = false;
+        }
+        if (isResolutionText)
+        {
+            isResolution =false;
+        }
+        if (isFullScreenText)
+        {
+            isFullScreen = false;
+        }
+        if (isBackText)
+        {
+            isBack = false;
         }
 
 
@@ -77,7 +124,42 @@ public class MainMenu : MonoBehaviour
         }
         if (isOptions)
         {
+            if (mainCam != null)
+            {
+                
+                
+                   
+                    mainCam.transform.position = new Vector3(cameraPositionOptions, 15.0f, 0.52f);
+
+                
+            }
+        }
+        if (isBackText)
+        {
+            mainCam.transform.position = new Vector3(cameraPositionDefault, 15.0f, 0.52f);
 
         }
+        if (isFullScreenText)
+        {
+            if (Screen.fullScreen)
+            {
+                setFullscreen(false);
+                Debug.Log("windowed");
+            }
+            else
+            {
+                setFullscreen(true);
+                Debug.Log("Fullscreen");
+            }
+        }
+        if (isResolutionText)
+        {
+           
+        }
+    }
+
+    public void setFullscreen(bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
     }
 }
