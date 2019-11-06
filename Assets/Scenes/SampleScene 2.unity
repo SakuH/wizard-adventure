@@ -415,6 +415,7 @@ MonoBehaviour:
   isFiring: 0
   bullet: {fileID: 5604830854780157620, guid: 5b5b0655eff366e4db919037ff851a39, type: 3}
   bulletSpeed: 26
+  equipedWeapon: 2
   timeBetweenShots: 0.1
   firePoint: {fileID: 1253004241}
 --- !u!1 &439589493
@@ -732,10 +733,16 @@ MonoBehaviour:
   weapon: {fileID: 412298267}
   slopeForce: 0
   slopeForceRayLength: 0
-  raycastLayerToHit:
+  raycastWallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastGroundLayer:
     serializedVersion: 2
     m_Bits: 0
   raycastToWallLength: 0
+  raycastToGroundLength: 0
+  raycastOriginPoint: 0
+  grounded: 0
 --- !u!1 &857508283
 GameObject:
   m_ObjectHideFlags: 0
