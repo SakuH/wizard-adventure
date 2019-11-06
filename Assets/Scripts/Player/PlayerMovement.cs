@@ -24,16 +24,19 @@ public class PlayerMovement : MonoBehaviour
     public float raycastToGroundLength;
     public float raycastOriginPoint;
     public bool grounded;
+    public float downForce;
+
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-       
+
     }
 
     void Update()
     {
-            moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f , Input.GetAxisRaw("Vertical"));
+        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
         moveInput.Normalize();
         moveVelocity = moveInput * movementSpeed;
 
@@ -49,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-       
+
 
 
 
@@ -60,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
     {
         groundCheck();
         wallCheck();
-        rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y ,moveVelocity.z);
+        rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y, moveVelocity.z);
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
 
@@ -74,8 +77,11 @@ public class PlayerMovement : MonoBehaviour
 
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
-       
 
+        if (!grounded)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y - downForce, rb.velocity.z);
+        }
         // transform.Translate(movementSpeed*Input.GetAxis("Horizontal")*Time.deltaTime,0f, movementSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
         /*
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -90,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
     public void wallCheck()
     {
         RaycastHit hit;
-       
+
 
         //if (Physics.Raycast(transform.position, Vector3.forward, out hit, raycastToWallLength, raycastWallLayer))
         if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y - raycastOriginPoint, transform.position.z), Vector3.forward, out hit, raycastToWallLength, raycastWallLayer))
@@ -131,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -Vector3.up, out hit, raycastToGroundLength, raycastGroundLayer))
         {
-           // Debug.Log("Grounded");
+            // Debug.Log("Grounded");
             grounded = true;
         }
         else
@@ -139,5 +145,16 @@ public class PlayerMovement : MonoBehaviour
             grounded = false;
         }
     }
-  
+
+
+    public void speedBoost()
+    {
+
+    }
+
+    public void dash()
+    {
+
+    }
+
 }

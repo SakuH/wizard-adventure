@@ -1846,6 +1846,7 @@ MonoBehaviour:
   raycastToGroundLength: 1.13
   raycastOriginPoint: 1
   grounded: 0
+  downForce: 5
 --- !u!1 &927469815
 GameObject:
   m_ObjectHideFlags: 0
@@ -3584,7 +3585,7 @@ SphereCollider:
   m_GameObject: {fileID: 2118878722}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -3649,7 +3650,7 @@ PrefabInstance:
     - target: {fileID: 8771435342720530611, guid: 6c5fefbc324f3c54ca3f86b236be40e4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.017
+      value: -0.032
       objectReference: {fileID: 0}
     - target: {fileID: 8771435342720530611, guid: 6c5fefbc324f3c54ca3f86b236be40e4,
         type: 3}
@@ -3659,7 +3660,7 @@ PrefabInstance:
     - target: {fileID: 8771435342720530611, guid: 6c5fefbc324f3c54ca3f86b236be40e4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.012
+      value: -0.003
       objectReference: {fileID: 0}
     - target: {fileID: 8771435342720530611, guid: 6c5fefbc324f3c54ca3f86b236be40e4,
         type: 3}
