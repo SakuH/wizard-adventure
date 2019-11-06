@@ -14,11 +14,18 @@ public class GunController : MonoBehaviour
     public float timeBetweenShots;
     private float shotCounter;
 
+    public GameObject mainPlayer;
+
+    public GameObject weapon;
+
+    public Rotator rotator;
+
     public Transform firePoint;
     // Start is called before the first frame update
     void Start()
     {
-       
+        weapon = GameObject.Find("WeaponShotgun");
+      rotator =  weapon.GetComponent<Rotator>();
     }
 
     // Update is called once per frame
@@ -141,5 +148,14 @@ public class GunController : MonoBehaviour
         newBullet.setY = 0;
         newBullet.setZ = 1;
         
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if(other.gameObject.CompareTag("MainPlayer"))
+        {
+           // weapon.transform.parent = mainPlayer.transform;
+            rotator.isRotating = false;
+            
+        }
     }
 }

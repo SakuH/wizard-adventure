@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     public bool grounded;
     public float downForce;
 
+    
+
 
 
     void Start()
