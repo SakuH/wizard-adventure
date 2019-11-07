@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 3789602533598380132}
   - component: {fileID: 6397453381953474084}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: WeaponPistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
   timeBetweenPickup: 0
   mainPlayerHand: {fileID: 0}
   player: {fileID: 0}
-  weapon: {fileID: 0}
+  weapon: {fileID: 3789602533598380137}
   firePoint: {fileID: 3789602534372491182}
 --- !u!114 &6397453381953474084
 MonoBehaviour:
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   height: 0.5
-  isRotating: 0
+  isRotating: 1
 --- !u!1 &3789602534372491183
 GameObject:
   m_ObjectHideFlags: 0

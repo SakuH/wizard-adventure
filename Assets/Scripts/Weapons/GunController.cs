@@ -6,6 +6,9 @@ public class GunController : MonoBehaviour
 {
     public bool isFiring;
 
+    public bool weaponEquiped;
+    private bool canPickup;
+
     public Bullet bullet;
 
     public PlayerMovement playerMovement;
@@ -16,6 +19,10 @@ public class GunController : MonoBehaviour
     public float timeBetweenShots;
 
     private float nextFire;
+
+    private float nextPickup;
+
+    public float timeBetweenPickup;
     private float shotCounter;
 
     public GameObject mainPlayerHand;
@@ -38,6 +45,8 @@ public class GunController : MonoBehaviour
        // weapon = GameObject.Find("WeaponShotgun");
         //originalRotation = weapon.transform.rotation;
         rotator =  weapon.GetComponent<Rotator>();
+        weaponEquiped = false;
+        canPickup = false;
        
     }
 
@@ -98,6 +107,10 @@ public class GunController : MonoBehaviour
            
         }
         
+        if(Input.GetKeyDown("e") && canPickup)
+        {
+            pickWeaponUp();
+        }
     }
 
     private void shotgunProjectiles()
@@ -157,14 +170,77 @@ public class GunController : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("MainPlayer"))
         {
-            rotator.isRotating = false;
-            weapon.transform.parent = player.transform;
+            canPickup = true;
+           //     if(Time.time > nextPickup)
+           // {
+
+           // nextPickup = Time.time + timeBetweenPickup;
+           /*    if(weaponEquiped == false)
+                {
+                   //player.transform.GetChild(1).transform.parent = null; 
+                 rotator.isRotating = false;
+                   
+                    weapon.transform.parent = player.transform;
+            weapon.transform.SetSiblingIndex(1);
             weapon.transform.rotation = mainPlayerHand.transform.rotation;
             weapon.transform.position = mainPlayerHand.transform.position;
+            player.transform.GetChild(2).transform.parent = null;
+            weaponEquiped = true;
             playerMovement.weapon = this;
-            //player.transform.GetChild(0).transform.parent.
+                }
+                else if (weaponEquiped)
+                {
+                    rotator.isRotating = false;
+                   
+                    weapon.transform.parent = player.transform;
+            weapon.transform.SetSiblingIndex(1);
+            weapon.transform.rotation = mainPlayerHand.transform.rotation;
+            weapon.transform.position = mainPlayerHand.transform.position;
+            player.transform.GetChild(1).transform.parent = null;
+            weaponEquiped = false;
+            playerMovement.weapon = this;
+                }*/
+            
+            
+
+           // }
+
+            /*rotator.isRotating = false;
+            player.transform.GetChild(1).transform.parent = null;
+            weapon.transform.parent = player.transform;
+            weapon.transform.SetSiblingIndex(1);
+            weapon.transform.rotation = mainPlayerHand.transform.rotation;
+            weapon.transform.position = mainPlayerHand.transform.position;
+            playerMovement.weapon = this;*/
+            
+           // player.transform.GetChild(0).transform.parent = null;
             
         }
+    }
+    private void OnTriggerExit(Collider other) {
+        if(other.gameObject.CompareTag("MainPlayer"))
+        {
+            canPickup = false;
+        }
+
+    }
+
+    private void pickWeaponUp(){
+
+            if (weaponEquiped)
+            {
+            player.transform.GetChild(1).transform.parent = null;
+            }
+            
+            rotator.isRotating = false;
+                   
+            weapon.transform.parent = player.transform;
+            weapon.transform.SetSiblingIndex(1);
+            weapon.transform.rotation = mainPlayerHand.transform.rotation;
+            weapon.transform.position = mainPlayerHand.transform.position;
+            
+            weaponEquiped = true;
+            playerMovement.weapon = this;
     }
 
 }
