@@ -5,10 +5,9 @@ using UnityEngine;
 public class RoomInternalBehaviour : MonoBehaviour
 {
     public List<GameObject> enemies;
-    public GameObject[] doors;
-
-
-    public bool openDoors = false;
+    public List<GameObject> doors;
+    public GameObject teleporter;
+    public bool teleporterRoom = false;
     public bool enemiesInRoom = false;
     void Start()
     {
@@ -19,18 +18,33 @@ public class RoomInternalBehaviour : MonoBehaviour
     {
         if (enemiesInRoom)
         {
-            foreach (GameObject enemy in enemies)
+            if (enemies.Count > 0)
             {
-                if (!enemy.GetComponent<EnemyAsPartOfRoom>().GetAliveStatus())
+                try
                 {
-                    Destroy(enemy, 2f);
-                    enemies.Remove(enemy);
+                    foreach (GameObject enemy in enemies)
+                    {
+                        if (!enemy.GetComponent<EnemyAsPartOfRoom>().GetAliveStatus())
+                        {
+                            Destroy(enemy, 2f);
+                            enemies.Remove(enemy);
+                        }
+                    }
                 }
+                catch (System.Exception)
+                {
+                }
+
             }
             if (enemies.Count == 0)
             {
-                openDoors = true;
+                OpenRoomDoors();
+                if (teleporterRoom)
+                {
+                    teleporter.GetComponent<MeshRenderer>().enabled = true;
+                }
                 enemiesInRoom = false;
+                enemies.Clear();
             }
         }
     }
@@ -40,5 +54,26 @@ public class RoomInternalBehaviour : MonoBehaviour
         enemies.Add(enemy);
         enemiesInRoom = true;
         
+    }
+
+    public void AddDoorToRoom(GameObject door)
+    {
+        doors.Add(door);
+    }
+
+    void OpenRoomDoors()
+    {
+        if (doors.Count > 0)
+        {
+            foreach (GameObject door in doors)
+            {
+                Destroy(door);
+            }
+        }
+    }
+
+    public void SetAsTeleporterRoom()
+    {
+        teleporterRoom = true;
     }
 }

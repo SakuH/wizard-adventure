@@ -15,9 +15,9 @@ public class RoomTrigger : MonoBehaviour
             triggered = true;
             objectGenerators = gameObject.GetComponentsInChildren<ObjectGenerator>();
 
-            foreach (ObjectGenerator spawnObject in objectGenerators)
+            foreach (ObjectGenerator spawnPoint in objectGenerators)
             {
-                spawnObject.SpawnObject();
+                spawnPoint.SpawnObject();
             }
             Destroy(gameObject);
         }

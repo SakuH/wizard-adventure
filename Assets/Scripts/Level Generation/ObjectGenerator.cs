@@ -21,6 +21,10 @@ public class ObjectGenerator : MonoBehaviour
         {
             roomBehaviour.AddEnemyToRoom(Instantiate(objects[rand], transform.position, Quaternion.identity));
         }
+        else if (objects[rand].CompareTag("Door"))
+        {
+            roomBehaviour.AddDoorToRoom(Instantiate(objects[rand], transform.position, Quaternion.identity));
+        }
         else
         {
             Instantiate(objects[rand], transform.position, Quaternion.identity);
