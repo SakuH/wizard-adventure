@@ -235,7 +235,7 @@ MonoBehaviour:
   grounded: 0
   downForce: 18
   dashDuration: 0
-  dashDurationTime: 0.75
+  dashDurationTime: 0.15
   dashCooldown: 0
   dashCooldownTime: 0.5
   isDashing: 0

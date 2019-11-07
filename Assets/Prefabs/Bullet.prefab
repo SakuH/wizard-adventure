@@ -111,6 +111,9 @@ MonoBehaviour:
   setX: 0
   setY: 0
   setZ: 1
+  bulletImpact: {fileID: 6191829300876826018, guid: 89723319ed8d05f43bd3233fef648780,
+    type: 3}
+  setDamage: 0
 --- !u!54 &4401874671244627829
 Rigidbody:
   m_ObjectHideFlags: 0
