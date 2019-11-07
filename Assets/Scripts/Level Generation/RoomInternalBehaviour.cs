@@ -6,7 +6,6 @@ public class RoomInternalBehaviour : MonoBehaviour
 {
     public List<GameObject> enemies;
     public List<GameObject> doors;
-    public GameObject teleporter;
     public bool teleporterRoom = false;
     public bool enemiesInRoom = false;
     void Start()
@@ -41,7 +40,7 @@ public class RoomInternalBehaviour : MonoBehaviour
                 OpenRoomDoors();
                 if (teleporterRoom)
                 {
-                    teleporter.GetComponent<MeshRenderer>().enabled = true;
+                    GetComponentInChildren<BossTeleporter>().ActivateTeleporter();
                 }
                 enemiesInRoom = false;
                 enemies.Clear();

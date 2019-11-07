@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openingDirection: 4
+  waitTime: 4
 --- !u!65 &4788349598621400051
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -673,6 +674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8258526883760999138}
   - component: {fileID: -8976226655616568907}
+  - component: {fileID: -2526939258277552094}
   m_Layer: 0
   m_Name: L
   m_TagString: Untagged
@@ -709,3 +711,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf429472c3e4664fb0d901b453c29d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2526939258277552094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8258526883760999139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6afa590aa0427145ac255843edaec3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []
+  doors: []
+  teleporterRoom: 0
+  enemiesInRoom: 0
