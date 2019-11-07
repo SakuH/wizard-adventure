@@ -164,8 +164,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 7.7285266, z: 1}
-  m_Center: {x: 0, y: 3.364263, z: 0}
+  m_Size: {x: 1, y: 7.7285266, z: 4.2690487}
+  m_Center: {x: -3.5835582e-17, y: 3.364263, z: -1.6345248}
 --- !u!23 &10910794
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1245,6 +1245,9 @@ MonoBehaviour:
   bulletSpeed: 26
   equipedWeapon: 0
   timeBetweenShots: 0.1
+  mainPlayer: {fileID: 0}
+  weapon: {fileID: 0}
+  rotator: {fileID: 0}
   firePoint: {fileID: 1253004241}
 --- !u!1 &439589493
 GameObject:
@@ -1722,7 +1725,7 @@ GameObject:
   - component: {fileID: 801737039}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1847,7 +1850,19 @@ MonoBehaviour:
   raycastToGroundLength: 1.13
   raycastOriginPoint: 1
   grounded: 0
-  downForce: 4
+  downForce: 18
+  dashDuration: 0
+  dashDurationTime: 0.75
+  dashCooldown: 0
+  dashCooldownTime: 0.5
+  isDashing: 0
+  dashForce: 5
+  speedBoostAmount: 10
+  speedBoostDuration: 0
+  speedBoostDurationTime: 10
+  speedBoostCooldown: 0
+  speedBoostCooldownTime: 7.5
+  isSpeedBoosting: 0
 --- !u!1 &927469815
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,8 +2470,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 7.7285266, z: 1}
-  m_Center: {x: 0, y: 3.364263, z: 0}
+  m_Size: {x: 1, y: 7.7285266, z: 3.606266}
+  m_Center: {x: 0, y: 3.364263, z: -1.303133}
 --- !u!23 &1122722454
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2731,8 +2746,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 7.7285266, z: 1}
-  m_Center: {x: 0, y: 3.364263, z: 0}
+  m_Size: {x: 1, y: 7.7285266, z: 4.3763275}
+  m_Center: {x: 0, y: 3.364263, z: 1.6881638}
 --- !u!23 &1182780766
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2823,8 +2838,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 7.7285266, z: 1}
-  m_Center: {x: 0, y: 3.364263, z: 0}
+  m_Size: {x: 1, y: 7.7285266, z: 5.848367}
+  m_Center: {x: 3.8651485e-16, y: 3.364263, z: 2.4241843}
 --- !u!23 &1185773819
 MeshRenderer:
   m_ObjectHideFlags: 0
