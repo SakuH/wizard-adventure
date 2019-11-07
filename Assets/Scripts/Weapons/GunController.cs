@@ -31,7 +31,7 @@ public class GunController : MonoBehaviour
 
     public GameObject weapon;
 
-    private Rotator rotator;
+    public Rotator rotator;
 
     public Transform firePoint;
 
@@ -45,7 +45,7 @@ public class GunController : MonoBehaviour
        // weapon = GameObject.Find("WeaponShotgun");
         //originalRotation = weapon.transform.rotation;
         rotator =  weapon.GetComponent<Rotator>();
-        weaponEquiped = false;
+       // weaponEquiped = false;
         canPickup = false;
        
     }
@@ -227,20 +227,26 @@ public class GunController : MonoBehaviour
 
     private void pickWeaponUp(){
 
-            if (weaponEquiped)
-            {
-            player.transform.GetChild(1).transform.parent = null;
-            }
+            
             
             rotator.isRotating = false;
-                   
+            
             weapon.transform.parent = player.transform;
             weapon.transform.SetSiblingIndex(1);
             weapon.transform.rotation = mainPlayerHand.transform.rotation;
             weapon.transform.position = mainPlayerHand.transform.position;
-            
             weaponEquiped = true;
             playerMovement.weapon = this;
+            if (player.transform.childCount == 3)
+            {
+            //rotator.isRotating = true;
+            player.transform.GetChild(2).transform.parent = null;
+            
+            }
+            //player.transform.
+            //weaponEquiped = true;
+            
+            
     }
 
 }
