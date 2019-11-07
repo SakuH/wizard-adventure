@@ -34,8 +34,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Wall")
         {
             //Debug.Log("Bullet Destroyed");
-            Instantiate(bulletImpact, transform.position, Quaternion.identity);
-            Destroy(bulletImpact,1);
+            Instantiate(bulletImpact, transform.position, Quaternion.identity);        
             Destroy(gameObject);
         }
        
