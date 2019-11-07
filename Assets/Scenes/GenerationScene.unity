@@ -545,6 +545,9 @@ MonoBehaviour:
   bulletSpeed: 26
   equipedWeapon: 0
   timeBetweenShots: 0.1
+  mainPlayer: {fileID: 0}
+  weapon: {fileID: 0}
+  rotator: {fileID: 0}
   firePoint: {fileID: 395048350}
 --- !u!4 &691805425
 Transform:
@@ -884,7 +887,7 @@ GameObject:
   - component: {fileID: 1381177084}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

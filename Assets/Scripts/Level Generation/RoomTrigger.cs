@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class RoomTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject[] spawns;
 
-    // Update is called once per frame
-    void Update()
+    private bool triggered = false;
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Player") && !triggered)
+        {
+            triggered = true;
+            foreach (GameObject spawn in spawns)
+            {
+                spawn.GetComponent<ObjectGenerator>().SpawnObject();
+            }
+            Destroy(gameObject);
+        }
     }
 }

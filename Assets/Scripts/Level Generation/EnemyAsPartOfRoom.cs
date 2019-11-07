@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class EnemyAsPartOfRoom : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    bool isAlive = true;
     void Start()
+    {
+        Invoke("MarkAsDead", 3f);
+    
+    }
+
+
+    void Update()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void MarkAsDead()
     {
-        
+        isAlive = false;
+    }
+
+    public bool GetAliveStatus()
+    {
+        return isAlive;
     }
 }
