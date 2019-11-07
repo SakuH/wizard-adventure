@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RoomTrigger : MonoBehaviour
 {
-    public GameObject[] spawns;
 
+    private ObjectGenerator[] objectGenerators;
     private bool triggered = false;
 
     private void OnTriggerEnter(Collider other)
@@ -13,9 +13,11 @@ public class RoomTrigger : MonoBehaviour
         if (other.CompareTag("Player") && !triggered)
         {
             triggered = true;
-            foreach (GameObject spawn in spawns)
+            objectGenerators = gameObject.GetComponentsInChildren<ObjectGenerator>();
+
+            foreach (ObjectGenerator spawnObject in objectGenerators)
             {
-                spawn.GetComponent<ObjectGenerator>().SpawnObject();
+                spawnObject.SpawnObject();
             }
             Destroy(gameObject);
         }

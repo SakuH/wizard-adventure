@@ -25,7 +25,6 @@ public class RoomInternalBehaviour : MonoBehaviour
                 {
                     Destroy(enemy, 2f);
                     enemies.Remove(enemy);
-              
                 }
             }
             if (enemies.Count == 0)
@@ -38,7 +37,8 @@ public class RoomInternalBehaviour : MonoBehaviour
 
     public void AddEnemyToRoom(GameObject enemy)
     {
-        enemiesInRoom = true;
         enemies.Add(enemy);
+        enemiesInRoom = true;
+        
     }
 }
