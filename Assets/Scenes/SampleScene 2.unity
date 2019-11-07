@@ -415,6 +415,16 @@ PrefabInstance:
       propertyPath: weapon
       value: 
       objectReference: {fileID: 1122531379}
+    - target: {fileID: 3789602533598380132, guid: e152f4436604bee488f457cec27209a3,
+        type: 3}
+      propertyPath: isFiring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3789602533598380132, guid: e152f4436604bee488f457cec27209a3,
+        type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 801737039}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e152f4436604bee488f457cec27209a3, type: 3}
@@ -1193,13 +1203,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1592408849}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 801737038}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!1 &1786750288
 GameObject:
   m_ObjectHideFlags: 0

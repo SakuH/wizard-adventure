@@ -20,10 +20,10 @@ public class Rotator : MonoBehaviour
     {
         if ( isRotating){
 
-        
-        transform.Rotate(new Vector3(15,30,45)*Time.deltaTime);
         float newY = Mathf.Sin(Time.time * speed) * height + pos.y;
         transform.position = new Vector3(pos.x,newY,pos.z) * height;
+        transform.Rotate(new Vector3(0,30,45)*Time.deltaTime);
+
         }
     }
 }

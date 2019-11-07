@@ -7,6 +7,8 @@ public class GunController : MonoBehaviour
     public bool isFiring;
 
     public Bullet bullet;
+
+    public PlayerMovement playerMovement;
     public float bulletSpeed;
 
     public int equipedWeapon;
@@ -14,23 +16,27 @@ public class GunController : MonoBehaviour
     public float timeBetweenShots;
     private float shotCounter;
 
-    public GameObject mainPlayer;
+    public GameObject mainPlayerHand;
+
+    public GameObject player;
 
     public GameObject weapon;
 
-    public Rotator rotator;
+    private Rotator rotator;
 
     public Transform firePoint;
 
-    private Quaternion originalRotation;
+    //private Quaternion originalRotation;
     // Start is called before the first frame update
     void Start()
     {
-        //mainPlayer = GameObject.Find ("GameObjectHand");
-        
+        mainPlayerHand = GameObject.Find ("GameObjectHand");
+        player = GameObject.Find("Player");
+       // originalRotation = mainPlayerHand.transform.rotation;
         weapon = GameObject.Find("WeaponShotgun");
-      rotator =  weapon.GetComponent<Rotator>();
-      originalRotation = weapon.transform.rotation;
+        //originalRotation = weapon.transform.rotation;
+        rotator =  weapon.GetComponent<Rotator>();
+       
     }
 
     // Update is called once per frame
@@ -159,10 +165,11 @@ public class GunController : MonoBehaviour
         if(other.gameObject.CompareTag("MainPlayer"))
         {
             rotator.isRotating = false;
-            weapon.transform.parent = mainPlayer.transform;
-            weapon.transform.rotation = originalRotation;
-            weapon.transform.position = mainPlayer.transform.position;
-            
+            weapon.transform.parent = player.transform;
+            weapon.transform.rotation = mainPlayerHand.transform.rotation;
+            weapon.transform.position = mainPlayerHand.transform.position;
+            playerMovement.weapon = this;
+            //player.transform.GetChild(0).transform.parent.
             
         }
     }
