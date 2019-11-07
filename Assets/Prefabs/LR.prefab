@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3286706878460733936}
   - component: {fileID: 3917597756728396233}
   - component: {fileID: 3301464090943117604}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: T wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,7 +90,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1611435021844796031
 GameObject:
@@ -104,9 +104,9 @@ GameObject:
   - component: {fileID: 8087302226489890772}
   - component: {fileID: 757409605049468893}
   - component: {fileID: 8399351822504332746}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RT wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,7 +182,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5506326096658087935
 GameObject:
@@ -196,9 +196,9 @@ GameObject:
   - component: {fileID: 5413653947783011401}
   - component: {fileID: 2108919007589404795}
   - component: {fileID: 3548944268792561015}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RB wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -274,7 +274,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5694615467755400844
 GameObject:
@@ -440,9 +440,9 @@ GameObject:
   - component: {fileID: 7453657417189812297}
   - component: {fileID: 7453657417189812298}
   - component: {fileID: 7453657417189812299}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LT wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -518,7 +518,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7453657417377026882
 GameObject:
@@ -532,9 +532,9 @@ GameObject:
   - component: {fileID: 7453657417377026886}
   - component: {fileID: 7453657417377026887}
   - component: {fileID: 7453657417377026880}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LB wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -610,7 +610,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7453657418141316699
 GameObject:
@@ -688,9 +688,9 @@ GameObject:
   - component: {fileID: 7453657418679751715}
   - component: {fileID: 7453657418679751708}
   - component: {fileID: 7453657418679751709}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -781,9 +781,9 @@ GameObject:
   - component: {fileID: 7453657418735382500}
   - component: {fileID: 7453657418735382501}
   - component: {fileID: 7453657418735382502}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: B wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -859,7 +859,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7453657418819602174
 GameObject:

@@ -88,9 +88,9 @@ GameObject:
   - component: {fileID: 5306022913013836760}
   - component: {fileID: 5306022913013836775}
   - component: {fileID: 5306022913013836774}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,9 +181,9 @@ GameObject:
   - component: {fileID: 5306022913356599327}
   - component: {fileID: 5306022913356599326}
   - component: {fileID: 5306022913356599325}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: B wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,7 +259,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5306022913473509637
 GameObject:
@@ -309,9 +309,9 @@ GameObject:
   - component: {fileID: 5306022913601348695}
   - component: {fileID: 5306022913601348694}
   - component: {fileID: 5306022913601348693}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TR wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -387,7 +387,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5306022913890350613
 GameObject:
@@ -401,9 +401,9 @@ GameObject:
   - component: {fileID: 5306022913890350601}
   - component: {fileID: 5306022913890350600}
   - component: {fileID: 5306022913890350615}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -479,7 +479,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5306022913958516670
 GameObject:
@@ -493,9 +493,9 @@ GameObject:
   - component: {fileID: 5306022913958516658}
   - component: {fileID: 5306022913958516657}
   - component: {fileID: 5306022913958516656}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LT wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -571,7 +571,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5306022914178411705
 GameObject:
@@ -585,9 +585,9 @@ GameObject:
   - component: {fileID: 5306022914178411709}
   - component: {fileID: 5306022914178411708}
   - component: {fileID: 5306022914178411707}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LB wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -663,7 +663,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5306022914626013600
 GameObject:
@@ -741,9 +741,9 @@ GameObject:
   - component: {fileID: 5306022914721842368}
   - component: {fileID: 5306022914721842383}
   - component: {fileID: 5306022914721842382}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TL wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -819,7 +819,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5919734800128407057
 GameObject:
