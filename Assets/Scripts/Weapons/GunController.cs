@@ -14,6 +14,8 @@ public class GunController : MonoBehaviour
     public int equipedWeapon;
 
     public float timeBetweenShots;
+
+    private float nextFire;
     private float shotCounter;
 
     public GameObject mainPlayerHand;
@@ -33,7 +35,7 @@ public class GunController : MonoBehaviour
         mainPlayerHand = GameObject.Find ("GameObjectHand");
         player = GameObject.Find("Player");
        // originalRotation = mainPlayerHand.transform.rotation;
-        weapon = GameObject.Find("WeaponShotgun");
+       // weapon = GameObject.Find("WeaponShotgun");
         //originalRotation = weapon.transform.rotation;
         rotator =  weapon.GetComponent<Rotator>();
        
@@ -45,10 +47,10 @@ public class GunController : MonoBehaviour
         if (equipedWeapon == 0)
         {
             
-            if(isFiring)
+            if(isFiring && Time.time > nextFire)
             {
 
-                shotCounter -= Time.deltaTime;
+               /*  shotCounter -= Time.deltaTime;
  
                 if(shotCounter <= 0)
                {
@@ -59,50 +61,41 @@ public class GunController : MonoBehaviour
             }
             else
             {
-            shotCounter = 0;
+            shotCounter = 0;*/
+
+            nextFire = Time.time + timeBetweenShots;
+            pistolProjectiles();
+            
+            
             }
         }
 
         if (equipedWeapon == 1)
         {
-            timeBetweenShots = 0.5f;
-            if(isFiring)
+           
+            if(isFiring && Time.time > nextFire)
             {
 
-                shotCounter -= Time.deltaTime;
- 
-                if(shotCounter <= 0)
-               {
-                shotCounter = timeBetweenShots;
+                nextFire = Time.time + timeBetweenShots;
                 shotgunProjectiles();
-               }
+               
 
             }
-            else
-            {
-            shotCounter = 0;
-            }
+            
         }
 
         if (equipedWeapon == 2)
         {
-            timeBetweenShots = 1;
-            if(isFiring)
+           // timeBetweenShots = 1;
+            if(isFiring && Time.time > nextFire)
             {
 
-                shotCounter -= Time.deltaTime;
- 
-                if(shotCounter <= 0)
-               {
-                shotCounter = timeBetweenShots;
+                nextFire = Time.time + timeBetweenShots;
                 sniperProjectiles();
-               }
+               
 
             }
-            else
-            {
-            shotCounter = 0;
-            }
+           
         }
         
     }
@@ -173,4 +166,5 @@ public class GunController : MonoBehaviour
             
         }
     }
+
 }

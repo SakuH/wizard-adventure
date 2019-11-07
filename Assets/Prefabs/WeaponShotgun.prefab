@@ -202,11 +202,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFiring: 0
   bullet: {fileID: 5604830854780157620, guid: 5b5b0655eff366e4db919037ff851a39, type: 3}
+  playerMovement: {fileID: 0}
   bulletSpeed: 26
   equipedWeapon: 1
-  timeBetweenShots: 0.1
-  mainPlayer: {fileID: 0}
-  weapon: {fileID: 0}
+  timeBetweenShots: 0.5
+  mainPlayerHand: {fileID: 0}
+  player: {fileID: 0}
+  weapon: {fileID: 3789602533598380137}
   firePoint: {fileID: 3789602534372491182}
 --- !u!1 &3789602534372491183
 GameObject:

@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 3789602533598380134}
   - component: {fileID: 3789602533598380135}
   - component: {fileID: 3789602533598380132}
+  - component: {fileID: 6397453381953474084}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -202,10 +203,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFiring: 0
   bullet: {fileID: 5604830854780157620, guid: 5b5b0655eff366e4db919037ff851a39, type: 3}
+  playerMovement: {fileID: 0}
   bulletSpeed: 26
   equipedWeapon: 0
   timeBetweenShots: 0.1
+  mainPlayerHand: {fileID: 0}
+  player: {fileID: 0}
+  weapon: {fileID: 0}
   firePoint: {fileID: 3789602534372491182}
+--- !u!114 &6397453381953474084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3789602533598380137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a5903583a5db54680f15a6b185d806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  height: 0.5
+  isRotating: 0
 --- !u!1 &3789602534372491183
 GameObject:
   m_ObjectHideFlags: 0

@@ -661,6 +661,18 @@ MonoBehaviour:
   raycastOriginPoint: 0
   grounded: 0
   downForce: 0
+  dashDuration: 0
+  dashDurationTime: 0
+  dashCooldown: 0
+  dashCooldownTime: 0
+  isDashing: 0
+  dashForce: 10
+  speedBoostAmount: 10
+  speedBoostDuration: 0
+  speedBoostDurationTime: 10
+  speedBoostCooldown: 0
+  speedBoostCooldownTime: 20
+  isSpeedBoosting: 0
 --- !u!1 &857508283
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,5 +1323,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3789602533598380132, guid: f59ecbe80d82cb44fa2c8819ac4ae807,
+        type: 3}
+      propertyPath: timeBetweenShots
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3789602533598380132, guid: f59ecbe80d82cb44fa2c8819ac4ae807,
+        type: 3}
+      propertyPath: isFiring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3789602533598380132, guid: f59ecbe80d82cb44fa2c8819ac4ae807,
+        type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 3789602533598380137, guid: f59ecbe80d82cb44fa2c8819ac4ae807,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f59ecbe80d82cb44fa2c8819ac4ae807, type: 3}
