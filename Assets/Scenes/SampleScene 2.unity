@@ -212,18 +212,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10910791}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &412298267 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3789602533598380132, guid: f59ecbe80d82cb44fa2c8819ac4ae807,
-    type: 3}
-  m_PrefabInstance: {fileID: 3789602533473676415}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e93e9ea095a60240a8c186ed88a0074, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &439589493
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +407,16 @@ PrefabInstance:
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 801737039}
+    - target: {fileID: 3789602533598380132, guid: e152f4436604bee488f457cec27209a3,
+        type: 3}
+      propertyPath: rotator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3789602533598380132, guid: e152f4436604bee488f457cec27209a3,
+        type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 1122531380}
     - target: {fileID: 3789602533598380134, guid: e152f4436604bee488f457cec27209a3,
         type: 3}
       propertyPath: m_Enabled
@@ -645,7 +643,7 @@ MonoBehaviour:
   player: {fileID: 801737033}
   movementSpeed: 17
   mainCamera: {fileID: 963194227}
-  weapon: {fileID: 412298267}
+  weapon: {fileID: 0}
   slopeForce: 0
   slopeForceRayLength: 0
   raycastWallLayer:
@@ -867,6 +865,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 639903162}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1122531380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3789602533598380132, guid: e152f4436604bee488f457cec27209a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 639903162}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122531379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e93e9ea095a60240a8c186ed88a0074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1122722451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,6 +1249,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1818066712 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3789602533598380132, guid: 1bb7e73076bd09941906c4070c6bcf76,
+    type: 3}
+  m_PrefabInstance: {fileID: 1891600339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e93e9ea095a60240a8c186ed88a0074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1891600339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1311,6 +1333,26 @@ PrefabInstance:
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 801737039}
+    - target: {fileID: 3789602533598380132, guid: 1bb7e73076bd09941906c4070c6bcf76,
+        type: 3}
+      propertyPath: isRotating
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3789602533598380132, guid: 1bb7e73076bd09941906c4070c6bcf76,
+        type: 3}
+      propertyPath: weaponEquiped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3789602533598380132, guid: 1bb7e73076bd09941906c4070c6bcf76,
+        type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 1818066712}
+    - target: {fileID: 3789602533598380132, guid: 1bb7e73076bd09941906c4070c6bcf76,
+        type: 3}
+      propertyPath: gunController
+      value: 
+      objectReference: {fileID: 1818066712}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bb7e73076bd09941906c4070c6bcf76, type: 3}
 --- !u!1001 &3789602533473676415
@@ -1405,7 +1447,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerMovement
       value: 
-      objectReference: {fileID: 801737039}
+      objectReference: {fileID: 0}
     - target: {fileID: 3789602533598380132, guid: f59ecbe80d82cb44fa2c8819ac4ae807,
         type: 3}
       propertyPath: timeBetweenPickup

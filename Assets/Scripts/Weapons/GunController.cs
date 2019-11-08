@@ -7,9 +7,10 @@ public class GunController : MonoBehaviour
     public bool isFiring;
 
     public bool weaponEquiped;
-    private bool canPickup;
+    public bool canPickup;
 
     public Bullet bullet;
+    private  GunController gunController;
 
     public PlayerMovement playerMovement;
     public float bulletSpeed;
@@ -20,16 +21,18 @@ public class GunController : MonoBehaviour
 
     private float nextFire;
 
-    private float nextPickup;
-
-    public float timeBetweenPickup;
-    private float shotCounter;
-
     public GameObject mainPlayerHand;
 
     public GameObject player;
 
     public GameObject weapon;
+
+    public GameObject anotherWeapon;
+
+     public float rotatingSpeed = 5f;
+    public float rotatingHeight = 0.5f;
+    Vector3 rotatingPos;
+    public bool isRotating;
 
     public Rotator rotator;
 
@@ -44,9 +47,11 @@ public class GunController : MonoBehaviour
        // originalRotation = mainPlayerHand.transform.rotation;
        // weapon = GameObject.Find("WeaponShotgun");
         //originalRotation = weapon.transform.rotation;
-        rotator =  weapon.GetComponent<Rotator>();
+       // rotator =  weapon.GetComponent<Rotator>();
        // weaponEquiped = false;
         canPickup = false;
+        rotatingPos = transform.position;
+        
        
     }
 
@@ -109,7 +114,27 @@ public class GunController : MonoBehaviour
         
         if(Input.GetKeyDown("e") && canPickup)
         {
+           // isRotating = false;
+            playerMovement.weapon = this;
             pickWeaponUp();
+            
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            isFiring = false;
+
+        }
+        
+       // if(weaponEquiped == false){
+        //    isRotating = true;
+       // }
+
+         if ( isRotating){
+
+        float newY = Mathf.Sin(Time.time * rotatingSpeed) * rotatingHeight + rotatingPos.y;
+        transform.position = new Vector3(rotatingPos.x,newY,rotatingPos.z) * rotatingHeight;
+        transform.Rotate(new Vector3(0,30,45)*Time.deltaTime);
+
         }
     }
 
@@ -171,6 +196,7 @@ public class GunController : MonoBehaviour
         if(other.gameObject.CompareTag("MainPlayer"))
         {
             canPickup = true;
+            
            //     if(Time.time > nextPickup)
            // {
 
@@ -225,28 +251,67 @@ public class GunController : MonoBehaviour
 
     }
 
-    private void pickWeaponUp(){
+    public void pickWeaponUp(){
 
             
+           /* if(weaponEquiped == true)
+            {
+            isRotating = true;
+            weaponEquiped = false;
+            }
+            if (weaponEquiped == false)
+            {
+             isRotating = false; 
+             weaponEquiped = true;      
+            }*/
+            //GetComponent<Collider>().enabled = false;
+            //GetComponent<Collider>().isTrigger = false;
+           isRotating = false;
+                     //  playerMovement.weapon = this;
+           /* if (weaponEquiped == true)
+            {
+            //weaponEquiped = false;
+            //isRotating = true;
+            weaponEquiped = false;
+            isRotating = true;
+            Destroy(weapon,0);
             
-            rotator.isRotating = false;
-            
+            }
+            else{
+                weaponEquiped = true;
+            }*/
+
             weapon.transform.parent = player.transform;
             weapon.transform.SetSiblingIndex(1);
             weapon.transform.rotation = mainPlayerHand.transform.rotation;
             weapon.transform.position = mainPlayerHand.transform.position;
-            weaponEquiped = true;
-            playerMovement.weapon = this;
+            //this.gameObject.GetComponent("GunController")
+           // weaponEquiped = true;
+            
             if (player.transform.childCount == 3)
             {
-            //rotator.isRotating = true;
-            player.transform.GetChild(2).transform.parent = null;
+                
+            //player.transform.GetChild(2).transform.parent = null;
+            //Instantiate(player.transform.GetChild(2).gameObject,new Vector3(0, 0, 0),weapon.transform.rotation) ;
+            //anotherWeapon = player.transform.GetChild(2).gameObject;
+            Instantiate(player.transform.GetChild(2).gameObject,weapon.transform.position,weapon.transform.rotation) ;
+            Destroy(player.transform.GetChild(2).gameObject,0);
+           // gunController =  anotherWeapon.GetComponent(typeof(GunController)) as GunController;
+            //gunController.isRotating = true;
+        
+          //  if(equipedWeapon == 0){
+              // Instantiate(weapon,weapon.transform.position,weapon.transform.rotation) ;
+           // }
             
+             //isRotating = true;
             }
+            
+            //weaponEquiped = false;
             //player.transform.
             //weaponEquiped = true;
-            
+            //isRotating = true;
             
     }
+
 
 }
