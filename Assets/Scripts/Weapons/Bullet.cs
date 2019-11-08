@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     public float setY;
     public float setZ;
     public GameObject bulletImpact;
+    private EnemyHealth enemyHP;
 
     public int setDamage;
     // Start is called before the first frame update
@@ -33,10 +34,16 @@ public class Bullet : MonoBehaviour
         
         if (collision.gameObject.tag == "Wall")
         {
-            //Debug.Log("Bullet Destroyed");
             Instantiate(bulletImpact, transform.position, Quaternion.identity);        
             Destroy(gameObject);
         }
-       
+        if (collision.gameObject.tag == "Enemy")
+        {         
+            Instantiate(bulletImpact, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            collision.gameObject.GetComponent<EnemyHealth>().takeDamage(setDamage);
+                
+            
+        }
     }
 }
