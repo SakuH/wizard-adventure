@@ -6,7 +6,7 @@ public class GunController : MonoBehaviour
 {
     public bool isFiring;
 
-    public bool weaponEquiped;
+    public bool weaponIsEquiped;
     public bool canPickup;
 
     public Bullet bullet;
@@ -27,7 +27,7 @@ public class GunController : MonoBehaviour
 
     public GameObject weapon;
 
-    public GameObject anotherWeapon;
+    public GameObject[] anotherWeapons;
 
      public float rotatingSpeed = 5f;
     public float rotatingHeight = 0.5f;
@@ -115,7 +115,9 @@ public class GunController : MonoBehaviour
         if(Input.GetKeyDown("e") && canPickup)
         {
            // isRotating = false;
-            playerMovement.weapon = this;
+          // isRotating  = true;
+           // playerMovement.weapon = this;
+          // rotatingPos  = player.transform.position;
             pickWeaponUp();
             
         }
@@ -266,6 +268,8 @@ public class GunController : MonoBehaviour
             }*/
             //GetComponent<Collider>().enabled = false;
             //GetComponent<Collider>().isTrigger = false;
+            
+            playerMovement.weapon = this;
            isRotating = false;
                      //  playerMovement.weapon = this;
            /* if (weaponEquiped == true)
@@ -286,16 +290,52 @@ public class GunController : MonoBehaviour
             weapon.transform.rotation = mainPlayerHand.transform.rotation;
             weapon.transform.position = mainPlayerHand.transform.position;
             //this.gameObject.GetComponent("GunController")
-           // weaponEquiped = true;
+            
             
             if (player.transform.childCount == 3)
             {
                 
-            //player.transform.GetChild(2).transform.parent = null;
+            player.transform.GetChild(2).transform.parent = null;
+            
+            
+                anotherWeapons = GameObject.FindGameObjectsWithTag("Weapon");
+                foreach(GameObject anotherWeapon in anotherWeapons)
+                {
+                    
+                    GunController gun =  anotherWeapon.GetComponent<GunController>();
+                   // if(gun.isRotating == false && equipedWeapon != gun.equipedWeapon)
+                   // {
+                   //     gun.transform.position = player.transform.position;
+                   // }
+                    if (gun.weaponIsEquiped == true)
+                    {
+                        //gun.rotatingPos = rotatingPos;
+                       // rotatingPos = weapon.transform.position;
+                        gun.isRotating = true;
+                        gun.isFiring = false;
+                        gun.weaponIsEquiped = false;
+                        gun.rotatingPos = rotatingPos;
+                    }
+                   /*  if  (equipedWeapon == gun.equipedWeapon && gun.weaponIsEquiped == true )
+                    {
+                        gun.rotatingPos = player.transform.position;
+                        gun.isRotating = true;
+                        gun.weaponIsEquiped = false;
+                    }*/
+                  /*  if(gun.weaponIsEquiped == true){
+
+                        gun.rotatingPos = transform.position;
+                        gun.isRotating = true;
+                        gun.isFiring = false;
+                        gun.weaponIsEquiped = false;
+                    }*/
+                    
+                }
+            
             //Instantiate(player.transform.GetChild(2).gameObject,new Vector3(0, 0, 0),weapon.transform.rotation) ;
             //anotherWeapon = player.transform.GetChild(2).gameObject;
-            Instantiate(player.transform.GetChild(2).gameObject,weapon.transform.position,weapon.transform.rotation) ;
-            Destroy(player.transform.GetChild(2).gameObject,0);
+           // Instantiate(player.transform.GetChild(2).gameObject,weapon.transform.position,weapon.transform.rotation) ;
+           // Destroy(player.transform.GetChild(2).gameObject,0);
            // gunController =  anotherWeapon.GetComponent(typeof(GunController)) as GunController;
             //gunController.isRotating = true;
         
@@ -306,10 +346,11 @@ public class GunController : MonoBehaviour
              //isRotating = true;
             }
             
-            //weaponEquiped = false;
+        
+            weaponIsEquiped = true;
             //player.transform.
             //weaponEquiped = true;
-            //isRotating = true;
+           // isRotating = true;
             
     }
 

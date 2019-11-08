@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
             weapon.isFiring = false;
 
         }
-        if(Input.GetKeyDown("e") && weapon.canPickup)
+       /* if(Input.GetKeyDown("e") && weapon.canPickup)
         {
            // isRotating = false;
             
@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
            //weapon.weaponEquiped = true;
            
            // weapon.weaponEquiped = true;
-        }
+        }*/
         
         speedBoost();
         dash();

@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 3789602533598380132}
   m_Layer: 0
   m_Name: WeaponShotgun
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -202,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFiring: 0
   weaponEquiped: 0
+  canPickup: 0
   bullet: {fileID: 5604830854780157620, guid: 5b5b0655eff366e4db919037ff851a39, type: 3}
   playerMovement: {fileID: 0}
   bulletSpeed: 26
@@ -210,6 +211,7 @@ MonoBehaviour:
   mainPlayerHand: {fileID: 0}
   player: {fileID: 0}
   weapon: {fileID: 3789602533598380137}
+  anotherWeapons: []
   rotatingSpeed: 5
   rotatingHeight: 0.5
   isRotating: 1
