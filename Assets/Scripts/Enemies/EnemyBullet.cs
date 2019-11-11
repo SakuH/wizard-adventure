@@ -37,6 +37,7 @@ public class EnemyBullet : MonoBehaviour
         {         
             Instantiate(bulletImpact, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -45,8 +46,9 @@ public class EnemyBullet : MonoBehaviour
         {
             Instantiate(bulletImpact, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            other.gameObject.GetComponent<PlayerHealth>().takeDamage(bulletDamage);
 
-        
+
         }
         if (other.gameObject.tag == "Wall")
         {
