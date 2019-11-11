@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GunController : MonoBehaviour
 {
@@ -9,8 +10,11 @@ public class GunController : MonoBehaviour
     public bool weaponIsEquiped;
     public bool canPickup;
 
+    public bool overlapping;
+
     public Bullet bullet;
-    private  GunController gunController;
+    
+    public TextMeshProUGUI weaponPickUpText;
 
     public PlayerMovement playerMovement;
     public float bulletSpeed;
@@ -29,16 +33,12 @@ public class GunController : MonoBehaviour
 
     public GameObject[] anotherWeapons;
 
-     public float rotatingSpeed = 5f;
+    public float rotatingSpeed = 5f;
     public float rotatingHeight = 0.5f;
     Vector3 rotatingPos;
     public bool isRotating;
-
-    public Rotator rotator;
-
     public Transform firePoint;
 
-    //private Quaternion originalRotation;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +51,7 @@ public class GunController : MonoBehaviour
        // weaponEquiped = false;
         canPickup = false;
         rotatingPos = transform.position;
+        weaponPickUpText.SetText("");
         
        
     }
@@ -114,22 +115,15 @@ public class GunController : MonoBehaviour
         
         if(Input.GetKeyDown("e") && canPickup)
         {
-           // isRotating = false;
-          // isRotating  = true;
-           // playerMovement.weapon = this;
-          // rotatingPos  = player.transform.position;
+    
             pickWeaponUp();
             
         }
         if (Input.GetMouseButtonUp(0))
         {
             isFiring = false;
-
         }
         
-       // if(weaponEquiped == false){
-        //    isRotating = true;
-       // }
 
          if ( isRotating){
 
@@ -197,6 +191,7 @@ public class GunController : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("MainPlayer"))
         {
+            weaponPickUpText.text = "Press [E] to switch weapons";
             canPickup = true;
             
            //     if(Time.time > nextPickup)
@@ -244,11 +239,24 @@ public class GunController : MonoBehaviour
            // player.transform.GetChild(0).transform.parent = null;
             
         }
+        if (other.gameObject.CompareTag("Weapon") && weaponIsEquiped == false)
+        {
+            //other.ge = 
+            
+            GunController gun2 =  other.GetComponent<GunController>();
+            gun2.rotatingPos = rotatingPos;
+            overlapping = true;
+        }
     }
     private void OnTriggerExit(Collider other) {
         if(other.gameObject.CompareTag("MainPlayer"))
         {
             canPickup = false;
+            weaponPickUpText.text = "";
+        }
+          if (other.gameObject.CompareTag("Weapon"))
+        {
+            overlapping = false;
         }
 
     }
