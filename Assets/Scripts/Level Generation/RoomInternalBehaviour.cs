@@ -23,9 +23,14 @@ public class RoomInternalBehaviour : MonoBehaviour
                 {
                     foreach (GameObject enemy in enemies)
                     {
-                        if (!enemy.GetComponent<EnemyAsPartOfRoom>().GetAliveStatus())
+                        /*if (!enemy.GetComponent<EnemyAsPartOfRoom>().GetAliveStatus())
                         {
                             Destroy(enemy, 2f);
+                            enemies.Remove(enemy);
+                        }
+                        */
+                        if (enemy.GetComponentInChildren<EnemyHealth>().dead)
+                        {
                             enemies.Remove(enemy);
                         }
                     }
