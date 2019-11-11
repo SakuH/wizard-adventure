@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 3789602533598380135}
   - component: {fileID: 3789602533598380132}
   m_Layer: 2
-  m_Name: WeaponShotgun
+  m_Name: WeaponSnipper
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e2b2a6b49b908841960687c6d01a70c, type: 2}
+  - {fileID: 2100000, guid: 3acabe47187f693438e454d650084fcb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -206,10 +206,10 @@ MonoBehaviour:
   overlapping: 0
   bullet: {fileID: 5604830854780157620, guid: 5b5b0655eff366e4db919037ff851a39, type: 3}
   weaponPickUpText: {fileID: 0}
-  bulletSpeed: 26
-  weaponDamage: 0
-  equipedWeapon: 1
-  timeBetweenShots: 0.5
+  bulletSpeed: 50
+  weaponDamage: 3
+  equipedWeapon: 2
+  timeBetweenShots: 1
   mainPlayerHand: {fileID: 0}
   player: {fileID: 0}
   weapon: {fileID: 3789602533598380137}
@@ -227,7 +227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3789602534372491182}
-  - component: {fileID: 5244770608167040265}
+  - component: {fileID: 6861081563130055291}
   m_Layer: 2
   m_Name: GameObject
   m_TagString: Untagged
@@ -249,7 +249,7 @@ Transform:
   m_Father: {fileID: 3789602533598380136}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
---- !u!120 &5244770608167040265
+--- !u!120 &6861081563130055291
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -292,7 +292,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.15
     widthCurve:
       serializedVersion: 2
       m_Curve:

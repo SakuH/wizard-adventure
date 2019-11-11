@@ -16,8 +16,10 @@ public class GunController : MonoBehaviour
     
     public TextMeshProUGUI weaponPickUpText;
 
-    public PlayerMovement playerMovement;
+    private PlayerMovement playerMovement;
     public float bulletSpeed;
+
+    public int weaponDamage;
 
     public int equipedWeapon;
 
@@ -39,11 +41,15 @@ public class GunController : MonoBehaviour
     public bool isRotating;
     public Transform firePoint;
 
+    private LineRenderer line;
+    //private Light light;
+
     // Start is called before the first frame update
     void Start()
     {
         mainPlayerHand = GameObject.Find ("GameObjectHand");
         player = GameObject.Find("Player");
+        playerMovement = player.GetComponent<PlayerMovement>();
        // originalRotation = mainPlayerHand.transform.rotation;
        // weapon = GameObject.Find("WeaponShotgun");
         //originalRotation = weapon.transform.rotation;
@@ -52,6 +58,9 @@ public class GunController : MonoBehaviour
         canPickup = false;
         rotatingPos = transform.position;
         weaponPickUpText.SetText("");
+        line = firePoint.GetComponent<LineRenderer>();
+        line.enabled = false;
+       // light = firePoint.GetComponent<Light>();
         
        
     }
@@ -79,7 +88,8 @@ public class GunController : MonoBehaviour
             shotCounter = 0;*/
 
             nextFire = Time.time + timeBetweenShots;
-            pistolProjectiles();
+            //pistolProjectiles();
+            StartCoroutine("pistolProjectiles");
             
             
             }
@@ -112,6 +122,24 @@ public class GunController : MonoBehaviour
             }
            
         }
+
+        if (equipedWeapon == 3)
+        {
+            //if(isFiring){
+              //  line.enabled = true;
+           // while(isFiring)
+          //  {
+                
+               
+                StartCoroutine("laserProjectiles");
+               
+
+          //  }
+          //  line.enabled = false;
+           // }
+            
+            
+        }
         
         if(Input.GetKeyDown("e") && canPickup)
         {
@@ -142,6 +170,8 @@ public class GunController : MonoBehaviour
         newBullet.setY = 0;
         newBullet.setZ = 1;
         newBullet.bulletspeed = bulletSpeed;
+        newBullet.setDamage = weaponDamage;
+        
 
 
         Bullet newBullet2 = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
@@ -149,43 +179,78 @@ public class GunController : MonoBehaviour
         newBullet2.setY = -0.06f;
         newBullet2.setZ = 1;
         newBullet2.bulletspeed = bulletSpeed;
+        newBullet2.setDamage = weaponDamage;
 
         Bullet newBullet3 = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
         newBullet3.setX = 0;
         newBullet3.setY = 0.06f;
         newBullet3.setZ = 1;
         newBullet3.bulletspeed = bulletSpeed;
+        newBullet3.setDamage = weaponDamage;
 
         Bullet newBullet4 = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
         newBullet4.setX = 0;
         newBullet4.setY = -0.03f;
         newBullet4.setZ = 1;
         newBullet4.bulletspeed = bulletSpeed;
+        newBullet4.setDamage = weaponDamage;
 
         Bullet newBullet5 = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
         newBullet5.setX = 0;
         newBullet5.setY = 0.03f;
         newBullet5.setZ = 1;
         newBullet5.bulletspeed = bulletSpeed;
+        newBullet5.setDamage = weaponDamage;
     }
 
-    private void pistolProjectiles()
+    IEnumerator pistolProjectiles()
     {
         Bullet newBullet = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
         newBullet.setX = 0;
         newBullet.setY = 0;
         newBullet.setZ = 1;
         newBullet.bulletspeed = bulletSpeed;
+        newBullet.setDamage = weaponDamage;
+        yield return null;
     }
 
     private void sniperProjectiles()
     {
         Bullet newBullet = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
-        newBullet.bulletspeed = 80;
+        newBullet.bulletspeed = bulletSpeed;
         newBullet.setX = 0;
         newBullet.setY = 0;
         newBullet.setZ = 1;
+        newBullet.setDamage = weaponDamage;
         
+    }
+
+    IEnumerator laserProjectiles()
+    {   
+        line.enabled = true;
+
+        while ( isFiring)
+        {
+        Ray ray = new Ray(firePoint.position, firePoint.forward);
+        RaycastHit hit;
+        line.SetPosition(0,ray.origin);
+
+        if(Physics.Raycast(ray, out hit,100) && hit.collider.CompareTag("Weapon") == false)
+        {
+            line.SetPosition(1, hit.point);
+            if(hit.collider.gameObject.CompareTag("Enemy"))
+            {
+                hit.collider.GetComponent<EnemyHealth>().takeDamage(weaponDamage);
+                //hit.rigidbody.AddForceAtPosition(firePoint.forward * 5,hit.point);
+            }
+        }
+        else{
+            line.SetPosition(1,ray.GetPoint(100));
+        }
+        yield return null;
+        }
+        line.enabled = false;
+
     }
 
     private void OnTriggerEnter(Collider other) {
