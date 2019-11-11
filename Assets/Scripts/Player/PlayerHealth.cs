@@ -70,4 +70,9 @@ public class PlayerHealth : MonoBehaviour
         }
 
     }
+    public void playerReset()
+    {
+        dead = false;
+        health = maxHealth;
+    }
 }
