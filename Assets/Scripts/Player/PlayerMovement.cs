@@ -119,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y - raycastOriginPoint, transform.position.z), Vector3.forward, out hit, raycastToWallLength, raycastWallLayer))
         {
             stopDash();
-            Debug.Log("Front");
+           // Debug.Log("Front");
             if (moveVelocity.z >= 0)
             {
                 moveVelocity.z = 0;
@@ -133,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
                 moveVelocity.x = 0;
             }
 
-            Debug.Log("Right");
+           // Debug.Log("Right");
         }
         if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y - raycastOriginPoint, transform.position.z), Vector3.left, out hit, raycastToWallLength, raycastWallLayer))
         {
@@ -142,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 moveVelocity.x = 0;
             }
-            Debug.Log("Left");
+           // Debug.Log("Left");
         }
         if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y - raycastOriginPoint, transform.position.z), Vector3.back, out hit, raycastToWallLength, raycastWallLayer))
         {
@@ -151,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 moveVelocity.z = 0;
             }
-            Debug.Log("Back");
+           // Debug.Log("Back");
         }
     }
     public void groundCheck()

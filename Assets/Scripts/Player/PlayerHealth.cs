@@ -13,7 +13,9 @@ public class PlayerHealth : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
     public Sprite halfHeart;
-
+    public Image backgroundImage;
+    public float fadeToBlackColor;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -50,7 +52,7 @@ public class PlayerHealth : MonoBehaviour
             }
 
 
-            if (i < maxHealth / 2)
+            if (i < maxHealth / 2&&!dead)
             {
                 hearts[i].enabled = true;
             }else
@@ -58,6 +60,27 @@ public class PlayerHealth : MonoBehaviour
                 hearts[i].enabled = false;
             }
 
+            if (dead)
+            {
+                hearts[i].enabled = false;
+            }
+
+
+        }
+
+        if(health <= 0)
+        {
+            var tempColor = backgroundImage.color;
+
+            if(fadeToBlackColor < 1)
+            {
+                fadeToBlackColor += Time.deltaTime;
+            }
+
+            tempColor.a = fadeToBlackColor;
+            backgroundImage.color = tempColor;
+            
+            FindObjectOfType<gameManagement>().endGame();
         }
     }
     public void takeDamage(int damage)

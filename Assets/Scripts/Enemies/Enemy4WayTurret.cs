@@ -19,6 +19,17 @@ public class Enemy4WayTurret : MonoBehaviour
     public float rotationSpeed;
     private int health;
 
+    public float damageColorCooldownTime;
+    public float damageColorCooldownTimeMax;
+    public bool normalColor;
+
+    public float whiteColorCooldownTime;
+    public float whiteColorCooldownTimeMax;
+    public bool whiteColorCooldown;
+
+    public Material normalColorMaterial;
+    public Material whiteMaterial;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +49,9 @@ public class Enemy4WayTurret : MonoBehaviour
             Instantiate(projectile1, firingPoint4.position, firingPoint4.rotation);
 
             timeBetweenShot = timeBetweenShotMax;
-            
+
+           
+
         }
         else if(health > 0)
         {
@@ -46,8 +59,49 @@ public class Enemy4WayTurret : MonoBehaviour
         }
 
         health = GetComponent<EnemyHealth>().health;
+
+
+        if (damageColorCooldownTime > 0 && !normalColor)
+        {
+            damageColorCooldownTime -= Time.deltaTime;
+        }
+        else if (!normalColor)
+        {
+            GameObject whateverGameObject = gameObject;
+            MeshRenderer gameObjectRenderer = whateverGameObject.GetComponent<MeshRenderer>();
+            gameObjectRenderer.material = normalColorMaterial;
+            normalColor = true;
+
+            whiteColorCooldownTime = whiteColorCooldownTimeMax;
+            whiteColorCooldown = true;
+           
+        }
+
+        if (whiteColorCooldown)
+        {if(whiteColorCooldownTime > 0)
+            { whiteColorCooldownTime -= Time.deltaTime;
+
+            }
+            else
+            {
+                whiteColorCooldown = false;
+            }
+           
+        }
         
 
+
+    }
+    public void takeDamageEffect()
+    {
+        if (normalColor && !whiteColorCooldown)
+        {
+            GameObject whateverGameObject = gameObject;
+            MeshRenderer gameObjectRenderer = whateverGameObject.GetComponent<MeshRenderer>();
+            gameObjectRenderer.material = whiteMaterial;
+            normalColor = false;
+            damageColorCooldownTime = damageColorCooldownTimeMax;
+        }
     }
  
 }
