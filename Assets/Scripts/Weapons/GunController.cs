@@ -42,6 +42,8 @@ public class GunController : MonoBehaviour
     public Transform firePoint;
 
     private LineRenderer line;
+
+    private Light light;
     //private Light light;
 
     // Start is called before the first frame update
@@ -60,6 +62,8 @@ public class GunController : MonoBehaviour
         weaponPickUpText.SetText("");
         line = firePoint.GetComponent<LineRenderer>();
         line.enabled = false;
+        light = firePoint.GetComponent<Light>();
+        light.enabled = false;
        // light = firePoint.GetComponent<Light>();
         
        
@@ -228,6 +232,7 @@ public class GunController : MonoBehaviour
     IEnumerator laserProjectiles()
     {   
         line.enabled = true;
+        light.enabled = true;
 
         while ( isFiring)
         {
@@ -235,7 +240,7 @@ public class GunController : MonoBehaviour
         RaycastHit hit;
         line.SetPosition(0,ray.origin);
 
-        if(Physics.Raycast(ray, out hit,100) && hit.collider.CompareTag("Weapon") == false)
+        if(Physics.Raycast(ray, out hit,100) )
         {
             line.SetPosition(1, hit.point);
             if(hit.collider.gameObject.CompareTag("Enemy"))
@@ -250,6 +255,7 @@ public class GunController : MonoBehaviour
         yield return null;
         }
         line.enabled = false;
+        light.enabled = false;
 
     }
 
