@@ -262,7 +262,7 @@ public class GunController : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("MainPlayer"))
         {
-            weaponPickUpText.text = "Press [E] to switch weapons";
+           
             canPickup = true;
             
            //     if(Time.time > nextPickup)
@@ -318,6 +318,7 @@ public class GunController : MonoBehaviour
             gun2.rotatingPos = rotatingPos;
             overlapping = true;
         }
+         weaponPickUpText.text = "Press [E] to switch weapons";
     }
     private void OnTriggerExit(Collider other) {
         if(other.gameObject.CompareTag("MainPlayer"))
