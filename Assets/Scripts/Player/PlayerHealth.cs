@@ -15,7 +15,11 @@ public class PlayerHealth : MonoBehaviour
     public Sprite halfHeart;
     public Image backgroundImage;
     public float fadeToBlackColor;
-    
+
+    public bool vulnerable = true;
+    public float vulnerableCoolDown;
+    public float vulnerableCoolDownMax;
+
     
     // Start is called before the first frame update
     void Start()
@@ -82,11 +86,27 @@ public class PlayerHealth : MonoBehaviour
             
             FindObjectOfType<gameManagement>().endGame();
         }
+
+        if (vulnerableCoolDown > 0)
+        {
+            vulnerableCoolDown -= Time.deltaTime;
+        }
+        else
+        {
+            vulnerable = true;
+        }
     }
     public void takeDamage(int damage)
     {
-
+        if (vulnerable)
+        {
+            takeDamageSound();
         health -= damage;
+            vulnerableCoolDown = vulnerableCoolDownMax;
+            vulnerable = false;
+
+        }
+      
         if (health <= 0)
         {
             dead = true;          
@@ -98,4 +118,11 @@ public class PlayerHealth : MonoBehaviour
         dead = false;
         health = maxHealth;
     }
+
+    public void takeDamageSound()
+    {
+        AudioManager.PlaySound("playerHit");
+    }
+
+
 }

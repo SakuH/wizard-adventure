@@ -94,6 +94,7 @@ public class Enemy4WayTurret : MonoBehaviour
     }
     public void takeDamageEffect()
     {
+        takeDamageSound();
         if (normalColor && !whiteColorCooldown)
         {
             GameObject whateverGameObject = gameObject;
@@ -102,6 +103,11 @@ public class Enemy4WayTurret : MonoBehaviour
             normalColor = false;
             damageColorCooldownTime = damageColorCooldownTimeMax;
         }
+    }
+
+    public void takeDamageSound()
+    {
+        AudioManager.PlaySound("enemyHit");
     }
  
 }
