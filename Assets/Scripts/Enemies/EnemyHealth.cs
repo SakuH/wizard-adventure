@@ -11,6 +11,7 @@ public class EnemyHealth : MonoBehaviour
     
     public Enemy4WayTurret turretScript; // define base script for the enemy
 
+
     
     void Start()
     {
@@ -24,6 +25,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (dead)
         {
+            //call death animations turretscript 
             enemyParent.transform.position = new Vector3(transform.position.x, transform.position.y + deathJumpSpeed * Time.deltaTime, transform.position.z);
         }
 

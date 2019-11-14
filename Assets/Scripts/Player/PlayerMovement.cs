@@ -42,10 +42,12 @@ public class PlayerMovement : MonoBehaviour
 
     private float baseMoveSpeed;
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         baseMoveSpeed = movementSpeed;
+        mainCamera = Camera.main;
     }
 
     void Update()
@@ -78,10 +80,7 @@ public class PlayerMovement : MonoBehaviour
         
         speedBoost();
         dash();
-        
-        
-
-
+ 
     }
 
     void FixedUpdate()

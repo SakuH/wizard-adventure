@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
                     break;
             case "enemyHit":
                 audioSrc.PlayOneShot(enemyHitSound);
-                break;
+                    break;
         }
     }
 }
