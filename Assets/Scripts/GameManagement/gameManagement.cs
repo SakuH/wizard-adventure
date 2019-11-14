@@ -34,6 +34,7 @@ public class gameManagement : MonoBehaviour
 
     public void restart()
     { Time.timeScale = 1f;
+        GameIsPaused = false;
         SceneManager.LoadScene(0);
        
     }
