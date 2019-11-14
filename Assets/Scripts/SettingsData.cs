@@ -12,6 +12,11 @@ public class SettingsData
 
     public SettingsData(Settings settings)
     {
+        fullScreen = settings.fullScreen;
+        resolution[0] = settings.currentResolution.width;
+        resolution[1] = settings.currentResolution.height;
+        bgm = settings.currentbgm;
+        sfx = settings.currentsfx;
        
     }
 }

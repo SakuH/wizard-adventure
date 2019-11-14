@@ -6,6 +6,12 @@ public class Settings : MonoBehaviour
 {
     Resolution[] resolutions;
     public Dropdown resolutionDropdown;
+
+    public bool fullScreen;
+    public Resolution currentResolution;
+    public float currentbgm;
+    public float currentsfx;
+
     void Start()
     {
         resolutions = Screen.resolutions;
@@ -40,6 +46,7 @@ public class Settings : MonoBehaviour
         {
             Screen.fullScreen = true;
         }
+        this.fullScreen = true;
     }
     public void setWindowed()
     {
@@ -47,10 +54,29 @@ public class Settings : MonoBehaviour
         {
             Screen.fullScreen = false;
         }
+        this.fullScreen = false;
     }
     public void setResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        currentResolution = resolution;
+    }
+
+    public void SaveSettings()
+    {
+        SaveSystem.SaveSettings(this);
+    }
+
+    public void LoadSettings()
+    {
+        SettingsData data = SaveSystem.LoadSettings();
+        if (data != null)
+        {
+            currentResolution.width = data.resolution[0];
+            currentResolution.height = data.resolution[1];
+            this.fullScreen = data.fullScreen;
+            Screen.SetResolution(currentResolution.width, currentResolution.height, fullScreen);
+        }
     }
 }
