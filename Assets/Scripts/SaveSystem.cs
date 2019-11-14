@@ -21,6 +21,7 @@ public static class SaveSystem
     public static SettingsData LoadSettings()
     {
         string path = Path.Combine(Application.persistentDataPath, "gamesettings.sav");
+        Debug.Log("settings file in" + path);
         try
         {
             if (File.Exists(path))

@@ -11,7 +11,8 @@ public class Settings : MonoBehaviour
     public Resolution currentResolution;
     public float currentbgm = 0.5f;
     public float currentsfx = 0.5f;
-
+    public Slider bgmSlider;
+    public Slider sfxSlider;
     void Start()
     {
         LoadSettings();
@@ -87,10 +88,12 @@ public class Settings : MonoBehaviour
             currentResolution.width = data.resolution[0];
             currentResolution.height = data.resolution[1];
             this.fullScreen = data.fullScreen;
-            Screen.SetResolution(currentResolution.width, currentResolution.height, fullScreen);
             this.currentbgm = data.bgm;
             this.currentsfx = data.sfx;
-            
+
+            Screen.SetResolution(currentResolution.width, currentResolution.height, fullScreen);
+            this.bgmSlider.value = data.bgm;
+            this.sfxSlider.value = data.sfx;
         }
     }
 }
