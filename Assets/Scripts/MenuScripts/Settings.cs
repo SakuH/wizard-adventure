@@ -14,6 +14,8 @@ public class Settings : MonoBehaviour
 
     void Start()
     {
+        LoadSettings();
+
         resolutions = Screen.resolutions;
 
         resolutionDropdown.ClearOptions();
@@ -63,8 +65,19 @@ public class Settings : MonoBehaviour
         currentResolution = resolution;
     }
 
+    public void SetBackgroundMusic(float value)
+    {
+        currentbgm = value;
+    }
+
+    public void SetSoundEffects(float value)
+    {
+        currentsfx = value;
+    }
+
     public void SaveSettings()
     {
+        this.fullScreen = Screen.fullScreen;
         SaveSystem.SaveSettings(this);
     }
 
@@ -77,6 +90,7 @@ public class Settings : MonoBehaviour
             currentResolution.height = data.resolution[1];
             this.fullScreen = data.fullScreen;
             Screen.SetResolution(currentResolution.width, currentResolution.height, fullScreen);
+            
         }
     }
 }
