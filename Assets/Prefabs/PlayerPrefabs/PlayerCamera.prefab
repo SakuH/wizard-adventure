@@ -102,5 +102,5 @@ MonoBehaviour:
   yStart: 0
   cameraZOffset: -10
   cameraXOffset: 0
-  cameraHeight: 27
+  cameraHeight: 25
   max: 2

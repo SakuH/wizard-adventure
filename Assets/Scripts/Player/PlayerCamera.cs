@@ -22,7 +22,7 @@ public class PlayerCamera : MonoBehaviour
     {
         target = player.transform.position;
         yStart = player.transform.position.z;
-        player = GameObject.Find("Player");
+       // player = GameObject.Find("Player");
 
        // offset = transform.position - player.transform.position;
 
@@ -99,7 +99,7 @@ public class PlayerCamera : MonoBehaviour
     {
         Vector3 mouseOFfset = mousePos * cameraDistance;
         Vector3 ret = player.transform.position + mouseOFfset;
-        ret.y = cameraHeight;
+        ret.y = player.transform.position.y + cameraHeight;
         ret.x += cameraXOffset;
         ret.z += cameraZOffset;
 
@@ -109,6 +109,7 @@ public class PlayerCamera : MonoBehaviour
     void updateCameraPosition()
     {
         Vector3 tempPos;
+        
         tempPos = Vector3.SmoothDamp(transform.position, target, ref refVel, smoothTime);
         transform.position = tempPos;
     }
