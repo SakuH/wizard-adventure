@@ -21,21 +21,30 @@ public static class SaveSystem
     public static SettingsData LoadSettings()
     {
         string path = Path.Combine(Application.persistentDataPath, "gamesettings.sav");
-        if(File.Exists(path))
+        try
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
+            if (File.Exists(path))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream stream = new FileStream(path, FileMode.Open);
 
-            SettingsData data = formatter.Deserialize(stream) as SettingsData;
-            stream.Close();
+                SettingsData data = formatter.Deserialize(stream) as SettingsData;
+                stream.Close();
 
-            return data;
+                return data;
+            }
+            else
+            {
+                Debug.LogError("Settings file not found in" + path);
+                return null;
+            }
         }
-        else
+        catch (System.Exception)
         {
             Debug.LogError("Settings file not found in" + path);
             return null;
         }
+
     }
 
 

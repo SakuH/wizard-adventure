@@ -9,8 +9,8 @@ public class Settings : MonoBehaviour
 
     public bool fullScreen;
     public Resolution currentResolution;
-    public float currentbgm;
-    public float currentsfx;
+    public float currentbgm = 0.5f;
+    public float currentsfx = 0.5f;
 
     void Start()
     {
@@ -48,7 +48,6 @@ public class Settings : MonoBehaviour
         {
             Screen.fullScreen = true;
         }
-        this.fullScreen = true;
     }
     public void setWindowed()
     {
@@ -56,7 +55,6 @@ public class Settings : MonoBehaviour
         {
             Screen.fullScreen = false;
         }
-        this.fullScreen = false;
     }
     public void setResolution(int resolutionIndex)
     {
@@ -90,6 +88,8 @@ public class Settings : MonoBehaviour
             currentResolution.height = data.resolution[1];
             this.fullScreen = data.fullScreen;
             Screen.SetResolution(currentResolution.width, currentResolution.height, fullScreen);
+            this.currentbgm = data.bgm;
+            this.currentsfx = data.sfx;
             
         }
     }
