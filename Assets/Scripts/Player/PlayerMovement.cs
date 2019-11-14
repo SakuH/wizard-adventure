@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         baseMoveSpeed = movementSpeed;
-        mainCamera = Camera.main;
+       // mainCamera = Camera.main;
     }
 
     void Update()
