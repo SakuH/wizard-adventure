@@ -20,6 +20,11 @@ public class PlayerHealth : MonoBehaviour
     public float vulnerableCoolDown;
     public float vulnerableCoolDownMax;
 
+
+    public Material normalMat;
+    public Material invulnerableMat;
+    public GameObject head;
+
     
     // Start is called before the first frame update
     void Start()
@@ -90,10 +95,16 @@ public class PlayerHealth : MonoBehaviour
         if (vulnerableCoolDown > 0)
         {
             vulnerableCoolDown -= Time.deltaTime;
+           
+            MeshRenderer gameObjectRenderer = head.GetComponent<MeshRenderer>();
+            gameObjectRenderer.material = invulnerableMat;
+
         }
         else
         {
             vulnerable = true;
+            MeshRenderer gameObjectRenderer = head.GetComponent<MeshRenderer>();
+            gameObjectRenderer.material = normalMat;
         }
     }
     public void takeDamage(int damage)

@@ -2335,6 +2335,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1122722451}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1139934426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1802856705990846313, guid: 1d5c8ce39d533bc48bf40cd546827098,
+    type: 3}
+  m_PrefabInstance: {fileID: 1802856706961866317}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1145499530
 GameObject:
   m_ObjectHideFlags: 0
@@ -3532,6 +3538,21 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1808435316}
+    - target: {fileID: 1802856706178152199, guid: 1d5c8ce39d533bc48bf40cd546827098,
+        type: 3}
+      propertyPath: head
+      value: 
+      objectReference: {fileID: 1139934426}
+    - target: {fileID: 1802856706178152199, guid: 1d5c8ce39d533bc48bf40cd546827098,
+        type: 3}
+      propertyPath: normalMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 1cb62f2b8fb4edb4f9d3cfe5da61a696, type: 2}
+    - target: {fileID: 1802856706178152199, guid: 1d5c8ce39d533bc48bf40cd546827098,
+        type: 3}
+      propertyPath: invulnerableMat
+      value: 
+      objectReference: {fileID: 2100000, guid: ddff4be2d59dd08458149e8407fedb0f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d5c8ce39d533bc48bf40cd546827098, type: 3}
 --- !u!1001 &2953718195893120648

@@ -25,28 +25,17 @@ public class EnemyBullet : MonoBehaviour
 
 
     }
-    private void OnCollisionEnter(Collision collision)
+   
+    private void OnTriggerEnter(Collider other)
     {
 
-        if (collision.gameObject.tag == "Wall")
-        {          
-            Instantiate(bulletImpact, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.tag == "Player")
-        {         
+        if(other.gameObject.tag == "Player")
+        {
+           
+            other.gameObject.GetComponent<PlayerHealth>().takeDamage(bulletDamage);
             Instantiate(bulletImpact, transform.position, Quaternion.identity);
             Destroy(gameObject);
             
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Player")
-        {
-            Instantiate(bulletImpact, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-            other.gameObject.GetComponent<PlayerHealth>().takeDamage(bulletDamage);
 
 
         }
