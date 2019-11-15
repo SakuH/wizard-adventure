@@ -36,13 +36,13 @@ public static class SaveSystem
             }
             else
             {
-                Debug.LogError("Settings file not found in" + path);
+                Debug.LogError("Settings file not found in " + path);
                 return null;
             }
         }
         catch (System.Exception)
         {
-            Debug.LogError("Settings file not found in" + path);
+            Debug.LogError("Settings file not found in " + path);
             return null;
         }
 
@@ -80,14 +80,44 @@ public static class SaveSystem
             }
             else
             {
-                Debug.LogError("Player progress file not found in" + path);
+                Debug.LogError("Player progress file not found in " + path);
                 return null;
             }
         }
         catch (System.Exception)
         {
-            Debug.LogError("Settings file not found in" + path);
+            Debug.LogError("Player progress file not found in " + path);
             return null;
+        }
+    }
+
+    public static void DeletePlayer()
+    {
+        string path = Path.Combine(Application.persistentDataPath, "playerprogress.sav");
+        try
+        {
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+
+                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream stream = new FileStream(path, FileMode.Open);
+
+                PlayerData data = formatter.Deserialize(stream) as PlayerData;
+                stream.Close();
+
+                
+            }
+            else
+            {
+                Debug.LogError("Player progress file not found in " + path);
+                
+            }
+        }
+        catch (System.Exception)
+        {
+            Debug.LogError("Could not delete player progress file in " + path);
+            
         }
     }
 }
