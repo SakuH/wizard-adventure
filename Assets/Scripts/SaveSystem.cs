@@ -49,7 +49,7 @@ public static class SaveSystem
     }
 
 
-    public static void SavePlayer(PlayerHealth player)
+    public static void SavePlayer(GameObject player)
     {
         BinaryFormatter formatter = new BinaryFormatter();
 
@@ -66,19 +66,27 @@ public static class SaveSystem
     public static PlayerData LoadPlayer()
     {
         string path = Path.Combine(Application.persistentDataPath, "playerprogress.sav");
-        if (File.Exists(path))
+        try
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
+            if (File.Exists(path))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream stream = new FileStream(path, FileMode.Open);
 
-            PlayerData data = formatter.Deserialize(stream) as PlayerData;
-            stream.Close();
+                PlayerData data = formatter.Deserialize(stream) as PlayerData;
+                stream.Close();
 
-            return data;
+                return data;
+            }
+            else
+            {
+                Debug.LogError("Player progress file not found in" + path);
+                return null;
+            }
         }
-        else
+        catch (System.Exception)
         {
-            Debug.LogError("Player progress file not found in" + path);
+            Debug.LogError("Settings file not found in" + path);
             return null;
         }
     }

@@ -15,6 +15,7 @@ public class BossTeleporter : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             other.GetComponent<Transform>().SetPositionAndRotation(new Vector3(0, 0.5f, 0), Quaternion.identity);
+            other.GetComponent<PlayerMovement>().SavePlayerData(2);
         }
     }
 }

@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 mousePos;
     public Camera mainCamera;
 
+    public int currentTowerFloor = 1;
+
     private Vector3 moveInput;
     private Vector3 moveVelocity;
 
@@ -45,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        LoadPlayerData();
         rb = GetComponent<Rigidbody>();
         baseMoveSpeed = movementSpeed;
        // mainCamera = Camera.main;
@@ -299,5 +302,25 @@ public class PlayerMovement : MonoBehaviour
     public void stopDash()
     {
         dashDuration = 0;
+    }
+
+    public void SavePlayerData(int nextFloorIndex)
+    {
+        currentTowerFloor = nextFloorIndex;
+        SaveSystem.SavePlayer(player);
+    }
+
+    public void LoadPlayerData()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+        if(data != null)
+        {
+            player.GetComponent<PlayerHealth>().maxHealth = data.maxHealth;
+            player.GetComponent<PlayerHealth>().health = data.maxHealth;
+            currentTowerFloor = data.currentFloor;
+            if(data.weaponIsEquiped){
+                
+            }
+        }
     }
 }
