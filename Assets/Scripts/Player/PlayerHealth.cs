@@ -25,10 +25,12 @@ public class PlayerHealth : MonoBehaviour
     public Material invulnerableMat;
     public GameObject head;
 
+    PlayerMovement playerScript;
     
     // Start is called before the first frame update
     void Start()
     {
+        playerScript = playerParent.GetComponent<PlayerMovement>();
         
     }
 
@@ -109,7 +111,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void takeDamage(int damage)
     {
-        if (vulnerable)
+        if (vulnerable && playerScript.isDashing == false)
         {
             takeDamageSound();
         health -= damage;
