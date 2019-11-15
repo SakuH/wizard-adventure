@@ -12,14 +12,14 @@ public class RoomSpawner : MonoBehaviour
 
     private RoomTemplates templates;
     private int rand;
-    private bool spawned = false;
+    public bool spawned = false;
 
     public float waitTime = 4f;
     void Start()
     {
         Destroy(gameObject, waitTime);
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
-        Invoke("Spawn", 0.3f);
+        Invoke("Spawn", 0.1f);
     }
 
     void Spawn()
@@ -53,22 +53,40 @@ public class RoomSpawner : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("RoomSpawnPoint")){
-            if(other.GetComponent<Destroyer>()!=null)
+       
+       if (other.CompareTag("RoomSpawnPoint")){
+
+            if (other.GetComponent<Destroyer>() != null)
             {
+                Debug.Log("spawn point met destroyer");
                 Destroy(gameObject);
             }
-            if(other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
+            else
             {
-                Instantiate(templates.closedRoom, transform.position, Quaternion.identity);
-                Destroy(gameObject);
+
+                try
+                {
+                    if (!other.GetComponent<RoomSpawner>().spawned && !spawned)
+                    {
+                        
+                        if (gameObject.transform.position != new Vector3(0, 0, 0))
+                        {
+                            Debug.Log("instantiating a closed room");
+                            Instantiate(templates.closedRoom, transform.position, Quaternion.identity);
+                            Destroy(gameObject);
+                        }
+                    }
+                }
+                catch
+                {
+                    Destroy(gameObject);
+                }
+
+
             }
             spawned = true;
         }
     }
 
-    public void SetAsSpawned()
-    {
-        spawned = true;
-    }
+
 }
