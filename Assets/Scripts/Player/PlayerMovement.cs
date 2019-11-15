@@ -319,6 +319,25 @@ public class PlayerMovement : MonoBehaviour
             player.GetComponent<PlayerHealth>().health = data.maxHealth;
             currentTowerFloor = data.currentFloor;
             if(data.weaponIsEquiped){
+                switch (data.equipedWeapon)
+                {
+                    case 0:
+                        GameObject.Instantiate(GameObject.Find("WeaponPistol"), new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1f), Quaternion.identity);
+                        break;
+
+                    case 1:
+                        GameObject.Instantiate(GameObject.Find("WeaponShotgun"), new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1f), Quaternion.identity);
+                        break;
+                    case 2:
+                        GameObject.Instantiate(GameObject.Find("WeaponSnipper"), new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1f), Quaternion.identity);
+                        break;
+                    case 3:
+                        GameObject.Instantiate(GameObject.Find("WeaponLaser"), new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1f), Quaternion.identity);
+                        break;
+                    default:
+                        break;
+                }
+                
                 
             }
         }
