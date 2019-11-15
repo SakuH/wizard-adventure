@@ -45,7 +45,8 @@ public class GunController : MonoBehaviour
 
     private LineRenderer line;
 
-    private Light light;
+    private Light lightWeapon;
+    
     //private Light light;
 
     // Start is called before the first frame update
@@ -54,7 +55,8 @@ public class GunController : MonoBehaviour
         mainPlayerHand = GameObject.Find ("GameObjectHand");
         player = GameObject.Find("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
-       // player = GameObject.FindGameObjectWithTag("Player");
+        
+        //player = GameObject.FindGameObjectWithTag("Player");
        // originalRotation = mainPlayerHand.transform.rotation;
        // weapon = GameObject.Find("WeaponShotgun");
         //originalRotation = weapon.transform.rotation;
@@ -62,14 +64,14 @@ public class GunController : MonoBehaviour
        // weaponEquiped = false;
         canPickup = false;
         rotatingPos = transform.position;
-        weaponPickUpText.SetText("");
+        
         line = firePoint.GetComponent<LineRenderer>();
         line.enabled = false;
-        light = firePoint.GetComponent<Light>();
-        light.enabled = false;
+        lightWeapon = firePoint.GetComponent<Light>();
+        lightWeapon.enabled = false;
        // light = firePoint.GetComponent<Light>();
        playerChildCount = player.transform.childCount + 2;
-        
+        weaponPickUpText.SetText("");
        
     }
 
@@ -236,7 +238,7 @@ public class GunController : MonoBehaviour
     IEnumerator laserProjectiles()
     {   
         line.enabled = true;
-        light.enabled = true;
+        lightWeapon.enabled = true;
 
         while ( isFiring)
         {
@@ -259,7 +261,7 @@ public class GunController : MonoBehaviour
         yield return null;
         }
         line.enabled = false;
-        light.enabled = false;
+        lightWeapon.enabled = false;
 
     }
 
@@ -312,7 +314,8 @@ public class GunController : MonoBehaviour
             playerMovement.weapon = this;*/
             
            // player.transform.GetChild(0).transform.parent = null;
-        weaponPickUpText.text = "Press [E] to switch weapons";
+       // weaponPickUpText.text = "Press [E] to switch weapons";
+        playerMovement.setWeaponPickUpText("Press [E] to switch weapons");
 
         }
         if (other.gameObject.CompareTag("Weapon") && weaponIsEquiped == false)
@@ -328,7 +331,9 @@ public class GunController : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             canPickup = false;
-            weaponPickUpText.text = "";
+           // weaponPickUpText.text = "";
+            playerMovement.setWeaponPickUpText("");
+
         }
           if (other.gameObject.CompareTag("Weapon"))
         {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     public LayerMask raycastWallLayer;
     public LayerMask raycastGroundLayer;
+    public TextMeshProUGUI weaponPickUpText;
     public float raycastToWallLength;
     public float raycastToGroundLength;
     public float raycastOriginPoint;
@@ -302,6 +304,11 @@ public class PlayerMovement : MonoBehaviour
     public void stopDash()
     {
         dashDuration = 0;
+    }
+
+    public void setWeaponPickUpText(string text)
+    {
+        weaponPickUpText.text = text;
     }
 
     public void SavePlayerData(int nextFloorIndex)
