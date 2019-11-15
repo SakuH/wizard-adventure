@@ -26,7 +26,9 @@ public class PlayerHealth : MonoBehaviour
     public GameObject head;
 
     PlayerMovement playerScript;
-    
+
+    public bool isTouchingEnemy;
+    public int contactDamage = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -102,13 +104,20 @@ public class PlayerHealth : MonoBehaviour
             gameObjectRenderer.material = invulnerableMat;
 
         }
-        else
+        else if (!vulnerable)
         {
             vulnerable = true;
             MeshRenderer gameObjectRenderer = head.GetComponent<MeshRenderer>();
             gameObjectRenderer.material = normalMat;
         }
+
+        if (isTouchingEnemy)
+        {
+            takeDamage(contactDamage);
+        }
     }
+
+
     public void takeDamage(int damage)
     {
         if (vulnerable && playerScript.isDashing == false)

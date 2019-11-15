@@ -133,7 +133,7 @@ public class EnemyScriptFinal : MonoBehaviour
         //on damage call the animation/sound/or effect you want to display when the enemy takes damage from the base script 
         if (!dead)
         {
-            
+            takeDamageEffect();
         }
 
         if (health <= 0)

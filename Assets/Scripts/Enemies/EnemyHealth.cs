@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
     public float deathJumpSpeed;
     
     public Enemy4WayTurret turretScript; // define base script for the enemy
+    public EnemyChaserScript chaserScript;
 
 
     
@@ -25,7 +26,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (dead)
         {
-            //call death animations turretscript 
+            //call death animations from script
             enemyParent.transform.position = new Vector3(transform.position.x, transform.position.y + deathJumpSpeed * Time.deltaTime, transform.position.z);
         }
 
@@ -37,8 +38,17 @@ public class EnemyHealth : MonoBehaviour
         health -= damage;
         //on damage call the animation/sound/or effect you want to display when the enemy takes damage from the base script 
         if (!dead)
-        {
-            turretScript.takeDamageEffect();
+        {   if(turretScript != null)
+            {
+                turretScript.takeDamageEffect();
+
+            }
+            
+
+            if (chaserScript != null)
+            {
+                chaserScript.takeDamageEffect();
+            }
         }
         
        
@@ -48,6 +58,7 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0)
         {
             dead = true;
+            //call gameobject destruction function here from the main script instead
             Destroy(gameObject,5);
             
         }
