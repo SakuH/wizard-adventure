@@ -13,8 +13,6 @@ public class GunController : MonoBehaviour
     public bool overlapping;
 
     public Bullet bullet;
-    
-    public TextMeshProUGUI weaponPickUpText;
 
     private PlayerMovement playerMovement;
     public float bulletSpeed;
@@ -71,7 +69,7 @@ public class GunController : MonoBehaviour
         lightWeapon.enabled = false;
        // light = firePoint.GetComponent<Light>();
        playerChildCount = player.transform.childCount + 2;
-        weaponPickUpText.SetText("");
+        
        
     }
 

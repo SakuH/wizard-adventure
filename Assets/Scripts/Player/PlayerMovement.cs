@@ -52,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
         LoadPlayerData();
         rb = GetComponent<Rigidbody>();
         baseMoveSpeed = movementSpeed;
+        setWeaponPickUpText("");
        // mainCamera = Camera.main;
     }
 
