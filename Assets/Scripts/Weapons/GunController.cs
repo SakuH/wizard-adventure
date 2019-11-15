@@ -308,7 +308,8 @@ public class GunController : MonoBehaviour
             playerMovement.weapon = this;*/
             
            // player.transform.GetChild(0).transform.parent = null;
-            
+        weaponPickUpText.text = "Press [E] to switch weapons";
+
         }
         if (other.gameObject.CompareTag("Weapon") && weaponIsEquiped == false)
         {
@@ -318,7 +319,6 @@ public class GunController : MonoBehaviour
             gun2.rotatingPos = rotatingPos;
             overlapping = true;
         }
-         weaponPickUpText.text = "Press [E] to switch weapons";
     }
     private void OnTriggerExit(Collider other) {
         if(other.gameObject.CompareTag("MainPlayer"))
