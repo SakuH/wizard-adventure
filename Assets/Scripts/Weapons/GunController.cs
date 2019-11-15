@@ -23,6 +23,8 @@ public class GunController : MonoBehaviour
 
     public int equipedWeapon;
 
+    private int playerChildCount;
+
     public float timeBetweenShots;
 
     private float nextFire;
@@ -52,6 +54,7 @@ public class GunController : MonoBehaviour
         mainPlayerHand = GameObject.Find ("GameObjectHand");
         player = GameObject.Find("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
+       // player = GameObject.FindGameObjectWithTag("Player");
        // originalRotation = mainPlayerHand.transform.rotation;
        // weapon = GameObject.Find("WeaponShotgun");
         //originalRotation = weapon.transform.rotation;
@@ -65,6 +68,7 @@ public class GunController : MonoBehaviour
         light = firePoint.GetComponent<Light>();
         light.enabled = false;
        // light = firePoint.GetComponent<Light>();
+       playerChildCount = player.transform.childCount + 2;
         
        
     }
@@ -179,29 +183,29 @@ public class GunController : MonoBehaviour
 
 
         Bullet newBullet2 = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
-        newBullet2.setX = 0;
-        newBullet2.setY = -0.06f;
+        newBullet2.setX = -0.06f;
+        newBullet2.setY = 0;
         newBullet2.setZ = 1;
         newBullet2.bulletspeed = bulletSpeed;
         newBullet2.setDamage = weaponDamage;
 
         Bullet newBullet3 = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
-        newBullet3.setX = 0;
-        newBullet3.setY = 0.06f;
+        newBullet3.setX = 0.06f;
+        newBullet3.setY = 0;
         newBullet3.setZ = 1;
         newBullet3.bulletspeed = bulletSpeed;
         newBullet3.setDamage = weaponDamage;
 
         Bullet newBullet4 = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
-        newBullet4.setX = 0;
-        newBullet4.setY = -0.03f;
+        newBullet4.setX = -0.03f;
+        newBullet4.setY = 0;
         newBullet4.setZ = 1;
         newBullet4.bulletspeed = bulletSpeed;
         newBullet4.setDamage = weaponDamage;
 
         Bullet newBullet5 = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
-        newBullet5.setX = 0;
-        newBullet5.setY = 0.03f;
+        newBullet5.setX = 0.03f;
+        newBullet5.setY = 0;
         newBullet5.setZ = 1;
         newBullet5.bulletspeed = bulletSpeed;
         newBullet5.setDamage = weaponDamage;
@@ -260,7 +264,7 @@ public class GunController : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.CompareTag("MainPlayer"))
+        if(other.gameObject.CompareTag("Player"))
         {
            
             canPickup = true;
@@ -321,7 +325,7 @@ public class GunController : MonoBehaviour
         }
     }
     private void OnTriggerExit(Collider other) {
-        if(other.gameObject.CompareTag("MainPlayer"))
+        if(other.gameObject.CompareTag("Player"))
         {
             canPickup = false;
             weaponPickUpText.text = "";
@@ -370,9 +374,11 @@ public class GunController : MonoBehaviour
             weapon.transform.rotation = mainPlayerHand.transform.rotation;
             weapon.transform.position = mainPlayerHand.transform.position;
             //this.gameObject.GetComponent("GunController")
+          //  player.transform.GetChildCount;
+          Debug.Log(" "+player.transform.childCount);
+          Debug.Log(playerChildCount);
             
-            
-            if (player.transform.childCount == 3)
+            if (player.transform.childCount == playerChildCount)
             {
                 
             player.transform.GetChild(2).transform.parent = null;
@@ -410,7 +416,7 @@ public class GunController : MonoBehaviour
                         gun.weaponIsEquiped = false;
                     }*/
                     
-                }
+              //  }
             
             //Instantiate(player.transform.GetChild(2).gameObject,new Vector3(0, 0, 0),weapon.transform.rotation) ;
             //anotherWeapon = player.transform.GetChild(2).gameObject;
@@ -421,7 +427,7 @@ public class GunController : MonoBehaviour
         
           //  if(equipedWeapon == 0){
               // Instantiate(weapon,weapon.transform.position,weapon.transform.rotation) ;
-           // }
+            }
             
              //isRotating = true;
             }
