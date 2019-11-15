@@ -8,6 +8,15 @@ public class Destroyer : MonoBehaviour
     {
         if (other.CompareTag("RoomSpawnPoint"))
         {
+            other.GetComponent<RoomSpawner>().SetAsSpawned();
+            Destroy(other.gameObject);
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("RoomSpawnPoint"))
+        {
+            other.GetComponent<RoomSpawner>().SetAsSpawned();
             Destroy(other.gameObject);
         }
     }

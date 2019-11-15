@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MovementTestScene.unity
     guid: 908d31c4f2bc9e14aa83458905ec1f44
+  - enabled: 1
+    path: Assets/Scenes/GenerationScene.unity
+    guid: 99c3cb7900b096c49aafeb33eba39ea8
   m_configObjects: {}
