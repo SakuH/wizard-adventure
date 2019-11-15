@@ -9,7 +9,7 @@ public class EnemyChaserScript : MonoBehaviour
     public float movementSpeed = 4;
 
     public float playerDistanceOffset;
-    public EnemyHealth chaserHealthScript;
+    
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
