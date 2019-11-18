@@ -9207,7 +9207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7307177369303285546}
   m_Layer: 0
-  m_Name: TRLTile
+  m_Name: TLR Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

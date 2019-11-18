@@ -14373,7 +14373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7717171911494473628}
   m_Layer: 0
-  m_Name: RTile
+  m_Name: B Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
