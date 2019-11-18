@@ -46,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float baseMoveSpeed;
 
+    Vector3 knockbackDirForce;
 
     void Start()
     {
@@ -93,9 +94,13 @@ public class PlayerMovement : MonoBehaviour
     {
         groundCheck();
         wallCheck();
-        if (!isDashing)
+        if (!isDashing && player.GetComponent<PlayerHealth>().knockbackTime<= 0)
         {
-            rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y, moveVelocity.z);
+         rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y, moveVelocity.z);
+        }
+        if(player.GetComponent<PlayerHealth>().knockbackTime > 0)
+        {
+            rb.velocity = knockbackDirForce;
         }
         wallCheck();
         playerRaycastPointer();
@@ -350,4 +355,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    public void knockback(Vector3 knockbackDir)
+    {
+        knockbackDirForce = knockbackDir;
+      
+    }
+  
 }

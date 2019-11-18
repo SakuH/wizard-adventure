@@ -29,6 +29,10 @@ public class PlayerHealth : MonoBehaviour
 
     public bool isTouchingEnemy;
     public int contactDamage = 1;
+
+    public float knockbackTime;
+    public float knockbackTimeMax;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -111,9 +115,14 @@ public class PlayerHealth : MonoBehaviour
             gameObjectRenderer.material = normalMat;
         }
 
-        if (isTouchingEnemy)
+       /*if (isTouchingEnemy)
         {
             takeDamage(contactDamage);
+        }
+        */
+        if(knockbackTime > 0)
+        {
+            knockbackTime -= Time.deltaTime;
         }
     }
 
@@ -123,7 +132,7 @@ public class PlayerHealth : MonoBehaviour
         if (vulnerable && playerScript.isDashing == false)
         {
             takeDamageSound();
-        health -= damage;
+            health -= damage;
             vulnerableCoolDown = vulnerableCoolDownMax;
             vulnerable = false;
 
@@ -146,5 +155,20 @@ public class PlayerHealth : MonoBehaviour
         AudioManager.PlaySound("playerHit");
     }
 
+    public void knockBack(float force, Vector3 enemyPos)
+    {
+        if (vulnerable && playerScript.isDashing == false)
+        {
+
+        knockbackTime = knockbackTimeMax;
+
+        Vector3 moveDiretion = enemyPos * force;
+
+            playerScript.knockback(moveDiretion);
+
+        }
+    
+        
+    }
 
 }
