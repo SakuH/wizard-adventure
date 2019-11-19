@@ -33,6 +33,8 @@ public class GunController : MonoBehaviour
 
     public GameObject weapon;
 
+    public GameObject impactEffect;
+
     public GameObject[] anotherWeapons;
 
     public float rotatingSpeed = 5f;
@@ -237,11 +239,12 @@ public class GunController : MonoBehaviour
     {   
         line.enabled = true;
         lightWeapon.enabled = true;
+        RaycastHit hit;
 
         while ( isFiring)
         {
         Ray ray = new Ray(firePoint.position, firePoint.forward);
-        RaycastHit hit;
+        //RaycastHit hit;
         line.SetPosition(0,ray.origin);
 
         if(Physics.Raycast(ray, out hit,100) )
@@ -252,12 +255,23 @@ public class GunController : MonoBehaviour
                 hit.collider.GetComponent<EnemyHealth>().takeDamage(weaponDamage);
                 //hit.rigidbody.AddForceAtPosition(firePoint.forward * 5,hit.point);
             }
+               if(isFiring && Time.time > nextFire)
+            {
+
+                nextFire = Time.time + timeBetweenShots;
+                
+               GameObject laserHit = Instantiate(impactEffect,hit.point,Quaternion.LookRotation(hit.normal));
+            Destroy(laserHit,2f);
+
+            }
+            
         }
         else{
             line.SetPosition(1,ray.GetPoint(100));
         }
         yield return null;
         }
+
         line.enabled = false;
         lightWeapon.enabled = false;
 
