@@ -208,7 +208,7 @@ MonoBehaviour:
   bulletSpeed: 0
   weaponDamage: 1
   equipedWeapon: 3
-  timeBetweenShots: 0.1
+  timeBetweenShots: 0.2
   mainPlayerHand: {fileID: 0}
   player: {fileID: 0}
   weapon: {fileID: 3789602533598380137}

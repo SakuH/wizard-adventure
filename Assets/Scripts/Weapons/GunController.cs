@@ -250,11 +250,7 @@ public class GunController : MonoBehaviour
         if(Physics.Raycast(ray, out hit,100) )
         {
             line.SetPosition(1, hit.point);
-            if(hit.collider.gameObject.CompareTag("Enemy"))
-            {
-                hit.collider.GetComponent<EnemyHealth>().takeDamage(weaponDamage);
-                //hit.rigidbody.AddForceAtPosition(firePoint.forward * 5,hit.point);
-            }
+            
                if(isFiring && Time.time > nextFire)
             {
 
@@ -262,6 +258,11 @@ public class GunController : MonoBehaviour
                 
                GameObject laserHit = Instantiate(impactEffect,hit.point,Quaternion.LookRotation(hit.normal));
             Destroy(laserHit,2f);
+            if(hit.collider.gameObject.CompareTag("Enemy"))
+            {
+                hit.collider.GetComponent<EnemyHealth>().takeDamage(weaponDamage);
+                //hit.rigidbody.AddForceAtPosition(firePoint.forward * 5,hit.point);
+            }
 
             }
             
