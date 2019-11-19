@@ -27,7 +27,7 @@ public class RoomSpawner : MonoBehaviour
                 extraSpawnTime = 0.06f;
                 break;
             case 3:
-                extraSpawnTime = -0.07f;
+                extraSpawnTime = 0.07f;
                 break;
             case 4:
                 extraSpawnTime = 0.03f;
