@@ -23,7 +23,7 @@ public class ObjectGenerator : MonoBehaviour
         }
         else if (objects[rand].CompareTag("Door"))
         {
-            roomBehaviour.AddDoorToRoom(Instantiate(objects[rand], transform.position, Quaternion.identity));
+            roomBehaviour.AddDoorToRoom(Instantiate(objects[rand], transform.position, objects[rand].transform.rotation));
         }
         else
         {
