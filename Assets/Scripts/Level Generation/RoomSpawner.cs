@@ -15,11 +15,30 @@ public class RoomSpawner : MonoBehaviour
     public bool spawned = false;
 
     public float waitTime = 4f;
+    private float extraSpawnTime = 0.0f;
     void Start()
     {
+        switch (openingDirection)
+        {
+            case 1:
+                extraSpawnTime = 0.01f;
+                break;
+            case 2:
+                extraSpawnTime = 0.06f;
+                break;
+            case 3:
+                extraSpawnTime = -0.07f;
+                break;
+            case 4:
+                extraSpawnTime = 0.03f;
+                break;
+
+            default:
+                break;
+        }
         Destroy(gameObject, waitTime);
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
-        Invoke("Spawn", 0.1f);
+        Invoke("Spawn", 0.2f + extraSpawnTime);
     }
 
     void Spawn()
@@ -56,16 +75,17 @@ public class RoomSpawner : MonoBehaviour
        
        if (other.CompareTag("RoomSpawnPoint")){
 
-            if (other.GetComponent<Destroyer>() != null)
-            {
-                Debug.Log("spawn point met destroyer");
-                Destroy(gameObject);
-            }
-            else
-            {
+            //if (other.GetComponent<Destroyer>() != null)
+            //{
+            //    Debug.Log("spawn point met destroyer");
+            //    Destroy(gameObject);
+            //}
+            //else
+            //{
 
                 try
                 {
+                    
                     if (!other.GetComponent<RoomSpawner>().spawned && !spawned)
                     {
                         
@@ -74,18 +94,19 @@ public class RoomSpawner : MonoBehaviour
                             Debug.Log("instantiating a closed room");
                             Instantiate(templates.closedRoom, transform.position, Quaternion.identity);
                             Destroy(gameObject);
+                            
                         }
                     }
                 }
                 catch
                 {
-                    Destroy(gameObject);
+                    //Destroy(gameObject);
                 }
 
 
             }
             spawned = true;
-        }
+        //}
     }
 
 
