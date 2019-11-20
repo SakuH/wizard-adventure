@@ -12,6 +12,8 @@ public class EnemyHealth : MonoBehaviour
     public Enemy4WayTurret turretScript; // define base script for the enemy
     public EnemyChaserScript chaserScript;
 
+    public EnemyChaserShooterScript chaserShooterScript;
+
 
     
     void Start()
@@ -48,6 +50,10 @@ public class EnemyHealth : MonoBehaviour
             if (chaserScript != null)
             {
                 chaserScript.takeDamageEffect();
+            }
+            if (chaserShooterScript !=null)
+            {
+                chaserShooterScript.takeDamageEffect();
             }
         }
         
