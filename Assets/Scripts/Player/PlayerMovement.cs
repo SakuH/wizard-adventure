@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 mousePos;
     public Camera mainCamera;
 
+    public AudioClip dashSound;
+
     public int currentTowerFloor = 1;
 
     private Vector3 moveInput;
@@ -46,7 +48,17 @@ public class PlayerMovement : MonoBehaviour
 
     private float baseMoveSpeed;
 
+    private AudioSource audioSource;
+    private readonly float lowPitchRange = 1.4F;
+    private readonly float highPitchRange = 1.8F;
+
     Vector3 knockbackDirForce;
+
+    void Awake()
+    {
+
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Start()
     {
@@ -248,6 +260,8 @@ public class PlayerMovement : MonoBehaviour
 
                     if (!isDashing)
                     {
+                        PlayDashSound();    
+
                         Vector3 dashSpeedVelocity = rb.velocity;
                         dashSpeedVelocity.y = 0;
                         dashSpeedVelocity.x = rb.velocity.x;
@@ -260,25 +274,26 @@ public class PlayerMovement : MonoBehaviour
                             dashSpeedVelocity.z *= speedBoostAmount / baseMoveSpeed;
 
                         }
-                        /*
-                        if(dashSpeedVelocity.x> 0)
-                        {
-                            dashSpeedVelocity.x = baseMoveSpeed;
-                        }else if (dashSpeedVelocity.x < 0)
-                        {
-                            dashSpeedVelocity.x = -baseMoveSpeed;
-                        }
+                    /*
+                    if(dashSpeedVelocity.x> 0)
+                    {
+                        dashSpeedVelocity.x = baseMoveSpeed;
+                    }else if (dashSpeedVelocity.x < 0)
+                    {
+                        dashSpeedVelocity.x = -baseMoveSpeed;
+                    }
 
-                        if (dashSpeedVelocity.z > 0)
-                        {
-                            dashSpeedVelocity.z = baseMoveSpeed;           
-                        }else if(dashSpeedVelocity.z < 0)
-                        {
-                            dashSpeedVelocity.z = -baseMoveSpeed;
-                        }
-                        */
+                    if (dashSpeedVelocity.z > 0)
+                    {
+                        dashSpeedVelocity.z = baseMoveSpeed;           
+                    }else if(dashSpeedVelocity.z < 0)
+                    {
+                        dashSpeedVelocity.z = -baseMoveSpeed;
+                    }
+                    */
 
-                        rb.velocity = dashSpeedVelocity * dashForce;
+
+                    rb.velocity = dashSpeedVelocity * dashForce;
                         isDashing = true;
                         dashDuration = dashDurationTime;
                     }
@@ -317,6 +332,12 @@ public class PlayerMovement : MonoBehaviour
         weaponPickUpText.text = text;
     }
 
+    public void PlayDashSound()
+    {
+        audioSource.pitch = Random.Range(lowPitchRange, highPitchRange);
+        audioSource.volume = Random.Range(0.8f, 1.0f);
+        audioSource.PlayOneShot(dashSound);
+    }
     public void SavePlayerData(int nextFloorIndex)
     {
         currentTowerFloor = nextFloorIndex;
