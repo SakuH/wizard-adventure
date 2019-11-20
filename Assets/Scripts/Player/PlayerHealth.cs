@@ -87,17 +87,7 @@ public class PlayerHealth : MonoBehaviour
 
         if(health <= 0)
         {
-            var tempColor = backgroundImage.color;
-
-            if(fadeToBlackColor < 1)
-            {
-                fadeToBlackColor += Time.deltaTime;
-            }
-
-            tempColor.a = fadeToBlackColor;
-            backgroundImage.color = tempColor;
-            
-            FindObjectOfType<gameManagement>().endGame();
+            gameOver();
         }
 
         if (vulnerableCoolDown > 0)
@@ -169,6 +159,21 @@ public class PlayerHealth : MonoBehaviour
         }
     
         
+    }
+
+    public void gameOver()
+    {
+        var tempColor = backgroundImage.color;
+
+        if (fadeToBlackColor < 1)
+        {
+            fadeToBlackColor += Time.deltaTime;
+        }
+
+        tempColor.a = fadeToBlackColor;
+        backgroundImage.color = tempColor;
+
+        FindObjectOfType<gameManagement>().endGame();
     }
 
 }
