@@ -13,6 +13,8 @@ public class Trap : MonoBehaviour
 
     private bool canTakeDamage;
 
+    public bool enemyCanTakeDamage;
+
     public float timeBetweenShots;
 
 
@@ -44,6 +46,12 @@ public class Trap : MonoBehaviour
         {
             canTakeDamage = true;
         }
+         if(other.gameObject.CompareTag("Enemy") && enemyCanTakeDamage)
+        {
+            other.GetComponent<EnemyHealth>().takeDamage(damage);
+            AudioManager.PlaySound("enemyHit");
+        }
+
     }
 
     private void OnTriggerExit(Collider other) {
