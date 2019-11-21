@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3972112796085059636}
   - component: {fileID: 3972112796085059637}
   - component: {fileID: 3972112796085059638}
+  - component: {fileID: 8393114562543519882}
   m_Layer: 8
   m_Name: DoorH
   m_TagString: Door
@@ -1990,11 +1991,24 @@ MeshCollider:
   m_GameObject: {fileID: 3972112796085059639}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
+--- !u!65 &8393114562543519882
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3972112796085059639}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000002, y: 4.6, z: 8}
+  m_Center: {x: 0.5000001, y: 2.3, z: -2.000002}
 --- !u!1001 &935373528952818376
 PrefabInstance:
   m_ObjectHideFlags: 0
