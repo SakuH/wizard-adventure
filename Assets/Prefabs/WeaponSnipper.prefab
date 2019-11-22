@@ -209,6 +209,10 @@ MonoBehaviour:
   weaponDamage: 3
   equipedWeapon: 2
   timeBetweenShots: 1
+  sfxVolume: 0
+  minPitch: 0.7
+  maxPitch: 1.2
+  weaponSound: {fileID: 8300000, guid: 7020f67507d2c0c48b4e7a2449bfad82, type: 3}
   mainPlayerHand: {fileID: 0}
   player: {fileID: 0}
   weapon: {fileID: 3789602533598380137}

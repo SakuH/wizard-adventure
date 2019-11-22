@@ -27,10 +27,12 @@ public class GunController : MonoBehaviour
 
     private float nextFire;
 
-    public AudioClip pistolSound;
-    public AudioClip shotgunSound;
-    public AudioClip sniperSound;
-    public AudioClip laserSound;
+    public float sfxVolume;
+
+    public float minPitch = 0.7f;
+    public float maxPitch = 1.2f;
+
+    public AudioClip weaponSound;
 
     public GameObject mainPlayerHand;
 
@@ -60,6 +62,8 @@ public class GunController : MonoBehaviour
         mainPlayerHand = GameObject.Find ("GameObjectHand");
         player = GameObject.Find("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
+
+        sfxVolume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameAudioSettings>().sfxVolume;
         
         //player = GameObject.FindGameObjectWithTag("Player");
        // originalRotation = mainPlayerHand.transform.rotation;
@@ -179,6 +183,7 @@ public class GunController : MonoBehaviour
 
     private void shotgunProjectiles()
     {
+        GunBlastSound(weaponSound);
           
         Bullet newBullet = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
         newBullet.setX = 0;
@@ -220,6 +225,7 @@ public class GunController : MonoBehaviour
 
     IEnumerator pistolProjectiles()
     {
+        GunBlastSound(weaponSound);
         Bullet newBullet = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
         newBullet.setX = 0;
         newBullet.setY = 0;
@@ -231,6 +237,7 @@ public class GunController : MonoBehaviour
 
     private void sniperProjectiles()
     {
+        GunBlastSound(weaponSound);
         Bullet newBullet = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
         newBullet.bulletspeed = bulletSpeed;
         newBullet.setX = 0;
@@ -461,6 +468,18 @@ public class GunController : MonoBehaviour
             //weaponEquiped = true;
            // isRotating = true;
             
+    }
+
+    void GunBlastSound(AudioClip clip)
+    {
+        GameObject clipGameObject = new GameObject("Weapon Shot Sound");
+        AudioSource source = clipGameObject.AddComponent<AudioSource>();
+        clipGameObject.transform.position = transform.position;
+        source.clip = clip;
+        source.volume = sfxVolume;
+        source.pitch = Random.Range(minPitch, maxPitch);
+        source.Play();
+        Destroy(clipGameObject, clip.length / source.pitch);
     }
 
 
