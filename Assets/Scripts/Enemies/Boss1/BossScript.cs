@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BossScript : MonoBehaviour
-{
+{   public callAttackScript animationAttackCallScript;
     private int health;
     public GameObject player;
     public float turnSpeed = 200;
     public float  movementSpeed = 10;
+    public float originalMovementSpeed;
+    public float spinAttackMovementSpeed;
     public bool move = false;
     public bool lookAtPlayer;
     public bool spinning;
@@ -21,8 +23,10 @@ public class BossScript : MonoBehaviour
     public int amountOfAttacks;
     public int amountOfAoeAttacksMax = 6;
     public int amountOfForwardAttacksMax = 3;
+    public int amountOfForwardAttacksMaxFinalPhase = 6;
     public bool closeToPlayer;
     public float raycastLength;
+    public float raycastHeight = 3;
 
     public GameObject groundslamPrefab;
     public GameObject groundslamForwardPrefab;
@@ -34,14 +38,14 @@ public class BossScript : MonoBehaviour
     public float midAoeAttackCooldownTimeMax= 0.4f;
     public float midSpinAttackCooldownTimeMax= 10f;
     public float spinRotationSpeed;
+    public float spinRotationSpeedFinalPhase;
+
 
     public int attackrotation = 0;
 
     public Animator bossAnimator;
 
-    public float waitForAnimation;
-    public float waitForAnimationMax;
-    public bool hasWaitedForAnimation;
+    public bool instantiateShockwave = false;
 
     public float knockbackForce = 120;
     public int damage = 1;
@@ -57,7 +61,7 @@ public class BossScript : MonoBehaviour
     {
         health = GetComponent<EnemyHealth>().health;
 
-        if (!finalPhase && health< 500)
+        if (!finalPhase && health< 500&&!attacking)
         {
             finalPhase= true;
         }
@@ -93,7 +97,8 @@ public class BossScript : MonoBehaviour
             }
            
         }
-
+        
+        
         if (spinning)
         {
             spinAttack();
@@ -101,28 +106,31 @@ public class BossScript : MonoBehaviour
 
         if (slamForward)
         {
-
+           
             slamHammerForwardAttack();   
         }
         if (slamAoe)
         {
             slamHammerAoeAttack();
         }
-
-
+    
         if (attackCooldown > 0 && !attacking)
         {
             attackCooldown -= Time.deltaTime;
         }
+
+       
         raycastToPlayer();
 
     }
 
     public void slamHammer()
-    {//slow movement speed or stop,play animations
-        if(slamRotation < 90)
+    {
+        if (!finalPhase)
         {
-            slamRotation += 15;
+            if (slamRotation < 101)
+        {
+            slamRotation += 20;
         }
         else
         {
@@ -132,17 +140,54 @@ public class BossScript : MonoBehaviour
         Vector3 slamRotationVector = new Vector3(0, slamRotation, 0);
         Instantiate(groundslamPrefab, hammerHeadPoint.position, Quaternion.Euler(slamRotationVector));
         attackCooldown = attackCooldownMax;
-    }
+
+        }
+        if (finalPhase)
+        {
+            if (slamRotation < 101)
+            {
+                slamRotation += 20;
+            }
+            else
+            {
+                slamRotation = 0;
+            }
+
+            Vector3 slamRotationVector = new Vector3(0, slamRotation, 0);
+            Vector3 slamRotationVector2 = new Vector3(0, slamRotation-45, 0);
+            Instantiate(groundslamPrefab, hammerHeadPoint.position, Quaternion.Euler(slamRotationVector));
+            Instantiate(groundslamPrefab, hammerHeadPoint.position, Quaternion.Euler(slamRotationVector2));
+            attackCooldown = attackCooldownMax;
+        }
+        }
 
     public void slamHammerForward()
     {
-        
 
-        float angleY = transform.rotation.eulerAngles.y-180;
-        Vector3 slamRotationForward = new Vector3(Quaternion.identity.x, angleY, Quaternion.identity.z);
+        if (!finalPhase)
+        {
+            float angleY = transform.rotation.eulerAngles.y - 180;
+            Vector3 slamRotationForward = new Vector3(Quaternion.identity.x, angleY, Quaternion.identity.z);
 
-        Instantiate(groundslamForwardPrefab, hammerHeadPoint.position,Quaternion.Euler(slamRotationForward));
-        attackCooldown = attackCooldownMax;
+            Instantiate(groundslamForwardPrefab, hammerHeadPoint.position, Quaternion.Euler(slamRotationForward));
+            attackCooldown = attackCooldownMax;
+        }
+        if (finalPhase)
+        {
+            float angleY = transform.rotation.eulerAngles.y - 140;
+            float angleY2 = transform.rotation.eulerAngles.y - 220;
+            Vector3 slamRotationForward = new Vector3(Quaternion.identity.x, angleY, Quaternion.identity.z);
+            Vector3 slamRotationForward2 = new Vector3(Quaternion.identity.x, angleY2, Quaternion.identity.z);
+
+            Instantiate(groundslamForwardPrefab, hammerHeadPoint.position, Quaternion.Euler(slamRotationForward));
+            Instantiate(groundslamForwardPrefab, hammerHeadPoint.position, Quaternion.Euler(slamRotationForward2));
+            attackCooldown = attackCooldownMax;
+        }
+
+
+
+
+
     }
 
 
@@ -185,20 +230,27 @@ public class BossScript : MonoBehaviour
         {
             attacking = true;
         }
+       
         bossAnimator.SetBool("running", false);
         bossAnimator.SetBool("forwardSlamming", true);
+
+        if (finalPhase&&amountOfForwardAttacksMax < amountOfForwardAttacksMaxFinalPhase)
+        {
+            amountOfForwardAttacksMax = amountOfForwardAttacksMaxFinalPhase;
+        }
 
 
         if (amountOfAttacks < amountOfForwardAttacksMax)
         {
             if (midAttackCooldownTime <= 0)
-            {
+            {              
                 slamHammerForward();
                 midAttackCooldownTime = midForwardAttackCooldownTimeMax;
                 amountOfAttacks++;
             }
             else
             {
+                
                 midAttackCooldownTime -= Time.deltaTime;
             }
         }
@@ -216,6 +268,7 @@ public class BossScript : MonoBehaviour
             {
                 attackrotation = 0;
             }
+
             bossAnimator.SetBool("forwardSlamming", false);
             bossAnimator.SetBool("running", true);
         }
@@ -274,16 +327,26 @@ public class BossScript : MonoBehaviour
     }
     public void spinAttack()
     {
+        if (finalPhase && spinRotationSpeed < spinRotationSpeedFinalPhase&&!attacking)
+        {
+            spinRotationSpeed = spinRotationSpeedFinalPhase;
+        }
         
         if (lookAtPlayer)
         {
             lookAtPlayer = false;
+            originalMovementSpeed = movementSpeed;
+            movementSpeed = spinAttackMovementSpeed;
+            if (finalPhase)
+            {
+                movementSpeed = spinAttackMovementSpeed + 5;
+            }
         }
         if (!attacking)
         {
             attacking = true;
         }
-
+        
         bossAnimator.SetBool("spinning", true);
         bossAnimator.SetBool("running", true);
 
@@ -314,6 +377,8 @@ public class BossScript : MonoBehaviour
             }
             bossAnimator.SetBool("spinning", false);
             bossAnimator.SetBool("running", true);
+            movementSpeed = originalMovementSpeed;
+            midAttackCooldownTime = 0.68f;
 
         }
         
@@ -330,7 +395,7 @@ public class BossScript : MonoBehaviour
             hitDirection = hitDirection.normalized;
             player.GetComponent<PlayerHealth>().knockBack(knockbackForce, hitDirection);
 
-            Debug.Log("hit the player");
+            //Debug.Log("hit the player");
             collision.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
             //Instantiate(bulletImpact, transform.position, Quaternion.identity);
             //Destroy(gameObject);
@@ -343,16 +408,25 @@ public class BossScript : MonoBehaviour
     public void raycastToPlayer()
     {
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
-        Debug.DrawRay(transform.position, fwd * raycastLength, Color.green);
+        
         RaycastHit objectHit;
-        if (Physics.Raycast(transform.position, fwd, out objectHit, raycastLength) && objectHit.transform.tag == "Player")
+        Vector3 raycastLocation = transform.position;
+        raycastLocation.y = raycastHeight;
+        Debug.DrawRay(raycastLocation, fwd * raycastLength, Color.green);
+        if (Physics.Raycast(raycastLocation, fwd, out objectHit, raycastLength))
         {
+            Debug.Log(objectHit.transform.name);
 
+            if (objectHit.transform.tag == "Player")
+            {
+                Debug.Log("player");
                 Vector3 hitDirection = objectHit.transform.position - transform.position;
                 hitDirection.y = 0;
                 hitDirection = hitDirection.normalized;
                 player.GetComponent<PlayerHealth>().knockBack(knockbackForce, hitDirection);
                 player.GetComponent<PlayerHealth>().takeDamage(damage);
+            }
+                
 
 
         }

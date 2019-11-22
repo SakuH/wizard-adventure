@@ -9,9 +9,9 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: CH_M
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALBEDO_ADJUST _ALPHATEST_ON _DIFFUSE_ADJUST _NORMALMAP _RIM_INNER
-    _SPECULAR_GGX _SPECULAR_MAP _SPECULAR_PHONG
-  m_LightmapFlags: 5
+  m_ShaderKeywords: _ALBEDO_ADJUST _ALPHATEST_ON _DIFFUSE_ADJUST _EMISSION _NORMALMAP
+    _RIM_INNER _SPECULAR_GGX _SPECULAR_MAP _SPECULAR_PHONG
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2450
@@ -87,7 +87,9 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _FresnelIntensity: 0.5
+    - _GlossMapScale: 1
     - _Glossiness: 0
+    - _GlossyReflections: 1
     - _Metallic: 0.66
     - _Mode: 1
     - _OcclusionStrength: 1
@@ -96,6 +98,8 @@ Material:
     - _RimInner: 0.007
     - _RimOuter: -1
     - _Smoothness: 0.84
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
     - _SpecularIntensity: 3.1
     - _SrcBlend: 1
     - _UVSec: 0
