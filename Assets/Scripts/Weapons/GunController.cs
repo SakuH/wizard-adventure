@@ -53,7 +53,10 @@ public class GunController : MonoBehaviour
     private LineRenderer line;
 
     private Light lightWeapon;
-    
+
+    private GameObject laserSoundGameObject;
+    private AudioSource continuousWeaponAudiosource;
+
     //private Light light;
 
     // Start is called before the first frame update
@@ -144,13 +147,15 @@ public class GunController : MonoBehaviour
 
         if (equipedWeapon == 3)
         {
+
+
             //if(isFiring){
-              //  line.enabled = true;
-           // while(isFiring)
-          //  {
-                
-               
-                StartCoroutine("laserProjectiles");
+            //  line.enabled = true;
+            // while(isFiring)
+            //  {
+
+
+            StartCoroutine("laserProjectiles");
                
 
           //  }
@@ -252,9 +257,24 @@ public class GunController : MonoBehaviour
         line.enabled = true;
         lightWeapon.enabled = true;
         RaycastHit hit;
+        if (laserSoundGameObject == null)
+        {
+            laserSoundGameObject = new GameObject("Laser Firing Sound");
+            continuousWeaponAudiosource = laserSoundGameObject.AddComponent<AudioSource>();
+            laserSoundGameObject.transform.SetParent(gameObject.transform);
+            continuousWeaponAudiosource.clip = weaponSound;
+            continuousWeaponAudiosource.volume = sfxVolume;
+            continuousWeaponAudiosource.loop = true;
+            
+        }
+        continuousWeaponAudiosource.pitch = Random.Range(minPitch, maxPitch);
 
         while ( isFiring)
         {
+            if (!continuousWeaponAudiosource.isPlaying)
+            {
+                continuousWeaponAudiosource.Play();
+            }
         Ray ray = new Ray(firePoint.position, firePoint.forward);
         //RaycastHit hit;
         line.SetPosition(0,ray.origin);
@@ -287,6 +307,7 @@ public class GunController : MonoBehaviour
 
         line.enabled = false;
         lightWeapon.enabled = false;
+        continuousWeaponAudiosource.Stop();
 
     }
 
