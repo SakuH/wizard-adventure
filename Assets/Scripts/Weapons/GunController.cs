@@ -27,6 +27,11 @@ public class GunController : MonoBehaviour
 
     private float nextFire;
 
+    public AudioClip pistolSound;
+    public AudioClip shotgunSound;
+    public AudioClip sniperSound;
+    public AudioClip laserSound;
+
     public GameObject mainPlayerHand;
 
     public GameObject player;
