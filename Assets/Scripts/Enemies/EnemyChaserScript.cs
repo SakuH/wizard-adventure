@@ -103,8 +103,7 @@ public class EnemyChaserScript : MonoBehaviour
 
     public void takeDamageEffect()
     {
-        takeDamageSound();
-       
+        takeDamageSound();   
     }
 
     public void takeDamageSound()
