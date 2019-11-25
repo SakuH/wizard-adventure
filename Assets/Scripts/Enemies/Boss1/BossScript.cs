@@ -5,6 +5,8 @@ using UnityEngine;
 public class BossScript : MonoBehaviour
 {   public callAttackScript animationAttackCallScript;
     private int health;
+    private float maxHealth;
+    public float healthPercentage;
     public GameObject player;
     public float turnSpeed = 200;
     public float  movementSpeed = 10;
@@ -44,9 +46,18 @@ public class BossScript : MonoBehaviour
     public float spinRotationSpeed;
     public float spinRotationSpeedFinalPhase;
     public GameObject bossSkin;
+    public GameObject bossShoulders;
     public Material finalPhaseSkinColor;
+    public Material takeDamageSkinColor;
+    public Material normalShoulderColor;
 
-
+    public float damageColorCooldownTime;
+    public float damageColorCooldownTimeMax = 0.3f;
+    public bool normalColor;
+    public float normalColorCooldownTime;
+    public float normalColorCooldownTimeMax = 0.5f;
+    public bool takeDamageColorCooldown;
+   
     public int attackrotation = 0;
 
     public Animator bossAnimator;
@@ -60,17 +71,21 @@ public class BossScript : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
        // attackCooldown = 10;
-       
+       maxHealth = GetComponent<EnemyHealth>().health; 
+
     }
     
     void Update()
     {
-        health = GetComponent<EnemyHealth>().health;
 
+        health = GetComponent<EnemyHealth>().health;
+        float tempHp = health;
+        healthPercentage = tempHp / maxHealth;
         if (!finalPhase && health< 500&&!attacking)
         {
             finalPhase= true;
 
+            GetComponent<EnemyHealth>().isAbleToTakeDamage = false; //change hp bar color to make it clear that the enemy does not take damage for the duration of the transformation 
             attackCooldownMax = midSpinAttackCooldownTimeMaxFinalPhase;
             movementSpeed = movementSpeedFinalPhase;
 
@@ -142,11 +157,49 @@ public class BossScript : MonoBehaviour
             attackCooldown -= Time.deltaTime;
         }
 
-
-
-       
         raycastToPlayer();
 
+
+        if (damageColorCooldownTime > 0 && !normalColor)
+        {
+            damageColorCooldownTime -= Time.deltaTime;
+        }
+        else if (!normalColor)
+        {
+            if(bossShoulders.GetComponent<SkinnedMeshRenderer>().material != normalColor)
+            {
+                bossShoulders.GetComponent<SkinnedMeshRenderer>().material = normalShoulderColor;
+                normalColor = true;
+                normalColorCooldownTime = normalColorCooldownTimeMax;
+                
+            }
+        }
+
+        if(normalColorCooldownTime > 0)
+        {
+            if (!takeDamageColorCooldown)
+            {
+                takeDamageColorCooldown = true;
+            }
+
+           normalColorCooldownTime -= Time.deltaTime;
+        }
+        else
+        {
+            if (takeDamageColorCooldown)
+            {
+                takeDamageColorCooldown = false;
+            }
+           
+        }
+      
+        
+        
+
+        
+
+
+ 
     }
 
     public void slamHammer()
@@ -505,7 +558,7 @@ public class BossScript : MonoBehaviour
                 attackCooldown = attackCooldownMax;
                 attackrotation = 0;
             }
-           
+            GetComponent<EnemyHealth>().isAbleToTakeDamage = true;
             finalPhaseIsTransforming = false;
             bossAnimator.SetBool("finalPhase", false);
             bossAnimator.SetBool("running", true);
@@ -516,7 +569,12 @@ public class BossScript : MonoBehaviour
 
     public void takeDamageEffect()
     {
-
+        if (normalColor && !takeDamageColorCooldown)
+        {
+            bossShoulders.GetComponent<SkinnedMeshRenderer>().material =takeDamageSkinColor;
+            normalColor = false;
+            damageColorCooldownTime = damageColorCooldownTimeMax;
+        }
     }
 
 }

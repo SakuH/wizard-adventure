@@ -1380,7 +1380,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e798cbc4ea6e14e4ebf930e9e8058e46, type: 2}
+  - {fileID: 2100000, guid: afd3cd02dc40605429eb4292989dfd6f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4224,6 +4224,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 418299950}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1767850952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3397322278667670844, guid: eba7b1762e283634c85ca6b9919d5a39,
+    type: 3}
+  m_PrefabInstance: {fileID: 3397322278542736068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1786750288
 GameObject:
   m_ObjectHideFlags: 0
@@ -4711,6 +4717,31 @@ PrefabInstance:
       propertyPath: raycastLength
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3397322278008820744, guid: eba7b1762e283634c85ca6b9919d5a39,
+        type: 3}
+      propertyPath: bossShoulders
+      value: 
+      objectReference: {fileID: 1767850952}
+    - target: {fileID: 3397322278008820744, guid: eba7b1762e283634c85ca6b9919d5a39,
+        type: 3}
+      propertyPath: takeDamageSkinColor
+      value: 
+      objectReference: {fileID: 2100000, guid: 98579ae2aee10fb47bb44c6c0e919dac, type: 2}
+    - target: {fileID: 3397322278008820744, guid: eba7b1762e283634c85ca6b9919d5a39,
+        type: 3}
+      propertyPath: normalShoulderColor
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e1d7fc55d41b5643a1badfe3922da89, type: 2}
+    - target: {fileID: 3397322278008820744, guid: eba7b1762e283634c85ca6b9919d5a39,
+        type: 3}
+      propertyPath: damageColorCooldownTimeMax
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397322278008820744, guid: eba7b1762e283634c85ca6b9919d5a39,
+        type: 3}
+      propertyPath: normalColorCooldownTimeMax
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eba7b1762e283634c85ca6b9919d5a39, type: 3}
 --- !u!1001 &3952618122259342997
@@ -4793,6 +4824,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963531256125475467, guid: dafca0cdb9fc2e643b5e1ac82c20e3f5,
+        type: 3}
+      propertyPath: field of view
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4963531256125475466, guid: dafca0cdb9fc2e643b5e1ac82c20e3f5,
         type: 3}

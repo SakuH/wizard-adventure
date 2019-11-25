@@ -14,6 +14,7 @@ public class EnemyHealth : MonoBehaviour
     public EnemyChaserShooterScript chaserShooterScript;
     public BossScript bossScript;
 
+    public bool isAbleToTakeDamage = true;
 
     
     void Start()
@@ -54,8 +55,9 @@ public class EnemyHealth : MonoBehaviour
     }
     public void takeDamage(int damage)
     {
-
-        health -= damage;
+        if (isAbleToTakeDamage)
+        {
+            health -= damage;
         //on damage call the animation/sound/or effect you want to display when the enemy takes damage from the base script 
         if (!dead)
         {   if(turretScript != null)
@@ -74,6 +76,10 @@ public class EnemyHealth : MonoBehaviour
             {
                 bossScript.takeDamageEffect();
             }
+
+
+        }
+      
 
         }
         
