@@ -14,6 +14,13 @@ public class Explosive : MonoBehaviour
 
     public float explosionRadius = 5f;
 
+    public float sfxVolume;
+
+    public float minPitch = 0.7f;
+    public float maxPitch = 1.2f;
+
+    public AudioClip explosionAudio;
+
     public GameObject explosionEffect;
     // Start is called before the first frame update
     void Start()
@@ -33,6 +40,7 @@ public class Explosive : MonoBehaviour
     void Explode()
     {
         hasExploded = true;
+        ExplosionBlastSound(explosionAudio);
         Instantiate(explosionEffect, transform.position, transform.rotation);
         Destroy(gameObject);
         
@@ -55,6 +63,11 @@ public class Explosive : MonoBehaviour
             if(playerHealth != null){
                 playerHealth.takeDamage(explosionPlayerDamage);
             }
+            Explosive explosive = nearbyObject.GetComponent<Explosive>();
+            if(explosive != null)
+            {
+                explosive.takeDamage(explosionEnemyDamage);
+            }
             
         }
         
@@ -63,5 +76,16 @@ public class Explosive : MonoBehaviour
     public void takeDamage(int damage)
     {
         health = health - damage;
+    }
+    void ExplosionBlastSound(AudioClip clip)
+    {
+        GameObject clipGameObject = new GameObject("Explosion Sound");
+        AudioSource source = clipGameObject.AddComponent<AudioSource>();
+        clipGameObject.transform.position = transform.position;
+        source.clip = clip;
+        source.volume = sfxVolume;
+        source.pitch = Random.Range(minPitch, maxPitch);
+        source.Play();
+        Destroy(clipGameObject, clip.length / source.pitch);
     }
 }

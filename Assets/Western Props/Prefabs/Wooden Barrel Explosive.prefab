@@ -98,6 +98,10 @@ MonoBehaviour:
   explosionEnemyDamage: 50
   explosionPlayerDamage: 2
   explosionRadius: 7
+  sfxVolume: 0
+  minPitch: 0.7
+  maxPitch: 1.2
+  explosionAudio: {fileID: 8300000, guid: 48e8c1d365e3fea4a8c53774c6f96a2e, type: 3}
   explosionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
     type: 3}
 --- !u!54 &-6865826670743125040
