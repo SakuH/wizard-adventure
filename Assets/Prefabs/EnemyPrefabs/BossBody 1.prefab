@@ -462,7 +462,7 @@ MonoBehaviour:
   amountOfForwardAttacksMax: 3
   amountOfForwardAttacksMaxFinalPhase: 6
   closeToPlayer: 0
-  raycastLength: 1
+  raycastLength: 2
   raycastHeight: 1
   groundslamPrefab: {fileID: 8162773662206581984, guid: 6447b5ab58253124986d9e6ab71e9b7a,
     type: 3}
@@ -535,20 +535,6 @@ Transform:
   m_Father: {fileID: 3397322278008820750}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3397322278735714831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3397322278667652674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdb52ddde358d5b468e26ad364711725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossScript: {fileID: 3397322278008820744}
-  attack: 0
 --- !u!65 &3397322278754785278
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -577,6 +563,20 @@ MonoBehaviour:
   bossParent: {fileID: 3397322278008820737}
   damage: 1
   knockbackForce: 60
+--- !u!114 &3397322278735714831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3397322278667652674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb52ddde358d5b468e26ad364711725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossScript: {fileID: 3397322278008820744}
+  attack: 0
 --- !u!1 &3397322278859875556
 GameObject:
   m_ObjectHideFlags: 0
