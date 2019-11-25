@@ -28,11 +28,29 @@ public class EnemyHealth : MonoBehaviour
     {
         if (dead)
         {
-            //call death animations from script
+            //call death animations from script 
             enemyParent.transform.position = new Vector3(transform.position.x, transform.position.y + deathJumpSpeed * Time.deltaTime, transform.position.z);
+       
+            if (turretScript != null)
+            {
+                //death animation here
+            }
+            if (chaserScript != null)
+            {
+               
+            }
+            if (chaserShooterScript != null)
+            {
+                
+            }
+            if (bossScript != null)
+            {
+               
+            }
+
         }
 
-      
+
     }
     public void takeDamage(int damage)
     {
