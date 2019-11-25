@@ -1087,6 +1087,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7166250814048929468}
+  - component: {fileID: 2813642626770243227}
   m_Layer: 0
   m_Name: ShockWaveHolder
   m_TagString: Untagged
@@ -1109,3 +1110,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &2813642626770243227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8162773662206581984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fc8085dfcd9f240a461b0c69c41124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

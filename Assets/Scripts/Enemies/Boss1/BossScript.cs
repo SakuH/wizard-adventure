@@ -8,6 +8,7 @@ public class BossScript : MonoBehaviour
     public GameObject player;
     public float turnSpeed = 200;
     public float  movementSpeed = 10;
+    public float  movementSpeedFinalPhase = 13;
     public float originalMovementSpeed;
     public float spinAttackMovementSpeed;
     public bool move = false;
@@ -15,6 +16,7 @@ public class BossScript : MonoBehaviour
     public bool spinning;
     public bool slamForward;
     public bool slamAoe;
+    public bool finalPhaseIsTransforming;
     public bool spinningStarted = false;
     public float slamRotation = 0;
     public bool attacking;
@@ -32,13 +34,17 @@ public class BossScript : MonoBehaviour
     public GameObject groundslamForwardPrefab;
     public Transform hammerHeadPoint;
 
-
+    
     public float midAttackCooldownTime;
     public float midForwardAttackCooldownTimeMax = 3;
     public float midAoeAttackCooldownTimeMax= 0.4f;
     public float midSpinAttackCooldownTimeMax= 10f;
+    public float midSpinAttackCooldownTimeMaxFinalPhase= 7f;
+    public float midFinalPhaseTransformationCooldownTimeMax = 5f;
     public float spinRotationSpeed;
     public float spinRotationSpeedFinalPhase;
+    public GameObject bossSkin;
+    public Material finalPhaseSkinColor;
 
 
     public int attackrotation = 0;
@@ -64,6 +70,12 @@ public class BossScript : MonoBehaviour
         if (!finalPhase && health< 500&&!attacking)
         {
             finalPhase= true;
+
+            attackCooldownMax = midSpinAttackCooldownTimeMaxFinalPhase;
+            movementSpeed = movementSpeedFinalPhase;
+
+            attackrotation = 3;
+            
         }
 
         if (lookAtPlayer)
@@ -95,6 +107,10 @@ public class BossScript : MonoBehaviour
                 spinning = true;
 
             }
+            if(attackrotation == 3)
+            {
+                finalPhaseIsTransforming = true;
+            }
            
         }
         
@@ -113,11 +129,20 @@ public class BossScript : MonoBehaviour
         {
             slamHammerAoeAttack();
         }
+
+        if (finalPhaseIsTransforming)
+        {
+            finalPhaseTransformation();
+        }
+
+
     
         if (attackCooldown > 0 && !attacking)
         {
             attackCooldown -= Time.deltaTime;
         }
+
+
 
        
         raycastToPlayer();
@@ -431,6 +456,67 @@ public class BossScript : MonoBehaviour
 
         }
        
+    }
+
+    public void finalPhaseTransformation()
+    {
+        if (lookAtPlayer)
+        {
+            lookAtPlayer = false;
+            attacking = true;
+        }
+        if (move)
+        {
+            move = false;
+
+        }
+
+
+       
+        if (bossAnimator.GetBool("finalPhase")==false)
+        {
+            bossAnimator.SetBool("finalPhase", true);
+            midAttackCooldownTime = midFinalPhaseTransformationCooldownTimeMax;
+
+        }
+
+        if (midAttackCooldownTime > 0)
+        {
+            if (midAttackCooldownTime <= 2.5f&& bossSkin.GetComponent<SkinnedMeshRenderer>().material != finalPhaseSkinColor)
+            {
+                bossSkin.GetComponent<SkinnedMeshRenderer>().material = finalPhaseSkinColor;             
+            }
+            midAttackCooldownTime -= Time.deltaTime;
+        }
+        else
+        {
+            lookAtPlayer = true;
+            attacking = false;
+            move = true;
+
+
+            if (attackrotation < 2)
+            {
+                attackCooldown = attackCooldownMax;
+                attackrotation++;
+            }
+            else
+            {
+                attackCooldown = attackCooldownMax;
+                attackrotation = 0;
+            }
+           
+            finalPhaseIsTransforming = false;
+            bossAnimator.SetBool("finalPhase", false);
+            bossAnimator.SetBool("running", true);
+            midAttackCooldownTime = 0.68f;
+        }
+
+    }
+
+    public void takeDamageEffect()
+    {
+
     }
 
 }
