@@ -25,7 +25,8 @@ public class Explosive : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        sfxVolume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameAudioSettings>().sfxVolume;
+
     }
 
     // Update is called once per frame
