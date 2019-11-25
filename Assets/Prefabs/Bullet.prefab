@@ -113,6 +113,11 @@ MonoBehaviour:
   setZ: 1
   bulletImpact: {fileID: 6191829300876826018, guid: 89723319ed8d05f43bd3233fef648780,
     type: 3}
+  sfxVolume: 0
+  minPitch: 0.8
+  maxPitch: 1.1
+  bulletCollidingSound: {fileID: 8300000, guid: d92ee88c0f6e25642ad6906d33e8fa08,
+    type: 3}
   setDamage: 2
 --- !u!54 &4401874671244627829
 Rigidbody:

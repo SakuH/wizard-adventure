@@ -2046,6 +2046,11 @@ MonoBehaviour:
   contactDamage: 1
   knockbackTime: 0
   knockbackTimeMax: 0
+  sfxVolume: 0
+  minPitch: 0.9
+  maxPitch: 1.1
+  playerTakeDamageClip: {fileID: 8300000, guid: 70414c508cbe9274e9f53070ff311352,
+    type: 3}
 --- !u!82 &666125343548258797
 AudioSource:
   m_ObjectHideFlags: 0

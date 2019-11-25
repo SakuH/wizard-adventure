@@ -410,6 +410,7 @@ MonoBehaviour:
   turretScript: {fileID: 0}
   chaserScript: {fileID: 0}
   chaserShooterScript: {fileID: 4855304159220392607}
+  bossScript: {fileID: 0}
 --- !u!114 &4855304159220392607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,6 +434,10 @@ MonoBehaviour:
   firingPoint: {fileID: 1073663748202049053}
   projectile: {fileID: 2112889790430857118, guid: f456e9061e472dc4a90a4aa1ab82fb68,
     type: 3}
+  sfxVolume: 0
+  minPitch: 0.9
+  maxPitch: 1.1
+  takeDamageClip: {fileID: 8300000, guid: 9f4ff5b61d18b30488bc1ca566ae1367, type: 3}
 --- !u!1 &3952618124043720987
 GameObject:
   m_ObjectHideFlags: 0

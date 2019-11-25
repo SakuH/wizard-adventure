@@ -9,12 +9,24 @@ public class Bullet : MonoBehaviour
     public float setY;
     public float setZ;
     public GameObject bulletImpact;
+
+    public float sfxVolume;
+
+    public float minPitch = 0.8f;
+    public float maxPitch = 1.1f;
+
+    public AudioClip bulletCollidingSound;
+
+
     private EnemyHealth enemyHP;
+
 
     public int setDamage;
     // Start is called before the first frame update
     void Start()
     {
+        sfxVolume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameAudioSettings>().sfxVolume;
+
         Destroy(gameObject,5);
     }
 
@@ -34,7 +46,8 @@ public class Bullet : MonoBehaviour
         
         if (collision.gameObject.tag == "Wall")
         {
-            Instantiate(bulletImpact, transform.position, Quaternion.identity);        
+            Instantiate(bulletImpact, transform.position, Quaternion.identity);
+            BulletCollisionSound(bulletCollidingSound);
             Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Enemy")
@@ -45,5 +58,16 @@ public class Bullet : MonoBehaviour
                 
             
         }
+    }
+    void BulletCollisionSound(AudioClip clip)
+    {
+        GameObject clipGameObject = new GameObject("Bullet Collision Sound");
+        AudioSource source = clipGameObject.AddComponent<AudioSource>();
+        clipGameObject.transform.position = transform.position;
+        source.clip = clip;
+        source.volume = sfxVolume;
+        source.pitch = Random.Range(minPitch, maxPitch);
+        source.Play();
+        Destroy(clipGameObject, clip.length / source.pitch);
     }
 }

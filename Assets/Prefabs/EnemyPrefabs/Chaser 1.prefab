@@ -409,6 +409,10 @@ MonoBehaviour:
   playerDistanceOffset: 1
   raycastLength: 0.5
   damage: 1
+  sfxVolume: 0
+  minPitch: 0.9
+  maxPitch: 1.1
+  takeDamageClip: {fileID: 8300000, guid: 9f4ff5b61d18b30488bc1ca566ae1367, type: 3}
 --- !u!114 &3952618123525304238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,6 +431,7 @@ MonoBehaviour:
   deathJumpSpeed: 20
   turretScript: {fileID: 0}
   chaserScript: {fileID: 3952618123525304224}
+  chaserShooterScript: {fileID: 0}
 --- !u!1 &3952618124043720987
 GameObject:
   m_ObjectHideFlags: 0

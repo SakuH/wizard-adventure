@@ -33,11 +33,20 @@ public class PlayerHealth : MonoBehaviour
     public float knockbackTime;
     public float knockbackTimeMax;
 
+    public float sfxVolume;
+
+    public float minPitch = 0.9f;
+    public float maxPitch = 1.1f;
+
+    public AudioClip playerTakeDamageClip;
+
     // Start is called before the first frame update
     void Start()
     {
         playerScript = playerParent.GetComponent<PlayerMovement>();
-        
+        sfxVolume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameAudioSettings>().sfxVolume;
+
+
     }
 
     // Update is called once per frame
@@ -121,7 +130,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (vulnerable && playerScript.isDashing == false)
         {
-            takeDamageSound();
+            //takeDamageSound();
+            PlayerHealthSound(playerTakeDamageClip);
             health -= damage;
             vulnerableCoolDown = vulnerableCoolDownMax;
             vulnerable = false;
@@ -140,9 +150,21 @@ public class PlayerHealth : MonoBehaviour
         health = maxHealth;
     }
 
-    public void takeDamageSound()
+    //public void takeDamageSound()
+    //{
+    //    AudioManager.PlaySound("playerHit");
+    //}
+
+    void PlayerHealthSound(AudioClip clip)
     {
-        AudioManager.PlaySound("playerHit");
+        GameObject clipGameObject = new GameObject("Player Health Sound");
+        AudioSource source = clipGameObject.AddComponent<AudioSource>();
+        clipGameObject.transform.position = transform.position;
+        source.clip = clip;
+        source.volume = sfxVolume;
+        source.pitch = Random.Range(minPitch, maxPitch);
+        source.Play();
+        Destroy(clipGameObject, clip.length / source.pitch);
     }
 
     public void knockBack(float force, Vector3 enemyPos)

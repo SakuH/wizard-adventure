@@ -15,14 +15,22 @@ public class EnemyChaserScript : MonoBehaviour
     public float raycastLength;
     public int damage = 1;
 
+    public float sfxVolume;
+
+    public float minPitch = 0.9f;
+    public float maxPitch = 1.1f;
+
+    public AudioClip takeDamageClip;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        
+        sfxVolume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameAudioSettings>().sfxVolume;
+
     }
 
 
-   
+
     void Update()
     {
         health = GetComponent<EnemyHealth>().health;
@@ -103,14 +111,25 @@ public class EnemyChaserScript : MonoBehaviour
 
     public void takeDamageEffect()
     {
-        takeDamageSound();   
+        //takeDamageSound();   
+        EnemySound(takeDamageClip);
     }
 
-    public void takeDamageSound()
+    //public void takeDamageSound()
+    //{
+    //    AudioManager.PlaySound("enemyHit");
+    //}
+
+    void EnemySound(AudioClip clip)
     {
-        AudioManager.PlaySound("enemyHit");
+        GameObject clipGameObject = new GameObject("Enemy Chaser Sound");
+        AudioSource source = clipGameObject.AddComponent<AudioSource>();
+        clipGameObject.transform.position = transform.position;
+        source.clip = clip;
+        source.volume = sfxVolume;
+        source.pitch = Random.Range(minPitch, maxPitch);
+        source.Play();
+        Destroy(clipGameObject, clip.length / source.pitch);
     }
-
-
 
 }

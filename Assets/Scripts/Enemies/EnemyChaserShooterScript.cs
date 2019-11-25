@@ -22,14 +22,23 @@ public class EnemyChaserShooterScript : MonoBehaviour
     public Transform firingPoint;
     public GameObject projectile;
 
+    public float sfxVolume;
+
+    public float minPitch = 0.9f;
+    public float maxPitch = 1.1f;
+
+    public AudioClip takeDamageClip;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        
+        sfxVolume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameAudioSettings>().sfxVolume;
+
+
     }
 
 
-   
+
     void Update()
     {
         health = GetComponent<EnemyHealth>().health;
@@ -121,39 +130,51 @@ public class EnemyChaserShooterScript : MonoBehaviour
 
     public void takeDamageEffect()
     {
-        takeDamageSound();
-       
+        //takeDamageSound();
+        EnemySound(takeDamageClip);
     }
 
-    public void takeDamageSound()
-    {
-        AudioManager.PlaySound("enemyHit");
-    }
+    //public void takeDamageSound()
+    //{
+    //    AudioManager.PlaySound("enemyHit");
+
+    //}
 
     /*IEnumerator Sleep(int time)
     {
         yield return new WaitForSeconds(time);
     }*/
 
-   /* IEnumerator Move()
+    /* IEnumerator Move()
+     {
+         transform.LookAt(new Vector3 (player.transform.position.x , transform.position.y,player.transform.position.z));
+
+             transform.position += transform.forward * movementSpeed * Time.deltaTime;
+
+             if( Time.time > nextFire)
+             {
+
+
+             Instantiate(projectile,firingPoint.position,firingPoint.rotation);
+             yield return new WaitForSeconds(50f);
+
+
+             nextFire = Time.time + timeBetweenShots;   
+
+             }
+         yield return null;
+     }*/
+
+    void EnemySound(AudioClip clip)
     {
-        transform.LookAt(new Vector3 (player.transform.position.x , transform.position.y,player.transform.position.z));
-
-            transform.position += transform.forward * movementSpeed * Time.deltaTime;
-
-            if( Time.time > nextFire)
-            {
-
-              
-            Instantiate(projectile,firingPoint.position,firingPoint.rotation);
-            yield return new WaitForSeconds(50f);
-            
-            
-            nextFire = Time.time + timeBetweenShots;   
-
-            }
-        yield return null;
-    }*/
-
+        GameObject clipGameObject = new GameObject("Enemy Chaser Shooter Sound");
+        AudioSource source = clipGameObject.AddComponent<AudioSource>();
+        clipGameObject.transform.position = transform.position;
+        source.clip = clip;
+        source.volume = sfxVolume;
+        source.pitch = Random.Range(minPitch, maxPitch);
+        source.Play();
+        Destroy(clipGameObject, clip.length / source.pitch);
+    }
 
 }
