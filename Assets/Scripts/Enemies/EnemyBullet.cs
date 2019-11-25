@@ -45,5 +45,12 @@ public class EnemyBullet : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if( other.gameObject.tag == "Explosive")
+        {
+            Instantiate(bulletImpact, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            other.gameObject.GetComponent<Explosive>().takeDamage(bulletDamage);
+        }
+
     }
 }

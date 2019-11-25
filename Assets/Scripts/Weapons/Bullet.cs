@@ -58,6 +58,12 @@ public class Bullet : MonoBehaviour
                 
             
         }
+        if ( collision.gameObject.tag == "Explosive")
+        {
+            Instantiate(bulletImpact, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            collision.gameObject.GetComponent<Explosive>().takeDamage(setDamage);
+        }
     }
     void BulletCollisionSound(AudioClip clip)
     {

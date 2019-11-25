@@ -12,6 +12,7 @@ TagManager:
   - Door
   - Enemy
   - Teleporter
+  - Explosive
   layers:
   - Default
   - TransparentFX

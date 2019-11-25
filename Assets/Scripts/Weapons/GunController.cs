@@ -293,7 +293,12 @@ public class GunController : MonoBehaviour
             if(hit.collider.gameObject.CompareTag("Enemy"))
             {
                 hit.collider.GetComponent<EnemyHealth>().takeDamage(weaponDamage);
+        
                 //hit.rigidbody.AddForceAtPosition(firePoint.forward * 5,hit.point);
+            }
+            if(hit.collider.gameObject.CompareTag("Explosive"))
+            {
+                hit.collider.GetComponent<Explosive>().takeDamage(weaponDamage);
             }
 
             }

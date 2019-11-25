@@ -51,6 +51,10 @@ public class Trap : MonoBehaviour
             other.GetComponent<EnemyHealth>().takeDamage(damage);
             AudioManager.PlaySound("enemyHit");
         }
+        if(other.gameObject.CompareTag("Explosive"))
+        {
+            other.GetComponent<Explosive>().takeDamage(damage);
+        }
 
     }
 
