@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 352483100397068736}
   - component: {fileID: 8692212162477428118}
   - component: {fileID: 2680800455102738073}
-  - component: {fileID: 1121340432881064770}
+  - component: {fileID: 7267519719050123820}
   m_Layer: 0
-  m_Name: Teleporter
+  m_Name: TeleporterNextLevel
   m_TagString: Teleporter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +94,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &1121340432881064770
+--- !u!114 &7267519719050123820
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,8 +103,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7470009674715140917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf3973558df00a24587f3d1fe38f56b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 51793df5da7fb304196b8de7184c429f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyBoss: {fileID: 5828765008438274456, guid: 52f0fa20fccb08c4091b4e3061af79b6,
-    type: 3}
+  nextFloorNumber: 0

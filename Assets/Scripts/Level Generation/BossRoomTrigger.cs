@@ -31,6 +31,7 @@ public class BossRoomTrigger : MonoBehaviour
             if (!enemiesPresent)
             {
                 Debug.Log("Spawn next level teleporter here");
+                gameObject.GetComponentInChildren<NextLevelTeleport>().ActivateTeleporter();
             }
         }
     }
