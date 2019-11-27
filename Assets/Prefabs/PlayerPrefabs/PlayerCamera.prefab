@@ -68,7 +68,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -229,3 +229,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bafa8ae725f01db48b82a35ca7dc7b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxVolume: 1
+  bgmVolume: 1
+  bgNoiseRadius: 50
+  meanTimeInterval: 10
+  minPitch: 0.7
+  maxPitch: 1.3
+  mainBgm: {fileID: 0}
+  bgNoiseClips: []
