@@ -231,7 +231,7 @@ public class PlayerMovement : MonoBehaviour
     public void playerRaycastPointer()
     {
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        Plane groundPlane = new Plane(Vector3.up, transform.position/*Vector3.zero*/);
 
         float rayLength;
 
