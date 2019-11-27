@@ -5437,6 +5437,11 @@ PrefabInstance:
       propertyPath: normalColorCooldownTimeMax
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 3397322278008820744, guid: eba7b1762e283634c85ca6b9919d5a39,
+        type: 3}
+      propertyPath: spinRotationSpeedFinalPhase
+      value: 440
+      objectReference: {fileID: 0}
     - target: {fileID: 3397322278667909304, guid: eba7b1762e283634c85ca6b9919d5a39,
         type: 3}
       propertyPath: m_LocalRotation.x
