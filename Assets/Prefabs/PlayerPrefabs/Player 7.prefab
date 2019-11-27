@@ -2005,6 +2005,11 @@ MonoBehaviour:
   speedBoostCooldown: 0
   speedBoostCooldownTime: 7.5
   isSpeedBoosting: 0
+  weaponList:
+  - {fileID: 3789602533598380137, guid: 1bb7e73076bd09941906c4070c6bcf76, type: 3}
+  - {fileID: 3789602533598380137, guid: e152f4436604bee488f457cec27209a3, type: 3}
+  - {fileID: 3789602533598380137, guid: 4b68c22eb70269b4996adb448005cd70, type: 3}
+  - {fileID: 3789602533598380137, guid: 419b23bcd79795c4b969d45f9c8ea3c6, type: 3}
 --- !u!114 &903133061128198373
 MonoBehaviour:
   m_ObjectHideFlags: 0
