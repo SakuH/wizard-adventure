@@ -16,8 +16,8 @@ public class BossTeleporter : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            Instantiate(enemyBoss, new Vector3(0, 2.0f, 1045), Quaternion.identity);
-            other.GetComponent<Transform>().SetPositionAndRotation(new Vector3(0, 2.0f, 1025), Quaternion.identity);
+            Instantiate(enemyBoss, new Vector3(0, 102.0f, 20), Quaternion.identity);
+            other.GetComponent<Transform>().SetPositionAndRotation(new Vector3(0, 102.0f, 0), Quaternion.identity);
             other.GetComponent<PlayerMovement>().SavePlayerData(2);
         }
     }
