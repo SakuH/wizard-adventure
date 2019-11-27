@@ -47,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
         playerScript = playerParent.GetComponent<PlayerMovement>();
         sfxVolume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameAudioSettings>().sfxVolume;
         knockbackTimeMax = 0.15f;
-
+        hatMaterial.SetColor("_Color", Color.white);
     }
 
     // Update is called once per frame
@@ -102,11 +102,19 @@ public class PlayerHealth : MonoBehaviour
 
         if (vulnerableCoolDown > 0)
         {
+            if (knockbackTime > 0)
+            {
+                knockbackTime -= Time.deltaTime;
+            }
             vulnerableCoolDown -= Time.deltaTime;
            
             MeshRenderer gameObjectRenderer = head.GetComponent<MeshRenderer>();
             gameObjectRenderer.material = invulnerableMat;
-            hatMaterial.SetColor("_Color", Color.red);
+            if (!dead)
+            {
+                hatMaterial.SetColor("_Color", Color.red);
+            }
+           
 
         }
         else if (!vulnerable)
@@ -143,7 +151,8 @@ public class PlayerHealth : MonoBehaviour
       
         if (health <= 0)
         {
-            dead = true;          
+            dead = true;
+            
         }
 
     }
