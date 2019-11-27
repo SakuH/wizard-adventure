@@ -22,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
 
 
     public Material normalMat;
+    public Material hatMaterial;
     public Material invulnerableMat;
     public GameObject head;
 
@@ -105,6 +106,7 @@ public class PlayerHealth : MonoBehaviour
            
             MeshRenderer gameObjectRenderer = head.GetComponent<MeshRenderer>();
             gameObjectRenderer.material = invulnerableMat;
+            hatMaterial.SetColor("_Color", Color.red);
 
         }
         else if (!vulnerable)
@@ -112,6 +114,7 @@ public class PlayerHealth : MonoBehaviour
             vulnerable = true;
             MeshRenderer gameObjectRenderer = head.GetComponent<MeshRenderer>();
             gameObjectRenderer.material = normalMat;
+            hatMaterial.SetColor("_Color", Color.white);
         }
 
        /*if (isTouchingEnemy)
@@ -172,7 +175,7 @@ public class PlayerHealth : MonoBehaviour
         //Debug.Log("enemyForce" +force + " enemyPos"+ enemyPos);
         if (vulnerable && playerScript.isDashing == false)
         {
-            Debug.Log("knockingBACK");
+          //  Debug.Log("knockingBACK");
 
             knockbackTime = knockbackTimeMax;
 

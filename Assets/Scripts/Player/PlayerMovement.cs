@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 knockbackDirForce;
 
+    public Animator playerAnimator;
     void Awake()
     {
 
@@ -101,7 +102,15 @@ public class PlayerMovement : MonoBehaviour
         
         speedBoost();
         dash();
- 
+        if (Input.GetAxisRaw("Horizontal")> 0 ||Input.GetAxisRaw("Vertical")>0|| Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("Vertical") < 0)
+        {
+            playerAnimator.SetBool("Walking", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("Walking", false);
+        }
+
     }
 
     void FixedUpdate()
@@ -109,9 +118,10 @@ public class PlayerMovement : MonoBehaviour
         groundCheck();
         wallCheck();
         if (!isDashing && player.GetComponent<PlayerHealth>().knockbackTime<= 0)
-        {
+        {        
          rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y, moveVelocity.z);
         }
+      
         if(player.GetComponent<PlayerHealth>().knockbackTime > 0)
         {
             rb.velocity = knockbackDirForce;
