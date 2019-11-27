@@ -25,13 +25,13 @@ public class PlayerHealth : MonoBehaviour
     public Material invulnerableMat;
     public GameObject head;
 
-    PlayerMovement playerScript;
+    public PlayerMovement playerScript;
 
     public bool isTouchingEnemy;
     public int contactDamage = 1;
 
     public float knockbackTime;
-    public float knockbackTimeMax;
+    public float knockbackTimeMax = 0.15f;
 
     public float sfxVolume;
 
@@ -45,7 +45,7 @@ public class PlayerHealth : MonoBehaviour
     {
         playerScript = playerParent.GetComponent<PlayerMovement>();
         sfxVolume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameAudioSettings>().sfxVolume;
-
+        knockbackTimeMax = 0.15f;
 
     }
 
@@ -169,10 +169,12 @@ public class PlayerHealth : MonoBehaviour
 
     public void knockBack(float force, Vector3 enemyPos)
     {
+        //Debug.Log("enemyForce" +force + " enemyPos"+ enemyPos);
         if (vulnerable && playerScript.isDashing == false)
         {
+            Debug.Log("knockingBACK");
 
-        knockbackTime = knockbackTimeMax;
+            knockbackTime = knockbackTimeMax;
 
         Vector3 moveDiretion = enemyPos * force;
 

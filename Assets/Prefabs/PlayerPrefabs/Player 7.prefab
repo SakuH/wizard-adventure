@@ -2042,6 +2042,7 @@ MonoBehaviour:
   normalMat: {fileID: 2100000, guid: 1cb62f2b8fb4edb4f9d3cfe5da61a696, type: 2}
   invulnerableMat: {fileID: 2100000, guid: ddff4be2d59dd08458149e8407fedb0f, type: 2}
   head: {fileID: 903133061311039627}
+  playerScript: {fileID: 0}
   isTouchingEnemy: 0
   contactDamage: 1
   knockbackTime: 0
