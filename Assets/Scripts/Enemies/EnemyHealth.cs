@@ -30,7 +30,7 @@ public class EnemyHealth : MonoBehaviour
         if (dead)
         {
             //call death animations from script 
-            enemyParent.transform.position = new Vector3(transform.position.x, transform.position.y + deathJumpSpeed * Time.deltaTime, transform.position.z);
+           // enemyParent.transform.position = new Vector3(transform.position.x, transform.position.y + deathJumpSpeed * Time.deltaTime, transform.position.z);
        
             if (turretScript != null)
             {
@@ -46,7 +46,7 @@ public class EnemyHealth : MonoBehaviour
             }
             if (bossScript != null)
             {
-               
+                bossScript.deathEffect();
             }
 
         }

@@ -4487,6 +4487,11 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1808435316}
+    - target: {fileID: 364221710166108533, guid: 8d82db82c1295ff44bba0db4d30c4c60,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d82db82c1295ff44bba0db4d30c4c60, type: 3}
 --- !u!1 &903133060823443961 stripped
@@ -4741,6 +4746,12 @@ PrefabInstance:
       propertyPath: spinRotationSpeedFinalPhase
       value: 440
       objectReference: {fileID: 0}
+    - target: {fileID: 3397322278008820744, guid: eba7b1762e283634c85ca6b9919d5a39,
+        type: 3}
+      propertyPath: deathExplosion
+      value: 
+      objectReference: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
+        type: 3}
     - target: {fileID: 3397322278667909304, guid: eba7b1762e283634c85ca6b9919d5a39,
         type: 3}
       propertyPath: m_LocalRotation.x

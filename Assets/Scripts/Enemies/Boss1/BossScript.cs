@@ -35,7 +35,7 @@ public class BossScript : MonoBehaviour
     public GameObject groundslamPrefab;
     public GameObject groundslamForwardPrefab;
     public Transform hammerHeadPoint;
-
+    public GameObject deathExplosion;
     
     public float midAttackCooldownTime;
     public float midForwardAttackCooldownTimeMax = 3;
@@ -67,6 +67,7 @@ public class BossScript : MonoBehaviour
     public float knockbackForce = 120;
     public int damage = 1;
     public bool finalPhase;
+    private int explosionCount;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -565,6 +566,7 @@ public class BossScript : MonoBehaviour
             midAttackCooldownTime = 0.68f;
         }
 
+
     }
 
     public void takeDamageEffect()
@@ -576,5 +578,20 @@ public class BossScript : MonoBehaviour
             damageColorCooldownTime = damageColorCooldownTimeMax;
         }
     }
-
+    public void deathEffect()
+    {
+        Destroy(gameObject, 2);
+        if(explosionCount<1)    
+        {
+            bossAnimator.SetBool("dead", true);
+            move = false;
+            lookAtPlayer = false;
+            //Instantiate(deathExplosion, transform.position,transform.rotation);
+            explosionCount++;
+        }
+    }
+    void OnDestroy()
+    {
+        Instantiate(deathExplosion, transform.position, transform.rotation);
+    }
 }
