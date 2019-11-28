@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
 
 
     public Material normalMat;
-    public Material hatMaterial;
+   // public Material hatMaterial;
     public Material invulnerableMat;
     public GameObject head;
 
@@ -47,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
         playerScript = playerParent.GetComponent<PlayerMovement>();
         sfxVolume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameAudioSettings>().sfxVolume;
         knockbackTimeMax = 0.15f;
-        hatMaterial.SetColor("_Color", Color.white);
+       // hatMaterial.SetColor("_Color", Color.white);
     }
 
     // Update is called once per frame
@@ -108,11 +108,11 @@ public class PlayerHealth : MonoBehaviour
             }
             vulnerableCoolDown -= Time.deltaTime;
            
-            MeshRenderer gameObjectRenderer = head.GetComponent<MeshRenderer>();
+            SkinnedMeshRenderer gameObjectRenderer = head.GetComponent<SkinnedMeshRenderer>();
             gameObjectRenderer.material = invulnerableMat;
             if (!dead)
             {
-                hatMaterial.SetColor("_Color", Color.red);
+              //  hatMaterial.SetColor("_Color", Color.red);
             }
            
 
@@ -120,9 +120,9 @@ public class PlayerHealth : MonoBehaviour
         else if (!vulnerable)
         {
             vulnerable = true;
-            MeshRenderer gameObjectRenderer = head.GetComponent<MeshRenderer>();
+            SkinnedMeshRenderer gameObjectRenderer = head.GetComponent<SkinnedMeshRenderer>();
             gameObjectRenderer.material = normalMat;
-            hatMaterial.SetColor("_Color", Color.white);
+            //hatMaterial.SetColor("_Color", Color.white);
         }
 
        /*if (isTouchingEnemy)
