@@ -43,7 +43,11 @@ public class BossRoomTrigger : MonoBehaviour
             enemies.Add(other.gameObject);
             enemiesPresent = true;
         }
-        
+        if (other.CompareTag("Player"))
+        {
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<BackgroundAudio>().PlayBossMusic();
+        }
+
     }
 
     //private void OnTriggerExit(Collider other)

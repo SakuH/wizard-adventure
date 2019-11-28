@@ -11,6 +11,7 @@ public class BackgroundAudio : MonoBehaviour
     public float minPitch = 0.7f;
     public float maxPitch = 1.3f;
     public AudioClip mainBgm;
+    public AudioClip bossBgm;
     public AudioClip[] bgNoiseClips;
 
     private AudioSource audioSource;
@@ -62,7 +63,12 @@ public class BackgroundAudio : MonoBehaviour
         
     }
 
-
+    public void PlayBossMusic()
+    {
+        audioSource.Stop();
+        audioSource.clip = bossBgm;
+        audioSource.PlayDelayed(2);
+    }
 
     // Update is called once per frame
     void Update()
