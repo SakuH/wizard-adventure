@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - Teleporter
   - Explosive
+  - BossHpBar
   layers:
   - Default
   - TransparentFX

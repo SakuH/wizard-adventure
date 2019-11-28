@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class BossScript : MonoBehaviour
 {   public callAttackScript animationAttackCallScript;
     private int health;
@@ -68,18 +68,32 @@ public class BossScript : MonoBehaviour
     public int damage = 1;
     public bool finalPhase;
     private int explosionCount;
+    public TextMeshProUGUI bossHealthBar;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
        // attackCooldown = 10;
-       maxHealth = GetComponent<EnemyHealth>().health; 
+       maxHealth = GetComponent<EnemyHealth>().health;
+        bossHealthBar = FindObjectOfType<TextMeshProUGUI>();
         
+
+
     }
     
     void Update()
     {
-
+        
         health = GetComponent<EnemyHealth>().health;
+
+        if (health > 0)
+        {
+            bossHealthBar.text = "BossHp:" + health;
+        }
+        else
+        {
+            bossHealthBar.text = " ";
+        }
         float tempHp = health;
         healthPercentage = tempHp / maxHealth;
         if (!finalPhase && health< 500&&!attacking)
@@ -593,5 +607,9 @@ public class BossScript : MonoBehaviour
     void OnDestroy()
     {
         Instantiate(deathExplosion, transform.position, transform.rotation);
+    }
+    public void showBossHealth()
+    {
+
     }
 }
