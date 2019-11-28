@@ -16823,12 +16823,12 @@ PrefabInstance:
     - target: {fileID: 5701079050772413550, guid: f33bd92052b56614d920ebad20d5a375,
         type: 3}
       propertyPath: topRooms.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5701079050772413550, guid: f33bd92052b56614d920ebad20d5a375,
         type: 3}
       propertyPath: bottomRooms.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5701079050772413550, guid: f33bd92052b56614d920ebad20d5a375,
         type: 3}
@@ -17020,13 +17020,13 @@ PrefabInstance:
         type: 3}
       propertyPath: bottomRooms.Array.data[6]
       value: 
-      objectReference: {fileID: 2212928899180742410, guid: bef8200be9070ae4286c33e7a5cf8250,
+      objectReference: {fileID: 2212928899180742410, guid: 5bb502b8eae489c4287b57b567de262f,
         type: 3}
     - target: {fileID: 5701079050772413550, guid: f33bd92052b56614d920ebad20d5a375,
         type: 3}
       propertyPath: topRooms.Array.data[6]
       value: 
-      objectReference: {fileID: 2212928899180742410, guid: bef8200be9070ae4286c33e7a5cf8250,
+      objectReference: {fileID: 2212928899180742410, guid: 5bb502b8eae489c4287b57b567de262f,
         type: 3}
     - target: {fileID: 5701079050772413550, guid: f33bd92052b56614d920ebad20d5a375,
         type: 3}
@@ -17038,12 +17038,14 @@ PrefabInstance:
         type: 3}
       propertyPath: bottomRooms.Array.data[7]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2212928899180742410, guid: 5bb502b8eae489c4287b57b567de262f,
+        type: 3}
     - target: {fileID: 5701079050772413550, guid: f33bd92052b56614d920ebad20d5a375,
         type: 3}
       propertyPath: topRooms.Array.data[7]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2212928899180742410, guid: bef8200be9070ae4286c33e7a5cf8250,
+        type: 3}
     - target: {fileID: 5701079050772413550, guid: f33bd92052b56614d920ebad20d5a375,
         type: 3}
       propertyPath: topRooms.Array.data[8]
