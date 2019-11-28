@@ -9,8 +9,8 @@ public class RoomInternalBehaviour : MonoBehaviour
     public bool teleporterRoom = false;
     public bool enemiesInRoom = false;
     void Start()
-    {
-        
+    {   
+
     }
 
     void Update()
@@ -79,5 +79,10 @@ public class RoomInternalBehaviour : MonoBehaviour
     public void SetAsTeleporterRoom()
     {
         teleporterRoom = true;
+    }
+
+    public void TurnOnRoomLights()
+    {
+        gameObject.transform.BroadcastMessage("LightOn");
     }
 }

@@ -13,6 +13,7 @@ public class RoomTrigger : MonoBehaviour
         if (other.CompareTag("Player") && !triggered)
         {
             triggered = true;
+            GetComponentInParent<RoomInternalBehaviour>().TurnOnRoomLights();
             objectGenerators = gameObject.GetComponentsInChildren<ObjectGenerator>();
 
             foreach (ObjectGenerator spawnPoint in objectGenerators)
