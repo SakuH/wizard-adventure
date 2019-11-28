@@ -63,11 +63,30 @@ public class BackgroundAudio : MonoBehaviour
         
     }
 
+    public static IEnumerator FadeToNextBgm(AudioSource audioSource, AudioClip nextAudioClip, float duration, float targetVolume, float nextClipVolume, float delayForNextClip)
+    {
+        float currentTime = 0;
+        float start = audioSource.volume;
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+        audioSource.Stop();
+        audioSource.volume = nextClipVolume;
+        audioSource.clip = nextAudioClip;
+        audioSource.PlayDelayed(delayForNextClip);
+        
+        yield break;
+    }
+
     public void PlayBossMusic()
     {
-        audioSource.Stop();
-        audioSource.clip = bossBgm;
-        audioSource.PlayDelayed(2);
+        //audioSource.Stop();
+        StartCoroutine(FadeToNextBgm(audioSource, bossBgm, 2.0f, 0.0f, bgmVolume, 2.0f));
+
     }
 
     // Update is called once per frame
