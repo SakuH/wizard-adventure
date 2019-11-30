@@ -41,12 +41,15 @@ public class GunController : MonoBehaviour
     public GameObject weapon;
 
     public GameObject impactEffect;
+    
 
     public GameObject[] anotherWeapons;
 
     public float rotatingSpeed = 5f;
     public float rotatingHeight = 0.5f;
     Vector3 rotatingPos;
+
+    Vector3 tempPos;
     public bool isRotating;
     public Transform firePoint;
 
@@ -75,10 +78,16 @@ public class GunController : MonoBehaviour
        // rotator =  weapon.GetComponent<Rotator>();
        // weaponEquiped = false;
         canPickup = false;
-        rotatingPos = transform.position;
+        rotatingPos =transform.position;
+        Debug.Log(rotatingPos);
+        Debug.Log(equipedWeapon);
         
+
+       //rotatingPos = this.transform.InverseTransformPoint(transform.position);
+
         line = firePoint.GetComponent<LineRenderer>();
         line.enabled = false;
+        
         lightWeapon = firePoint.GetComponent<Light>();
         lightWeapon.enabled = false;
        // light = firePoint.GetComponent<Light>();
@@ -90,6 +99,8 @@ public class GunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
         if (equipedWeapon == 0)
         {
             
@@ -178,11 +189,16 @@ public class GunController : MonoBehaviour
         
 
          if ( isRotating){
-
-        float newY = Mathf.Sin(Time.time * rotatingSpeed) * rotatingHeight + rotatingPos.y;
-        transform.position = new Vector3(rotatingPos.x,newY,rotatingPos.z) * rotatingHeight;
-        transform.Rotate(new Vector3(0,30,45)*Time.deltaTime);
-
+        
+        transform.Rotate(new Vector3(0,30,45) *Time.deltaTime , Space.World);
+        tempPos = rotatingPos;
+        tempPos.y += Mathf.Sin(Time.fixedTime * Mathf.PI * 1f) * 0.5f;
+        //float newY = Mathf.Sin(Time.time * rotatingSpeed) * rotatingHeight + rotatingPos.y;
+        //transform.position = new Vector3(rotatingPos.x,newY,rotatingPos.z) * rotatingHeight;
+        //transform.position= new Vector3(rotatingPos.x,newY,rotatingPos.z) * rotatingHeight;
+        transform.position = tempPos;
+        
+        
         }
     }
 
@@ -277,10 +293,12 @@ public class GunController : MonoBehaviour
             }
         Ray ray = new Ray(firePoint.position, firePoint.forward);
         //RaycastHit hit;
+         //line.SetPosition(0,firePoint.localPosition);
         line.SetPosition(0,ray.origin);
 
         if(Physics.Raycast(ray, out hit,100) )
         {
+           // line.SetPosition(1, line.transform.InverseTransformPoint(hit.point));
             line.SetPosition(1, hit.point);
             
                if(isFiring && Time.time > nextFire)

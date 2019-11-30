@@ -209,9 +209,14 @@ MonoBehaviour:
   weaponDamage: 0
   equipedWeapon: 0
   timeBetweenShots: 0.1
+  sfxVolume: 0
+  minPitch: 0.7
+  maxPitch: 1.2
+  weaponSound: {fileID: 0}
   mainPlayerHand: {fileID: 0}
   player: {fileID: 0}
   weapon: {fileID: 3789602533598380137}
+  impactEffect: {fileID: 0}
   anotherWeapons: []
   rotatingSpeed: 5
   rotatingHeight: 0.5
