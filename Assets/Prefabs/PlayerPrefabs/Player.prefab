@@ -760,6 +760,7 @@ GameObject:
   - component: {fileID: 364221710140522841}
   - component: {fileID: 364221710140522840}
   - component: {fileID: 52889209337831504}
+  - component: {fileID: 3451606362297117633}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1056,6 +1057,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3451606362297117633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364221710140522843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9a54c5e20783b46a3ac19f90e99116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomsCleared: 0
+  damageDone: 0
+  enemiesDefeated: 0
 --- !u!1 &364221710166108532
 GameObject:
   m_ObjectHideFlags: 0
@@ -2763,6 +2779,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 77690ce519ab13e4aab93a59e5573892, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 767de8a1ae45c6d4ca1d28d3af553a02, type: 2}
     - target: {fileID: 400076, guid: 77690ce519ab13e4aab93a59e5573892, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2819,18 +2839,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 77690ce519ab13e4aab93a59e5573892, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 767de8a1ae45c6d4ca1d28d3af553a02, type: 2}
-    - target: {fileID: 100160, guid: 77690ce519ab13e4aab93a59e5573892, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 77690ce519ab13e4aab93a59e5573892, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b52f3ec8118000949a3cdaee393c3eff, type: 2}
+    - target: {fileID: 100160, guid: 77690ce519ab13e4aab93a59e5573892, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77690ce519ab13e4aab93a59e5573892, type: 3}
 --- !u!4 &686072221349987134 stripped

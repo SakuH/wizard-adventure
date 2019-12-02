@@ -17,6 +17,8 @@ public class NextLevelTeleport : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerMovement>().SavePlayerData(nextFloorNumber);
+            other.GetComponent<PlayerMovement>().currentTowerFloor = nextFloorNumber;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<GameStats>().SaveStats();
             SceneManager.LoadScene(nextFloorNumber);
 
         }

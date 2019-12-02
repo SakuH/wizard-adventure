@@ -120,4 +120,46 @@ public static class SaveSystem
             
         }
     }
+
+    public static void SaveGameStats(GameObject player)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+
+        string path = Path.Combine(Application.persistentDataPath, "gamestats.sav");
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        GameStatsData data = new GameStatsData(player);
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+
+    }
+
+    public static GameStatsData LoadStats()
+    {
+        string path = Path.Combine(Application.persistentDataPath, "gamestats.sav");
+        try
+        {
+            if (File.Exists(path))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream stream = new FileStream(path, FileMode.Open);
+
+                GameStatsData data = formatter.Deserialize(stream) as GameStatsData;
+                stream.Close();
+
+                return data;
+            }
+            else
+            {
+                Debug.LogError("Game stats file not found in " + path);
+                return null;
+            }
+        }
+        catch (System.Exception)
+        {
+            Debug.LogError("Game stats file not found in " + path);
+            return null;
+        }
+    }
 }

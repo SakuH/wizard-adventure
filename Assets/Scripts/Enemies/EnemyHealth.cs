@@ -60,7 +60,10 @@ public class EnemyHealth : MonoBehaviour
             health -= damage;
         //on damage call the animation/sound/or effect you want to display when the enemy takes damage from the base script 
         if (!dead)
-        {   if(turretScript != null)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<GameStats>().AddDamageDone(damage);
+
+            if (turretScript != null)
             {
                 turretScript.takeDamageEffect();
             }        
@@ -87,9 +90,10 @@ public class EnemyHealth : MonoBehaviour
        
 
         
-        if (health <= 0)
+        if (!dead && health <= 0)
         {
             dead = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<GameStats>().AddEnemyDefeated();
             //call gameobject destruction function here from the main script instead
             Destroy(gameObject,5);
             

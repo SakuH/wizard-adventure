@@ -43,6 +43,7 @@ public class RoomInternalBehaviour : MonoBehaviour
             if (enemies.Count == 0)
             {
                 OpenRoomDoors();
+                GameObject.FindGameObjectWithTag("Player").GetComponent<GameStats>().AddClearedRoom();
                 if (teleporterRoom)
                 {
                     GetComponentInChildren<BossTeleporter>().ActivateTeleporter();
