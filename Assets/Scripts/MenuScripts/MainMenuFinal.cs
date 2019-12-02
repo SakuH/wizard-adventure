@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuFinal : MonoBehaviour
 {
     public GameObject continueButton;
+    public GameObject statsButton;
 
     private void Start()
     {
@@ -15,7 +16,12 @@ public class MainMenuFinal : MonoBehaviour
         {
             continueButton.SetActive(true);
         }
-        
+        GameStatsData gsData = SaveSystem.LoadStats();
+        if (gsData != null)
+        {
+            statsButton.SetActive(true);
+        }
+
     }
 
     public void ContinueGame()
