@@ -411,6 +411,7 @@ MonoBehaviour:
   chaserScript: {fileID: 0}
   chaserShooterScript: {fileID: 4855304159220392607}
   bossScript: {fileID: 0}
+  isAbleToTakeDamage: 1
 --- !u!114 &4855304159220392607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,7 +430,7 @@ MonoBehaviour:
   turnSpeed: 200
   playerDistanceOffset: 1
   raycastLength: 0.5
-  timeBetweenShots: 10
+  timeBetweenShots: 1
   damage: 1
   firingPoint: {fileID: 1073663748202049053}
   projectile: {fileID: 2112889790430857118, guid: f456e9061e472dc4a90a4aa1ab82fb68,

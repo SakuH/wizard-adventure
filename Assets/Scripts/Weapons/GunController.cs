@@ -14,6 +14,8 @@ public class GunController : MonoBehaviour
 
     public Bullet bullet;
 
+    //public GameObject secondBullet;
+
     private PlayerMovement playerMovement;
     public float bulletSpeed;
 
@@ -253,6 +255,15 @@ public class GunController : MonoBehaviour
         newBullet.setZ = 1;
         newBullet.bulletspeed = bulletSpeed;
         newBullet.setDamage = weaponDamage;
+
+        /*GameObject newBullet2 = Instantiate(secondBullet,firePoint.position, firePoint.rotation) ;
+        newBullet2.GetComponent<Bullet>().setX = 0;
+        newBullet2.GetComponent<Bullet>().setY = 0;
+        newBullet2.GetComponent<Bullet>().setZ = 1;
+        newBullet2.GetComponent<Bullet>().bulletspeed = bulletSpeed;
+        newBullet2.GetComponent<Bullet>().setDamage = weaponDamage;*/
+
+
         yield return null;
     }
 
