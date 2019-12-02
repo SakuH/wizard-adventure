@@ -8,6 +8,9 @@ public class IntroSceneManager : MonoBehaviour
     public GameObject teleportPrefab;
     public int nextScene;
     public GameObject teleportObject;
+
+    public AudioClip itsLate, forgotKeys;
+    static AudioSource audioSrc;
     void Start()
     {
         
@@ -16,7 +19,11 @@ public class IntroSceneManager : MonoBehaviour
    
     void Update()
     {
-        
+        if (Input.GetKeyDown("space"))
+        {
+
+            loadLevelOne();
+        }
     }
     public void loadLevelOne()
     {
@@ -29,4 +36,5 @@ public class IntroSceneManager : MonoBehaviour
         Instantiate(teleportPrefab, teleportObject.transform.position, transform.rotation);
         
     }
+    
 }

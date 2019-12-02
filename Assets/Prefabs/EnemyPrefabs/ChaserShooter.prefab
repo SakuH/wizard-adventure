@@ -412,6 +412,9 @@ MonoBehaviour:
   chaserShooterScript: {fileID: 4855304159220392607}
   bossScript: {fileID: 0}
   isAbleToTakeDamage: 1
+  itemChanceRolled: 0
+  hpPickup: {fileID: 6341991011837479614, guid: f9309c6a61e11ae43a46893d96aa5dc0,
+    type: 3}
 --- !u!114 &4855304159220392607
 MonoBehaviour:
   m_ObjectHideFlags: 0

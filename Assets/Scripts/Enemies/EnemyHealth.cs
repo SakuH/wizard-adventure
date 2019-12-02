@@ -16,21 +16,37 @@ public class EnemyHealth : MonoBehaviour
 
     public bool isAbleToTakeDamage = true;
 
-    
+    public bool itemChanceRolled = false;
+    public GameObject hpPickup;
+
+    private GameObject player;
+    public int dropChance = 10;
     void Start()
     {
 
         //find the base script from the game object
-       // turretScript= gameObject.GetComponent<Enemy4WayTurret>();
+        // turretScript= gameObject.GetComponent<Enemy4WayTurret>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
-
-    
     void Update()
     {
         if (dead)
         {
             //call death animations from script 
-           // enemyParent.transform.position = new Vector3(transform.position.x, transform.position.y + deathJumpSpeed * Time.deltaTime, transform.position.z);
+            // enemyParent.transform.position = new Vector3(transform.position.x, transform.position.y + deathJumpSpeed * Time.deltaTime, transform.position.z);
+            if (!itemChanceRolled&& hpPickup != null)
+            {
+                itemChanceRolled = true;
+                int randomNumber = Random.Range(1,100);
+                Debug.Log(randomNumber);
+                if (randomNumber <= dropChance)
+                {
+                    Vector3 spawnPos = transform.position;
+                    spawnPos.y = player.transform.position.y - 1 ;
+                    Instantiate(hpPickup, spawnPos, Quaternion.identity);
+
+                }
+            }
        
             if (turretScript != null)
             {
@@ -95,7 +111,15 @@ public class EnemyHealth : MonoBehaviour
             dead = true;
             GameObject.FindGameObjectWithTag("Player").GetComponent<GameStats>().AddEnemyDefeated();
             //call gameobject destruction function here from the main script instead
-            Destroy(gameObject,5);
+            if(turretScript != null)
+            {
+                Destroy(enemyParent, 2);
+            }
+            else
+            {
+                Destroy(gameObject,5);
+            }
+            
             
         }
 

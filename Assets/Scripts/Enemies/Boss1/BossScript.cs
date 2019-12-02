@@ -147,6 +147,10 @@ public class BossScript : MonoBehaviour
         
         if (spinning)
         {
+            if (!finalPhase && health < 500)
+            {
+                GetComponent<EnemyHealth>().isAbleToTakeDamage = false;          
+            }
             spinAttack();
         }
 

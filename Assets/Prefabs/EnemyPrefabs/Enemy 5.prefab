@@ -330,6 +330,11 @@ MonoBehaviour:
   turretScript: {fileID: 1352754251651692460}
   chaserScript: {fileID: 0}
   chaserShooterScript: {fileID: 0}
+  bossScript: {fileID: 0}
+  isAbleToTakeDamage: 1
+  itemChanceRolled: 0
+  hpPickup: {fileID: 6341991011837479614, guid: f9309c6a61e11ae43a46893d96aa5dc0,
+    type: 3}
 --- !u!1 &1352754252126113934
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,7 +345,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1352754252126113921}
   m_Layer: 8
-  m_Name: Enemy 3 (1)
+  m_Name: Enemy 5
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

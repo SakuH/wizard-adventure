@@ -33,7 +33,7 @@ public class MainMenuFinal : MonoBehaviour
     public void StartNewGame()
     {
         SaveSystem.DeletePlayer();
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(5);
     }
     public void Quitgame()
     {
