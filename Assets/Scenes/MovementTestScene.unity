@@ -3305,17 +3305,17 @@ PrefabInstance:
     - target: {fileID: 3789602533598380136, guid: e152f4436604bee488f457cec27209a3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.22
+      value: 9.46
       objectReference: {fileID: 0}
     - target: {fileID: 3789602533598380136, guid: e152f4436604bee488f457cec27209a3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.31
+      value: 2.41
       objectReference: {fileID: 0}
     - target: {fileID: 3789602533598380136, guid: e152f4436604bee488f457cec27209a3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.51
+      value: -146.03
       objectReference: {fileID: 0}
     - target: {fileID: 3789602533598380136, guid: e152f4436604bee488f457cec27209a3,
         type: 3}
@@ -4422,6 +4422,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 364221710140522843, guid: 8d82db82c1295ff44bba0db4d30c4c60,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4485364544953317768, guid: 8d82db82c1295ff44bba0db4d30c4c60,
         type: 3}
       propertyPath: m_sharedMaterial
@@ -4441,11 +4446,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BossHealthBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 364221710140522843, guid: 8d82db82c1295ff44bba0db4d30c4c60,
-        type: 3}
-      propertyPath: m_Name
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 364221710140522818, guid: 8d82db82c1295ff44bba0db4d30c4c60,
         type: 3}
