@@ -6,7 +6,7 @@ using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
     private TrailRenderer trailEffect;
-   
+    private bool isQuitting;
     public GameObject player;
     public float movementSpeed = 4;
     private Rigidbody rb;
@@ -129,7 +129,16 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-
+        if (isQuitting)
+        {
+            if (isSpeedBoosting)
+            {
+                movementSpeed = baseMoveSpeed;
+                isSpeedBoosting = false;
+                speedBoostCooldown = 0;
+                speedBoostDuration = 0;
+            }
+        }
     }
 
     void FixedUpdate()
@@ -413,5 +422,8 @@ public class PlayerMovement : MonoBehaviour
         knockbackDirForce = knockbackDir;
       
     }
-  
+    void OnApplicationQuit()
+    {
+        isQuitting = true;
+    }
 }

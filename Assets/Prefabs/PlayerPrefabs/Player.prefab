@@ -761,7 +761,7 @@ GameObject:
   - component: {fileID: 364221710140522840}
   - component: {fileID: 52889209337831504}
   - component: {fileID: 3451606362297117633}
-  - component: {fileID: -8501522526191198746}
+  - component: {fileID: 5889478758015771028}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1075,7 +1075,7 @@ MonoBehaviour:
   roomsCleared: 0
   damageDone: 0
   enemiesDefeated: 0
---- !u!96 &
+--- !u!96 &5889478758015771028
 TrailRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0

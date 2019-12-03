@@ -216,6 +216,7 @@ public class PlayerHealth : MonoBehaviour
 
         tempColor.a = fadeToBlackColor;
         backgroundImage.color = tempColor;
+        playerScript.movementSpeed = 0;
 
         FindObjectOfType<gameManagement>().endGame();
     }
@@ -243,6 +244,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (playerScript.isSpeedBoosting)
         {
+
             var tempColor = SprintBoostPanel.color;
             tempColor.a = 230f;
 
