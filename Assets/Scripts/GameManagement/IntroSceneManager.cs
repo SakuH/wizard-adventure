@@ -27,7 +27,7 @@ public class IntroSceneManager : MonoBehaviour
     }
     public void loadLevelOne()
     {
-        SceneManager.LoadScene(nextScene);
+        SceneManager.LoadScene("Tutorial Level");
     }
     public void instantiateTeleportAnimation()
     {

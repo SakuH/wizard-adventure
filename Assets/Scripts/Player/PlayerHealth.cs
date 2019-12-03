@@ -20,6 +20,8 @@ public class PlayerHealth : MonoBehaviour
     public float vulnerableCoolDown;
     public float vulnerableCoolDownMax;
 
+    public Image SprintBoostPanel;
+    public Image DashBoostPanel;
 
     public Material normalMat;
    // public Material hatMaterial;
@@ -38,7 +40,9 @@ public class PlayerHealth : MonoBehaviour
 
     public float minPitch = 0.9f;
     public float maxPitch = 1.1f;
-
+    private Color originalBoostColor;
+    private Color originalDashColor;
+    
     public AudioClip playerTakeDamageClip;
 
     // Start is called before the first frame update
@@ -47,7 +51,9 @@ public class PlayerHealth : MonoBehaviour
         playerScript = playerParent.GetComponent<PlayerMovement>();
         sfxVolume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameAudioSettings>().sfxVolume;
         knockbackTimeMax = 0.15f;
-       // hatMaterial.SetColor("_Color", Color.white);
+        // hatMaterial.SetColor("_Color", Color.white);
+        originalBoostColor = SprintBoostPanel.color;
+        originalDashColor = DashBoostPanel.color;
     }
 
     // Update is called once per frame
@@ -134,6 +140,8 @@ public class PlayerHealth : MonoBehaviour
         {
             knockbackTime -= Time.deltaTime;
         }
+        dashSkillCooldown();
+        boostSkillCooldown();
     }
 
 
@@ -212,4 +220,48 @@ public class PlayerHealth : MonoBehaviour
         FindObjectOfType<gameManagement>().endGame();
     }
 
+    public void dashSkillCooldown()
+    {
+
+        if (playerScript.dashCooldown > 0|| playerScript.isDashing)
+        {
+            var tempColor = DashBoostPanel.color;
+            tempColor = Color.red;
+            tempColor.a = 180f;
+
+            DashBoostPanel.color = tempColor;
+
+        }
+
+        if (playerScript.dashCooldown <= 0 && !playerScript.isDashing)
+        {            
+            DashBoostPanel.color = originalDashColor;
+        }
+   
+    }
+    public void boostSkillCooldown()
+    {
+        if (playerScript.isSpeedBoosting)
+        {
+            var tempColor = SprintBoostPanel.color;
+            tempColor.a = 230f;
+
+            SprintBoostPanel.color = tempColor;
+
+
+        }
+        if (playerScript.speedBoostCooldown > 0)
+        {
+            var tempColor = SprintBoostPanel.color;
+            tempColor = Color.red;
+            tempColor.a = 180f;
+            
+            SprintBoostPanel.color = tempColor;
+
+        }
+        if(playerScript.speedBoostCooldown <= 0&& !playerScript.isSpeedBoosting)
+        {
+            SprintBoostPanel.color = originalBoostColor;
+        }
+    }
 }
