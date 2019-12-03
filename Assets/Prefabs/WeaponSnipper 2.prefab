@@ -8639,7 +8639,7 @@ MonoBehaviour:
   sfxVolume: 0
   minPitch: 0.7
   maxPitch: 1.2
-  weaponSound: {fileID: 8300000, guid: 96e9ec9e60ae06346a728b988b5c9b1e, type: 3}
+  weaponSound: {fileID: 8300000, guid: 7020f67507d2c0c48b4e7a2449bfad82, type: 3}
   mainPlayerHand: {fileID: 0}
   player: {fileID: 0}
   weapon: {fileID: 5089723261468602206}
