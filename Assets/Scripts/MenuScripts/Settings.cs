@@ -13,6 +13,8 @@ public class Settings : MonoBehaviour
     public float currentsfx = 0.5f;
     public Slider bgmSlider;
     public Slider sfxSlider;
+
+    public AudioClip sfxTestClip;
     void Start()
     {
         LoadSettings();
@@ -67,11 +69,22 @@ public class Settings : MonoBehaviour
     public void SetBackgroundMusic(float value)
     {
         currentbgm = value;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().volume = currentbgm;
     }
 
     public void SetSoundEffects(float value)
     {
         currentsfx = value;
+        if (!GameObject.Find("SFX Test"))
+        {
+            GameObject clipGameObject = new GameObject("SFX Test");
+            AudioSource source = clipGameObject.AddComponent<AudioSource>();
+            clipGameObject.transform.position = transform.position;
+            source.clip = sfxTestClip;
+            source.volume = currentsfx;
+            source.Play();
+            Destroy(clipGameObject, sfxTestClip.length);
+        }
     }
 
     public void SaveSettings()

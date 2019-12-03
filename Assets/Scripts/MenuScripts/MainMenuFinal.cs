@@ -21,6 +21,11 @@ public class MainMenuFinal : MonoBehaviour
         {
             statsButton.SetActive(true);
         }
+        SettingsData settingsData = SaveSystem.LoadSettings();
+        if (settingsData != null)
+        {
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().volume = settingsData.bgm;
+        }
 
     }
 
