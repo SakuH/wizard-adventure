@@ -38,7 +38,7 @@ public class MainMenuFinal : MonoBehaviour
     public void StartNewGame()
     {
         SaveSystem.DeletePlayer();
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene("IntroScene");
     }
     public void Quitgame()
     {
