@@ -28,14 +28,14 @@ public class gameManagement : MonoBehaviour
         {
             
             gameOver = true;          
-            Invoke("restart", resetDelay);
+            //Invoke("restart", resetDelay);
         }
     }
 
     public void restart()
     { Time.timeScale = 1f;
         GameIsPaused = false;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenuFinal");
        
     }
 

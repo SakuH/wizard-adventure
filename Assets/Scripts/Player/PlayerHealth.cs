@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
-{
+{   
     public GameObject playerParent;
+    public GameObject skillUi;
+    public GameObject gameOverUi;
+    public GameObject bossHpUi;
     public float health;
     public bool dead; 
     public float maxHealth;
@@ -44,6 +47,8 @@ public class PlayerHealth : MonoBehaviour
     private Color originalDashColor;
     
     public AudioClip playerTakeDamageClip;
+
+    private bool canReturnToMainMenu = false;
 
     // Start is called before the first frame update
     void Start()
@@ -97,13 +102,22 @@ public class PlayerHealth : MonoBehaviour
             {
                 hearts[i].enabled = false;
             }
-
+           
 
         }
 
         if(health <= 0)
         {
             gameOver();
+            skillUi.SetActive(false);
+            bossHpUi.SetActive(false);
+            
+                for (int y = 0; y < hearts.Length; y++)
+            {
+                hearts[y].enabled = false;
+            }
+                   
+            
         }
 
         if (vulnerableCoolDown > 0)
@@ -142,6 +156,11 @@ public class PlayerHealth : MonoBehaviour
         }
         dashSkillCooldown();
         boostSkillCooldown();
+        if (Input.GetKeyDown("space")&&canReturnToMainMenu)
+        {
+
+            FindObjectOfType<gameManagement>().restart();
+        }
     }
 
 
@@ -219,10 +238,12 @@ public class PlayerHealth : MonoBehaviour
         playerScript.movementSpeed = 0;
 
         FindObjectOfType<gameManagement>().endGame();
+        Invoke("showGameOverText", 3);
     }
 
     public void dashSkillCooldown()
     {
+       
 
         if (playerScript.dashCooldown > 0|| playerScript.isDashing)
         {
@@ -242,6 +263,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void boostSkillCooldown()
     {
+       
         if (playerScript.isSpeedBoosting)
         {
 
@@ -265,5 +287,10 @@ public class PlayerHealth : MonoBehaviour
         {
             SprintBoostPanel.color = originalBoostColor;
         }
+    }
+    public void showGameOverText()
+    {
+        gameOverUi.SetActive(true);
+        canReturnToMainMenu = true;
     }
 }
