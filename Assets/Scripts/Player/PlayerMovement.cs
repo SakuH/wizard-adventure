@@ -5,6 +5,8 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private TrailRenderer trailEffect;
+   
     public GameObject player;
     public float movementSpeed = 4;
     private Rigidbody rb;
@@ -69,7 +71,9 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         baseMoveSpeed = movementSpeed;
         setWeaponPickUpText("");
-       // mainCamera = Camera.main;
+        // mainCamera = Camera.main;
+        trailEffect = gameObject.GetComponent<TrailRenderer>();
+        trailEffect.enabled = false;
     }
 
     void Update()
@@ -110,6 +114,21 @@ public class PlayerMovement : MonoBehaviour
         {
             playerAnimator.SetBool("Walking", false);
         }
+        if (isDashing||isSpeedBoosting)
+        {
+            if (trailEffect.enabled == false)
+            {
+                trailEffect.enabled = true;
+            }
+        }
+        else
+        {
+            if (trailEffect.enabled == true)
+            {
+                trailEffect.enabled = false;
+            }
+        }
+
 
     }
 
@@ -118,8 +137,8 @@ public class PlayerMovement : MonoBehaviour
         groundCheck();
         wallCheck();
         if (!isDashing && player.GetComponent<PlayerHealth>().knockbackTime<= 0)
-        {        
-         rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y, moveVelocity.z);
+        {         
+            rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y, moveVelocity.z);
         }
       
         if(player.GetComponent<PlayerHealth>().knockbackTime > 0)
@@ -261,10 +280,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (dashCooldown <= 0)
         {
-
-            
-                //if (Input.GetKeyDown("space"))
-                if (Input.GetMouseButtonDown(1)&& (Input.GetAxisRaw("Horizontal")!=0)|| Input.GetMouseButtonDown(1) && (Input.GetAxisRaw("Vertical") != 0))
+                       
+            //if (Input.GetKeyDown("space"))
+            if (Input.GetMouseButtonDown(1)&& (Input.GetAxisRaw("Horizontal")!=0)|| Input.GetMouseButtonDown(1) && (Input.GetAxisRaw("Vertical") != 0))
             {
 
 
@@ -321,7 +339,7 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 if (isDashing)
-                {
+                {                                  
                     isDashing = false;
                 dashCooldown = dashCooldownTime;
 

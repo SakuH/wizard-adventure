@@ -31,6 +31,7 @@ public class BossScript : MonoBehaviour
     public bool closeToPlayer;
     public float raycastLength;
     public float raycastHeight = 3;
+    private bool isQuitting;
 
     public GameObject groundslamPrefab;
     public GameObject groundslamForwardPrefab;
@@ -69,7 +70,7 @@ public class BossScript : MonoBehaviour
     public bool finalPhase;
     private int explosionCount;
     public TextMeshProUGUI bossHealthBar;
-
+   
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -610,10 +611,22 @@ public class BossScript : MonoBehaviour
     }
     void OnDestroy()
     {
-        Instantiate(deathExplosion, transform.position, transform.rotation);
+        if (!isQuitting)
+        {
+            Instantiate(deathExplosion, transform.position, transform.rotation);
+        }
+       
     }
     public void showBossHealth()
     {
 
     }
+
+    void OnApplicationQuit()
+    {
+        isQuitting = true;
+    }
+    
+      
+    
 }
