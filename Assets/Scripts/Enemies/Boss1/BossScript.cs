@@ -509,7 +509,7 @@ public class BossScript : MonoBehaviour
         
         RaycastHit objectHit;
         Vector3 raycastLocation = transform.position;
-        raycastLocation.y = raycastHeight;
+        raycastLocation.y = raycastLocation.y + raycastHeight;
         Debug.DrawRay(raycastLocation, fwd * raycastLength, Color.green);
         if (Physics.Raycast(raycastLocation, fwd, out objectHit, raycastLength))
         {

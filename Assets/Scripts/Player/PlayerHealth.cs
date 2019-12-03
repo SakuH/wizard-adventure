@@ -237,7 +237,7 @@ public class PlayerHealth : MonoBehaviour
         backgroundImage.color = tempColor;
         playerScript.movementSpeed = 0;
 
-        FindObjectOfType<gameManagement>().endGame();
+       // FindObjectOfType<gameManagement>().endGame();
         Invoke("showGameOverText", 3);
     }
 

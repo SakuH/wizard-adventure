@@ -153,7 +153,7 @@ MonoBehaviour:
   amountOfForwardAttacksMaxFinalPhase: 6
   closeToPlayer: 0
   raycastLength: 2
-  raycastHeight: 1
+  raycastHeight: -1
   groundslamPrefab: {fileID: 8162773662206581984, guid: 6447b5ab58253124986d9e6ab71e9b7a,
     type: 3}
   groundslamForwardPrefab: {fileID: 4508588348649034417, guid: 090b92d50da4a6c48bdacedb886af070,
