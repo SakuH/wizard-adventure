@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4110705479032831066}
   - component: {fileID: 5874190183806313184}
   m_Layer: 2
-  m_Name: Weapon Pistol 3
+  m_Name: WeaponLaser 1
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5089723261468602206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1071188183341234688}
   m_Father: {fileID: 0}
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 294ceebedac50824cb83d14864be3968, type: 2}
+  - {fileID: 2100000, guid: 6148cd2abf54e8049af641619d523ad5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8632,10 +8632,10 @@ MonoBehaviour:
     type: 3}
   snipperBullet: {fileID: 5604830854780157620, guid: 3af431f0877051f40a2089e85bd39a98,
     type: 3}
-  bulletSpeed: 26
-  weaponDamage: 3
-  equipedWeapon: 0
-  timeBetweenShots: 0.1
+  bulletSpeed: 0
+  weaponDamage: 1
+  equipedWeapon: 3
+  timeBetweenShots: 0.2
   sfxVolume: 0
   minPitch: 0.7
   maxPitch: 1.2
@@ -8643,7 +8643,8 @@ MonoBehaviour:
   mainPlayerHand: {fileID: 0}
   player: {fileID: 0}
   weapon: {fileID: 5089723261468602206}
-  impactEffect: {fileID: 0}
+  impactEffect: {fileID: 1000011396044746, guid: 96b2ec0239d11fa4b9792311efceb8ed,
+    type: 3}
   anotherWeapons: []
   rotatingSpeed: 5
   rotatingHeight: 0.5
@@ -8787,7 +8788,7 @@ Light:
   m_Enabled: 0
   serializedVersion: 9
   m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 5.161827
   m_SpotAngle: 30

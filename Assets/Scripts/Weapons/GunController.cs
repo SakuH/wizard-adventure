@@ -14,6 +14,10 @@ public class GunController : MonoBehaviour
 
     public Bullet bullet;
 
+    public Bullet shotgunBullet;
+
+    public Bullet snipperBullet;
+
     //public GameObject secondBullet;
 
     private PlayerMovement playerMovement;
@@ -208,7 +212,7 @@ public class GunController : MonoBehaviour
     {
         GunBlastSound(weaponSound);
           
-        Bullet newBullet = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
+        Bullet newBullet = Instantiate(shotgunBullet,firePoint.position, firePoint.rotation) as Bullet;
         newBullet.setX = 0;
         newBullet.setY = 0;
         newBullet.setZ = 1;
@@ -217,28 +221,28 @@ public class GunController : MonoBehaviour
         
 
 
-        Bullet newBullet2 = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
+        Bullet newBullet2 = Instantiate(shotgunBullet,firePoint.position, firePoint.rotation) as Bullet;
         newBullet2.setX = -0.06f;
         newBullet2.setY = 0;
         newBullet2.setZ = 1;
         newBullet2.bulletspeed = bulletSpeed;
         newBullet2.setDamage = weaponDamage;
 
-        Bullet newBullet3 = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
+        Bullet newBullet3 = Instantiate(shotgunBullet,firePoint.position, firePoint.rotation) as Bullet;
         newBullet3.setX = 0.06f;
         newBullet3.setY = 0;
         newBullet3.setZ = 1;
         newBullet3.bulletspeed = bulletSpeed;
         newBullet3.setDamage = weaponDamage;
 
-        Bullet newBullet4 = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
+        Bullet newBullet4 = Instantiate(shotgunBullet,firePoint.position, firePoint.rotation) as Bullet;
         newBullet4.setX = -0.03f;
         newBullet4.setY = 0;
         newBullet4.setZ = 1;
         newBullet4.bulletspeed = bulletSpeed;
         newBullet4.setDamage = weaponDamage;
 
-        Bullet newBullet5 = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
+        Bullet newBullet5 = Instantiate(shotgunBullet,firePoint.position, firePoint.rotation) as Bullet;
         newBullet5.setX = 0.03f;
         newBullet5.setY = 0;
         newBullet5.setZ = 1;
@@ -270,7 +274,7 @@ public class GunController : MonoBehaviour
     private void sniperProjectiles()
     {
         GunBlastSound(weaponSound);
-        Bullet newBullet = Instantiate(bullet,firePoint.position, firePoint.rotation) as Bullet;
+        Bullet newBullet = Instantiate(snipperBullet,firePoint.position, firePoint.rotation) as Bullet;
         newBullet.bulletspeed = bulletSpeed;
         newBullet.setX = 0;
         newBullet.setY = 0;
