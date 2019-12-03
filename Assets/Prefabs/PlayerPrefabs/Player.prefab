@@ -910,10 +910,10 @@ MonoBehaviour:
   speedBoostCooldownTime: 7.5
   isSpeedBoosting: 0
   weaponList:
-  - {fileID: 3789602533598380137, guid: 1bb7e73076bd09941906c4070c6bcf76, type: 3}
-  - {fileID: 3789602533598380137, guid: e152f4436604bee488f457cec27209a3, type: 3}
-  - {fileID: 3789602533598380137, guid: 4b68c22eb70269b4996adb448005cd70, type: 3}
-  - {fileID: 3789602533598380137, guid: 419b23bcd79795c4b969d45f9c8ea3c6, type: 3}
+  - {fileID: 5089723261468602206, guid: 02da697f0232dbc46a42cf0ee69a60ea, type: 3}
+  - {fileID: 5089723261468602206, guid: 692824100683c8746a7af3c8227bccc4, type: 3}
+  - {fileID: 5089723261468602206, guid: 2e3f43ea01ff55041b3fde61abed274e, type: 3}
+  - {fileID: 5089723261468602206, guid: b6f68693fc5896d4a996d01a8c743d95, type: 3}
   playerAnimator: {fileID: 686072221340445842}
 --- !u!114 &364221710140522840
 MonoBehaviour:
