@@ -76,7 +76,7 @@ public class BossScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
        // attackCooldown = 10;
        maxHealth = GetComponent<EnemyHealth>().health;
-        bossHealthBar = FindObjectOfType<TextMeshProUGUI>();
+       bossHealthBar = FindObjectOfType<TextMeshProUGUI>();
         
 
 

@@ -110,7 +110,6 @@ public class EnemyHealth : MonoBehaviour
 
         }
       
-
         }
         
        
@@ -125,6 +124,10 @@ public class EnemyHealth : MonoBehaviour
             if(turretScript != null)
             {
                 Destroy(enemyParent, 2);
+            }
+            if(bossScript != null)
+            {
+                Destroy(enemyParent,3);
             }
             else
             {

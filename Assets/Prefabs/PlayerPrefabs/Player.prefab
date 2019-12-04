@@ -2550,7 +2550,7 @@ GameObject:
   - component: {fileID: 5044712886583291319}
   m_Layer: 5
   m_Name: BossHealth
-  m_TagString: Untagged
+  m_TagString: BossHpBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
