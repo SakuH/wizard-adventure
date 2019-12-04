@@ -15,11 +15,29 @@ public class BossAnimationSfx : MonoBehaviour
     public AudioClip hit1Clip;
     public AudioClip hit2Clip;
     public AudioClip hit3Clip;
+    public AudioClip footStepClip;
+    public AudioClip swooshClip;
+
+    private AudioSource audioSource;
 
     void Start()
     {
         sfxVolume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameAudioSettings>().sfxVolume;
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = swooshClip;
+        audioSource.volume = sfxVolume;
+    }
 
+    private void Update()
+    {
+        if (gameObject.GetComponentInParent<BossScript>().spinning && !audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+        if (!gameObject.GetComponentInParent<BossScript>().spinning && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
     }
 
     public void BossRoar()
@@ -45,6 +63,13 @@ public class BossAnimationSfx : MonoBehaviour
     {
         BossSound(hit3Clip);
     }
+    public void BossFootStep()
+    {
+        BossSound(footStepClip);
+    }
+
+
+
 
     void BossSound(AudioClip clip)
     {
