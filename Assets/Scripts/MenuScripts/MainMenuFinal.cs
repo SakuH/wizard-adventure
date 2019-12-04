@@ -32,13 +32,16 @@ public class MainMenuFinal : MonoBehaviour
     public void ContinueGame()
     {
         PlayerData pData = SaveSystem.LoadPlayer();
-        SceneManager.LoadScene(pData.currentFloor);
+        //SceneManager.LoadScene(pData.currentFloor);
+        GameObject.Find("LevelChanger").GetComponent<LevelChanger>().FadeToScene(pData.currentFloor);
     }
 
     public void StartNewGame()
     {
         SaveSystem.DeletePlayer();
-        SceneManager.LoadScene("IntroScene");
+        //SceneManager.LoadScene("IntroScene");
+        GameObject.Find("LevelChanger").GetComponent<LevelChanger>().FadeToScene("IntroScene");
+
     }
     public void Quitgame()
     {
