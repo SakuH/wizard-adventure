@@ -237,7 +237,8 @@ public class PlayerHealth : MonoBehaviour
         backgroundImage.color = tempColor;
         playerScript.movementSpeed = 0;
 
-       // FindObjectOfType<gameManagement>().endGame();
+        // FindObjectOfType<gameManagement>().endGame();
+        SaveSystem.DeletePlayer();
         Invoke("showGameOverText", 3);
     }
 
