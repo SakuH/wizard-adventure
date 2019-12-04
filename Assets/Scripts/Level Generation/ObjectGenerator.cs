@@ -28,7 +28,7 @@ public class ObjectGenerator : MonoBehaviour
         else if(objects[rand].CompareTag("Weapon"))
         {   
             GameObject random = objects[rand];
-            random.GetComponent<GunController>().spawnedFromSpawner = true;
+           // random.GetComponent<GunController>().spawnedFromSpawner = true;
             Instantiate(random, transform.position, Quaternion.identity);
            //objects[rand].GetComponent<GunController>().playerChildCount = objects[rand].GetComponent<GunController>().playerChildCount - 1;
         }

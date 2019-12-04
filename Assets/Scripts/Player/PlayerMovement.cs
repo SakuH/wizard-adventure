@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
 {
     private TrailRenderer trailEffect;
     private bool isQuitting;
+
+    public bool hasWeaponEquiped;
     public GameObject player;
     public float movementSpeed = 4;
     private Rigidbody rb;
@@ -57,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
     private readonly float lowPitchRange = 1.4F;
     private readonly float highPitchRange = 1.8F;
 
+    private GameObject mainPlayerHand;
     Vector3 knockbackDirForce;
 
     public Animator playerAnimator;
@@ -68,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        mainPlayerHand = GameObject.Find ("GameObjectHand");
         LoadPlayerData();
         rb = GetComponent<Rigidbody>();
         baseMoveSpeed = movementSpeed;
@@ -75,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
         // mainCamera = Camera.main;
         trailEffect = gameObject.GetComponent<TrailRenderer>();
         trailEffect.enabled = false;
+        
     }
 
     void Update()
@@ -404,7 +409,25 @@ public class PlayerMovement : MonoBehaviour
             player.GetComponent<PlayerHealth>().health = data.maxHealth;
             currentTowerFloor = data.currentFloor;
             if(data.weaponIsEquiped){
-                Instantiate(weaponList[data.equipedWeapon], new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1f), Quaternion.identity);
+                GameObject spawnedWeapon = weaponList[data.equipedWeapon];
+                weapon = spawnedWeapon.GetComponent<GunController>();
+                weapon.equipedOnSpawn   = true;
+                Instantiate(spawnedWeapon, new Vector3(player.transform.position.x, player.transform.position.y+1, player.transform.position.z + 1f), Quaternion.identity);
+                
+
+               // spawnedWeapon.GetComponent<GunController>().pickWeaponUp();
+               // spawnedWeapon.GetComponent<GunController>().isRotating = false;
+                //weapon = spawnedWeapon.GetComponent<GunController>();
+               /* weapon.isRotating = false;
+
+                weapon.transform.parent = player.transform;
+                weapon.transform.SetSiblingIndex(1);
+                weapon.transform.rotation = mainPlayerHand.transform.rotation;
+                weapon.transform.position = mainPlayerHand.transform.position;*/
+
+
+                // Instantiate(weaponList[data.equipedWeapon], new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1f), Quaternion.identity);
+
                 //switch (data.equipedWeapon)
                 //{
                 //    case 0:

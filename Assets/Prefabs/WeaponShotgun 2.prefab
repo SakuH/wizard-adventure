@@ -28,8 +28,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5089723261468602206}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0.5}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.27537966, y: 2, z: 1}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1071188183341234688}
@@ -8647,7 +8647,8 @@ MonoBehaviour:
   anotherWeapons: []
   rotatingSpeed: 5
   rotatingHeight: 0.5
-  isRotating: 1
+  isRotating: 0
+  equipedOnSpawn: 1
   firePoint: {fileID: 1071188183341234688}
 --- !u!1 &8448731970645126512
 GameObject:

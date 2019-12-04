@@ -56,7 +56,7 @@ public class GunController : MonoBehaviour
     Vector3 tempPos;
     public bool isRotating;
 
-    public bool spawnedFromSpawner;
+    public bool equipedOnSpawn;
     public Transform firePoint;
 
     private LineRenderer line;
@@ -98,9 +98,9 @@ public class GunController : MonoBehaviour
         lightWeapon = firePoint.GetComponent<Light>();
         lightWeapon.enabled = false;
        // light = firePoint.GetComponent<Light>();
-       if ( spawnedFromSpawner)
+       if ( equipedOnSpawn)
        {
-        playerChildCount = player.transform.childCount + 1;
+        pickWeaponUp();
 
        }else{
        playerChildCount = player.transform.childCount + 2;
@@ -475,10 +475,12 @@ public class GunController : MonoBehaviour
           Debug.Log(" "+player.transform.childCount);
           Debug.Log(playerChildCount);
             
-            if (player.transform.childCount == playerChildCount)
+         //   if (player.transform.childCount == playerChildCount)
+            if (playerMovement.hasWeaponEquiped == true)
             {
                 
             player.transform.GetChild(2).transform.parent = null;
+            
             
             
                 anotherWeapons = GameObject.FindGameObjectsWithTag("Weapon");
@@ -529,7 +531,7 @@ public class GunController : MonoBehaviour
              //isRotating = true;
             }
             
-        
+            player.GetComponent<PlayerMovement>().hasWeaponEquiped = true;
             weaponIsEquiped = true;
             //player.transform.
             //weaponEquiped = true;
