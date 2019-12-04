@@ -4923,6 +4923,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 364221710140522840, guid: 8d82db82c1295ff44bba0db4d30c4c60,
+        type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8993571913568407991, guid: 8d82db82c1295ff44bba0db4d30c4c60,
         type: 3}
       propertyPath: m_text

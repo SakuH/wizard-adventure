@@ -49,6 +49,7 @@ public class PlayerHealth : MonoBehaviour
     public AudioClip playerTakeDamageClip;
 
     private bool canReturnToMainMenu = false;
+    private bool saveDeleted;
 
     // Start is called before the first frame update
     void Start()
@@ -108,6 +109,8 @@ public class PlayerHealth : MonoBehaviour
 
         if(health <= 0)
         {
+
+            
             gameOver();
             skillUi.SetActive(false);
             bossHpUi.SetActive(false);
@@ -238,6 +241,11 @@ public class PlayerHealth : MonoBehaviour
         playerScript.movementSpeed = 0;
 
         // FindObjectOfType<gameManagement>().endGame();
+        if (!saveDeleted)
+        {
+            SaveSystem.DeletePlayer();
+            saveDeleted = true;
+        }
         SaveSystem.DeletePlayer();
         Invoke("showGameOverText", 3);
     }
