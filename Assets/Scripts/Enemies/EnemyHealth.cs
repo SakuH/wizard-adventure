@@ -8,10 +8,13 @@ public class EnemyHealth : MonoBehaviour
     public int health;
     public bool dead;
     public float deathJumpSpeed;
+
+    public int timeToDestroy;
     
     public Enemy4WayTurret turretScript; // define base script for the enemy
     public EnemyChaserScript chaserScript;
     public EnemyChaserShooterScript chaserShooterScript;
+    public EnemyShooterScript shooterScript;
     public BossScript bossScript;
 
     public bool isAbleToTakeDamage = true;
@@ -64,6 +67,10 @@ public class EnemyHealth : MonoBehaviour
             {
                 bossScript.deathEffect();
             }
+            if (shooterScript != null)
+            {
+                
+            }
 
         }
 
@@ -95,6 +102,10 @@ public class EnemyHealth : MonoBehaviour
             {
                 bossScript.takeDamageEffect();
             }
+            if(shooterScript != null)
+            {
+                shooterScript.takeDamageEffect();
+            }
 
 
         }
@@ -117,7 +128,7 @@ public class EnemyHealth : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject,5);
+                Destroy(gameObject,timeToDestroy);
             }
             
             
