@@ -70,15 +70,20 @@ public class BossScript : MonoBehaviour
     public bool finalPhase;
     private int explosionCount;
     public TextMeshProUGUI bossHealthBar;
+    public GameObject bossHealthBarUi;
+    public bool showHp = true;
    
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
        // attackCooldown = 10;
-       maxHealth = GetComponent<EnemyHealth>().health;
-       bossHealthBar = FindObjectOfType<TextMeshProUGUI>();
-        
 
+       maxHealth = GetComponent<EnemyHealth>().health;
+
+        // bossHealthBar = FindObjectOfType<TextMeshProUGUI>();
+        bossHealthBarUi = GameObject.FindGameObjectWithTag("BossHpBar");
+        bossHealthBar = bossHealthBarUi.GetComponent<TextMeshProUGUI>();
+        
 
     }
     
@@ -87,7 +92,7 @@ public class BossScript : MonoBehaviour
         
         health = GetComponent<EnemyHealth>().health;
 
-        if (health > 0)
+        if (health > 0 && showHp)
         {
             bossHealthBar.text = "BossHp:" + health;
         }
