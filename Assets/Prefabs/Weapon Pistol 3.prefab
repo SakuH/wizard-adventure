@@ -8635,6 +8635,7 @@ MonoBehaviour:
   bulletSpeed: 26
   weaponDamage: 3
   equipedWeapon: 0
+  playerChildCount: 0
   timeBetweenShots: 0.1
   sfxVolume: 0
   minPitch: 0.7
@@ -8648,6 +8649,7 @@ MonoBehaviour:
   rotatingSpeed: 5
   rotatingHeight: 0.5
   isRotating: 1
+  spawnedFromSpawner: 0
   firePoint: {fileID: 1071188183341234688}
 --- !u!1 &8448731970645126512
 GameObject:

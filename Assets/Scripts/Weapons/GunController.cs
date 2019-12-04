@@ -18,8 +18,6 @@ public class GunController : MonoBehaviour
 
     public Bullet snipperBullet;
 
-    //public GameObject secondBullet;
-
     private PlayerMovement playerMovement;
     public float bulletSpeed;
 
@@ -57,6 +55,8 @@ public class GunController : MonoBehaviour
 
     Vector3 tempPos;
     public bool isRotating;
+
+    public bool spawnedFromSpawner;
     public Transform firePoint;
 
     private LineRenderer line;
@@ -71,6 +71,7 @@ public class GunController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       // transform.parent = null;
         mainPlayerHand = GameObject.Find ("GameObjectHand");
         player = GameObject.Find("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
@@ -97,7 +98,14 @@ public class GunController : MonoBehaviour
         lightWeapon = firePoint.GetComponent<Light>();
         lightWeapon.enabled = false;
        // light = firePoint.GetComponent<Light>();
+       if ( spawnedFromSpawner)
+       {
+        playerChildCount = player.transform.childCount + 1;
+
+       }else{
        playerChildCount = player.transform.childCount + 2;
+
+       }
         
        
     }
