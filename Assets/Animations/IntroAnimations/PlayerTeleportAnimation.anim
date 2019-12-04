@@ -1011,7 +1011,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 37.816666
+  - time: 37
     functionName: loadLevelOne
     data: 
     objectReferenceParameter: {fileID: 0}

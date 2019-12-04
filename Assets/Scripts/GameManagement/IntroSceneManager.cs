@@ -27,7 +27,8 @@ public class IntroSceneManager : MonoBehaviour
     }
     public void loadLevelOne()
     {
-        SceneManager.LoadScene("Tutorial Level");
+        //SceneManager.LoadScene("Tutorial Level");
+        GameObject.Find("LevelChanger").GetComponent<LevelChanger>().FadeToScene("Tutorial Level");
     }
     public void instantiateTeleportAnimation()
     {
