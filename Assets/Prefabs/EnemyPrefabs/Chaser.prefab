@@ -128,8 +128,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   movementSpeed: 10
+  knocbackForce: 0
+  turnSpeed: 4
   playerDistanceOffset: 0.8
-  chaserHealthScript: {fileID: 0}
+  raycastLength: 0
+  damage: 1
+  sfxVolume: 0
+  minPitch: 0.9
+  maxPitch: 1.1
+  takeDamageClip: {fileID: 0}
 --- !u!114 &4801652628526275282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,8 +153,16 @@ MonoBehaviour:
   health: 20
   dead: 0
   deathJumpSpeed: 20
+  timeToDestroy: 1
   turretScript: {fileID: 0}
   chaserScript: {fileID: 4801652628526275292}
+  chaserShooterScript: {fileID: 0}
+  shooterScript: {fileID: 0}
+  bossScript: {fileID: 0}
+  isAbleToTakeDamage: 1
+  itemChanceRolled: 0
+  hpPickup: {fileID: 0}
+  dropChance: 10
 --- !u!1 &4801652628997005752
 GameObject:
   m_ObjectHideFlags: 0

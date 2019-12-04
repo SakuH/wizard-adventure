@@ -7,6 +7,11 @@ public class EnemyShooterScript : MonoBehaviour
     
     public GameObject player;
     public GameObject deathExplosion;
+
+    public GameObject shootAnimation;
+
+    bool isQuiting;
+
     public float knocbackForce;
 
     public float turnSpeed = 4;
@@ -57,6 +62,8 @@ public class EnemyShooterScript : MonoBehaviour
             {
 
             Instantiate(projectile,firingPoint.position,firingPoint.rotation);
+           // shootAnimation.transform.localScale += new Vector3(0.1f,0.1f,0.1f);
+            Instantiate(shootAnimation, firingPoint.position, firingPoint.rotation);
             
             
             
@@ -137,7 +144,14 @@ public class EnemyShooterScript : MonoBehaviour
         Instantiate(deathExplosion, transform.position, transform.rotation);
     }
      private void OnDestroy() {
-         explode();
+         if (!isQuiting){
+            
+            explode();
+
+         }
+     }
+     private void OnApplicationQuit() {
+         isQuiting = true;
      }
 
     //public void takeDamageSound()

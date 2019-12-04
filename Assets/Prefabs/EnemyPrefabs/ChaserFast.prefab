@@ -429,9 +429,11 @@ MonoBehaviour:
   health: 20
   dead: 0
   deathJumpSpeed: 20
+  timeToDestroy: 1
   turretScript: {fileID: 0}
   chaserScript: {fileID: 1000219673447251816}
   chaserShooterScript: {fileID: 0}
+  shooterScript: {fileID: 0}
   bossScript: {fileID: 0}
   isAbleToTakeDamage: 1
   itemChanceRolled: 0
