@@ -9728,10 +9728,10 @@ MonoBehaviour:
   shootAnimation: {fileID: 6191829300876826018, guid: 89723319ed8d05f43bd3233fef648780,
     type: 3}
   knocbackForce: 0
-  turnSpeed: 1
+  turnSpeed: 0.5
   playerDistanceOffset: 0
   raycastLength: 1
-  timeBetweenShots: 0.5
+  timeBetweenShots: 0.8
   damage: 1
   firingPoint: {fileID: 337539886300987022}
   projectile: {fileID: 2112889790430857118, guid: 3c4619926f9b82e48b7611b9ced821c3,

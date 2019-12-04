@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
     public bool dead;
     public float deathJumpSpeed;
 
-    public int timeToDestroy;
+    public float timeToDestroy;
     
     public Enemy4WayTurret turretScript; // define base script for the enemy
     public EnemyChaserScript chaserScript;

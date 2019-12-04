@@ -13,8 +13,6 @@ public class EnemyShooterScript : MonoBehaviour
     bool isQuiting;
 
     public float knocbackForce;
-
-    public float turnSpeed = 4;
    
     public float playerDistanceOffset;
     public float raycastLength;
@@ -31,6 +29,7 @@ public class EnemyShooterScript : MonoBehaviour
 
     public float minPitch = 0.9f;
     public float maxPitch = 1.1f;
+    //int explosionCount = 0;
 
     public AudioClip takeDamageClip;
 
@@ -56,7 +55,7 @@ public class EnemyShooterScript : MonoBehaviour
             //var q = Quaternion.LookRotation(player.transform.position - transform.position);
            // transform.rotation = Quaternion.RotateTowards(transform.rotation, q, turnSpeed * Time.deltaTime);
         
-            transform.LookAt(new Vector3 (player.transform.position.x , transform.position.y,player.transform.position.z));
+            transform.LookAt(new Vector3 (player.transform.position.x , transform.position.y ,player.transform.position.z));
 
             if( Time.time > nextFire)
             {
@@ -141,7 +140,9 @@ public class EnemyShooterScript : MonoBehaviour
 
     public void explode()
     {
+        
         Instantiate(deathExplosion, transform.position, transform.rotation);
+        
     }
      private void OnDestroy() {
          if (!isQuiting){

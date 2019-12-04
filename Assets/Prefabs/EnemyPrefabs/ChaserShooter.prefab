@@ -435,7 +435,7 @@ MonoBehaviour:
   knocbackForce: 40
   turnSpeed: 200
   playerDistanceOffset: 1
-  raycastLength: 0.5
+  raycastLength: 0.8
   timeBetweenShots: 1
   damage: 1
   firingPoint: {fileID: 1073663748202049053}
