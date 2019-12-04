@@ -35,18 +35,22 @@ public class EnemyChaserScript : MonoBehaviour
     {
         health = GetComponent<EnemyHealth>().health;
 
-
-        float dist = Vector3.Distance(player.transform.position, transform.position);
-        if (dist > playerDistanceOffset)
+        if (health > 0)
         {
 
-            //var q = Quaternion.LookRotation(player.transform.position - transform.position);
-           // transform.rotation = Quaternion.RotateTowards(transform.rotation, q, turnSpeed * Time.deltaTime);
 
-             transform.LookAt(new Vector3 (player.transform.position.x , transform.position.y,player.transform.position.z));
+            float dist = Vector3.Distance(player.transform.position, transform.position);
+            if (dist > playerDistanceOffset)
+            {
 
-            transform.position += transform.forward * movementSpeed * Time.deltaTime;
-   
+                //var q = Quaternion.LookRotation(player.transform.position - transform.position);
+                // transform.rotation = Quaternion.RotateTowards(transform.rotation, q, turnSpeed * Time.deltaTime);
+
+                transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
+
+                transform.position += transform.forward * movementSpeed * Time.deltaTime;
+
+            }
         }
   
     }

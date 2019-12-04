@@ -79,57 +79,65 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
-        moveInput.Normalize();
-        moveVelocity = moveInput * movementSpeed;
+        if (player.GetComponent<PlayerHealth>().health > 0)
+        {
 
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            weapon.isFiring = true;
 
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            weapon.isFiring = false;
 
-        }
-       /* if(Input.GetKeyDown("e") && weapon.canPickup)
-        {
-           // isRotating = false;
-            
-           
-           //weapon.isRotating = false;
-           //weapon.weaponEquiped = true;
-           
-           // weapon.weaponEquiped = true;
-        }*/
-        
-        speedBoost();
-        dash();
-        if (Input.GetAxisRaw("Horizontal")> 0 ||Input.GetAxisRaw("Vertical")>0|| Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("Vertical") < 0)
-        {
-            playerAnimator.SetBool("Walking", true);
-        }
-        else
-        {
-            playerAnimator.SetBool("Walking", false);
-        }
-        if (isDashing||isSpeedBoosting)
-        {
-            if (trailEffect.enabled == false)
+            moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
+            moveInput.Normalize();
+            moveVelocity = moveInput * movementSpeed;
+
+
+            if (Input.GetMouseButtonDown(0))
             {
-                trailEffect.enabled = true;
-            }
-        }
-        else
-        {
-            if (trailEffect.enabled == true)
-            {
-                trailEffect.enabled = false;
-            }
-        }
+                weapon.isFiring = true;
 
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                weapon.isFiring = false;
+
+            }
+            /* if(Input.GetKeyDown("e") && weapon.canPickup)
+             {
+                // isRotating = false;
+
+
+                //weapon.isRotating = false;
+                //weapon.weaponEquiped = true;
+
+                // weapon.weaponEquiped = true;
+             }*/
+
+            speedBoost();
+            dash();
+            if (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Vertical") > 0 || Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("Vertical") < 0)
+            {
+                playerAnimator.SetBool("Walking", true);
+            }
+            else
+            {
+                playerAnimator.SetBool("Walking", false);
+            }
+            if (isDashing || isSpeedBoosting)
+            {
+                if (trailEffect.enabled == false)
+                {
+                    trailEffect.enabled = true;
+                }
+            }
+            else
+            {
+                if (trailEffect.enabled == true)
+                {
+                    trailEffect.enabled = false;
+                }
+            }
+
+          
+        }
         if (isQuitting)
         {
             if (isSpeedBoosting)
@@ -144,33 +152,36 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        groundCheck();
-        wallCheck();
-        if (!isDashing && player.GetComponent<PlayerHealth>().knockbackTime<= 0)
-        {         
-            rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y, moveVelocity.z);
-        }
-      
-        if(player.GetComponent<PlayerHealth>().knockbackTime > 0)
+        if (player.GetComponent<PlayerHealth>().health > 0)
         {
-            rb.velocity = knockbackDirForce;
-        }
-        wallCheck();
-        playerRaycastPointer();
+            groundCheck();
+            wallCheck();
+            if (!isDashing && player.GetComponent<PlayerHealth>().knockbackTime <= 0)
+            {
+                rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y, moveVelocity.z);
+            }
 
-        if (!grounded)
-        {
-            rb.velocity = new Vector3(rb.velocity.x, -downForce, rb.velocity.z);
+            if (player.GetComponent<PlayerHealth>().knockbackTime > 0)
+            {
+                rb.velocity = knockbackDirForce;
+            }
+            wallCheck();
+            playerRaycastPointer();
+
+            if (!grounded)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, -downForce, rb.velocity.z);
+            }
+            // transform.Translate(movementSpeed*Input.GetAxis("Horizontal")*Time.deltaTime,0f, movementSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
+            /*
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVertical = Input.GetAxis("Vertical");
+            moveVertical = movementSpeed * moveVertical;
+            moveHorizontal = movementSpeed * moveHorizontal;
+            Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+            rb.AddForce(movement);
+            */
         }
-        // transform.Translate(movementSpeed*Input.GetAxis("Horizontal")*Time.deltaTime,0f, movementSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
-        /*
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        moveVertical = movementSpeed * moveVertical;
-        moveHorizontal = movementSpeed * moveHorizontal;
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        rb.AddForce(movement);
-        */
     }
 
     public void wallCheck()
