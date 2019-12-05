@@ -410,20 +410,21 @@ public class PlayerMovement : MonoBehaviour
             currentTowerFloor = data.currentFloor;
             if(data.weaponIsEquiped){
                 GameObject spawnedWeapon = weaponList[data.equipedWeapon];
-                weapon = spawnedWeapon.GetComponent<GunController>();
-                weapon.equipedOnSpawn   = true;
-                Instantiate(spawnedWeapon, new Vector3(player.transform.position.x, player.transform.position.y+1, player.transform.position.z + 1f), Quaternion.identity);
-                
-
-               // spawnedWeapon.GetComponent<GunController>().pickWeaponUp();
-               // spawnedWeapon.GetComponent<GunController>().isRotating = false;
                 //weapon = spawnedWeapon.GetComponent<GunController>();
-               /* weapon.isRotating = false;
+                //weapon.equipedOnSpawn   = true;
+                //Instantiate(spawnedWeapon, new Vector3(player.transform.position.x, player.transform.position.y+1, player.transform.position.z + 1f), Quaternion.identity);
+                GameObject weaponInstance = Instantiate(spawnedWeapon, new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z + 1f), Quaternion.identity);
+                weaponInstance.GetComponent<GunController>().equipedOnSpawn = true;
 
-                weapon.transform.parent = player.transform;
-                weapon.transform.SetSiblingIndex(1);
-                weapon.transform.rotation = mainPlayerHand.transform.rotation;
-                weapon.transform.position = mainPlayerHand.transform.position;*/
+                // spawnedWeapon.GetComponent<GunController>().pickWeaponUp();
+                // spawnedWeapon.GetComponent<GunController>().isRotating = false;
+                //weapon = spawnedWeapon.GetComponent<GunController>();
+                /* weapon.isRotating = false;
+
+                 weapon.transform.parent = player.transform;
+                 weapon.transform.SetSiblingIndex(1);
+                 weapon.transform.rotation = mainPlayerHand.transform.rotation;
+                 weapon.transform.position = mainPlayerHand.transform.position;*/
 
 
                 // Instantiate(weaponList[data.equipedWeapon], new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1f), Quaternion.identity);
@@ -446,8 +447,8 @@ public class PlayerMovement : MonoBehaviour
                 //    default:
                 //        break;
                 //}
-                
-                
+
+
             }
         }
     }

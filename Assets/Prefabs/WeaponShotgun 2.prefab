@@ -8647,8 +8647,8 @@ MonoBehaviour:
   anotherWeapons: []
   rotatingSpeed: 5
   rotatingHeight: 0.5
-  isRotating: 0
-  equipedOnSpawn: 1
+  isRotating: 1
+  equipedOnSpawn: 0
   firePoint: {fileID: 1071188183341234688}
 --- !u!1 &8448731970645126512
 GameObject:
