@@ -247,7 +247,7 @@ public class PlayerHealth : MonoBehaviour
             SaveSystem.DeletePlayer();
             saveDeleted = true;
         }
-        SaveSystem.DeletePlayer();
+        //SaveSystem.DeletePlayer();
         Invoke("showGameOverText", 3);
     }
 

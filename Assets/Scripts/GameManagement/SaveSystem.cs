@@ -123,12 +123,14 @@ public static class SaveSystem
 
     public static void SaveGameStats(GameObject player)
     {
+
+        GameStatsData data = new GameStatsData(player);
         BinaryFormatter formatter = new BinaryFormatter();
 
         string path = Path.Combine(Application.persistentDataPath, "gamestats.sav");
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        GameStatsData data = new GameStatsData(player);
+        
 
         formatter.Serialize(stream, data);
         stream.Close();
