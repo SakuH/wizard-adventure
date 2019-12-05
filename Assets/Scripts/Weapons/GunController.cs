@@ -18,6 +18,8 @@ public class GunController : MonoBehaviour
 
     public Bullet snipperBullet;
 
+    public Bullet godBullet;
+
     private PlayerMovement playerMovement;
     public float bulletSpeed;
 
@@ -189,6 +191,17 @@ public class GunController : MonoBehaviour
             
             
         }
+        if (equipedWeapon == 4)
+        {
+             if(isFiring && Time.time > nextFire)
+            {
+
+                nextFire = Time.time + timeBetweenShots;
+                godProjectile();
+               
+
+            }
+        }
         
         if(Input.GetKeyDown("e") && canPickup)
         {
@@ -289,6 +302,17 @@ public class GunController : MonoBehaviour
         newBullet.setZ = 1;
         newBullet.setDamage = weaponDamage;
         
+    }
+
+    private void godProjectile()
+    {
+        GunBlastSound(weaponSound);
+        Bullet newBullet = Instantiate(godBullet,firePoint.position,firePoint.rotation) as Bullet;
+        newBullet.bulletspeed = bulletSpeed;
+        newBullet.setX = 0;
+        newBullet.setY = 0;
+        newBullet.setZ = 1;
+        newBullet.setDamage = weaponDamage;
     }
 
     IEnumerator laserProjectiles()

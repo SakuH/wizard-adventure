@@ -33,7 +33,7 @@ public class Explosive : MonoBehaviour
         }
     }
 
-    void Explode()
+    public void Explode()
     {
         hasExploded = true;
         

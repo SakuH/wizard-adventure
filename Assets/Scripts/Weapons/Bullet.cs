@@ -10,6 +10,10 @@ public class Bullet : MonoBehaviour
     public float setZ;
     public GameObject bulletImpact;
 
+    public GameObject explosionEffect;
+
+    public bool isExplosiveBullet;
+
     public float sfxVolume;
 
     public float minPitch = 0.8f;
@@ -25,14 +29,17 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         sfxVolume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameAudioSettings>().sfxVolume;
 
         Destroy(gameObject,5);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+       
        // transform.Translate(Vector3.forward * bulletspeed * Time.deltaTime);
         transform.Translate(new Vector3(setX,setY,setZ) * bulletspeed * Time.deltaTime);
     }
@@ -46,23 +53,29 @@ public class Bullet : MonoBehaviour
         
         if (collision.gameObject.tag == "Wall")
         {
+            
             Instantiate(bulletImpact, transform.position, Quaternion.identity);
             BulletCollisionSound(bulletCollidingSound);
+            
+         
             Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Enemy")
         {         
             Instantiate(bulletImpact, transform.position, Quaternion.identity);
-            Destroy(gameObject);
             collision.gameObject.GetComponent<EnemyHealth>().takeDamage(setDamage);
-                
+
+         
+            Destroy(gameObject);   
             
         }
         if ( collision.gameObject.tag == "Explosive")
         {
             Instantiate(bulletImpact, transform.position, Quaternion.identity);
-            Destroy(gameObject);
             collision.gameObject.GetComponent<Explosive>().takeDamage(setDamage);
+
+           
+            Destroy(gameObject);
         }
     }
     void BulletCollisionSound(AudioClip clip)
@@ -75,5 +88,19 @@ public class Bullet : MonoBehaviour
         source.pitch = Random.Range(minPitch, maxPitch);
         source.Play();
         Destroy(clipGameObject, clip.length / source.pitch);
+    }
+
+    void explode()
+    {
+        Instantiate(explosionEffect,transform.position,transform.rotation);  
+    }
+    private void OnDestroy() {
+           if(isExplosiveBullet)
+            {
+              //explode();
+              this.GetComponent<Explosive>().Explode();
+                
+                
+            }
     }
 }

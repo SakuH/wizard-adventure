@@ -27,6 +27,6 @@ public class ExplosionSound : MonoBehaviour
         source.pitch = Random.Range(minPitch, maxPitch);
         source.Play();
         Destroy(clipGameObject, clip.length / source.pitch);
-        Destroy(gameObject,1);
+        Destroy(gameObject,2);
     }
 }
