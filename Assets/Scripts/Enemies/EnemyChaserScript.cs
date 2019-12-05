@@ -19,14 +19,14 @@ public class EnemyChaserScript : MonoBehaviour
 
     public float minPitch = 0.9f;
     public float maxPitch = 1.1f;
-
+    public PlayerHealth playerHpScript;
     public AudioClip takeDamageClip;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         sfxVolume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameAudioSettings>().sfxVolume;
-
+        playerHpScript = player.GetComponent<PlayerHealth>();
     }
 
 
@@ -98,9 +98,10 @@ public class EnemyChaserScript : MonoBehaviour
                 //player.GetComponent<PlayerHealth>().isTouchingEnemy = true;
                 Vector3 hitDirection = objectHit.transform.position - transform.position;
                 hitDirection = hitDirection.normalized;
-                player.GetComponent<PlayerHealth>().knockBack(knocbackForce, hitDirection);
-                player.GetComponent<PlayerHealth>().takeDamage(damage);
-
+               // player.GetComponent<PlayerHealth>().knockBack(knocbackForce, hitDirection);
+               playerHpScript.knockBack(knocbackForce, hitDirection);
+               // player.GetComponent<PlayerHealth>().takeDamage(damage);
+               playerHpScript.takeDamage(damage);
 
             }
 
