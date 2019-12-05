@@ -236,4 +236,6 @@ MonoBehaviour:
   minPitch: 0.7
   maxPitch: 1.3
   mainBgm: {fileID: 0}
+  bossBgm: {fileID: 0}
+  gameOverJingle: {fileID: 8300000, guid: 3ac6f6f3c364dd142b409789ed72cedb, type: 3}
   bgNoiseClips: []

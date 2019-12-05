@@ -12,6 +12,7 @@ public class BackgroundAudio : MonoBehaviour
     public float maxPitch = 1.3f;
     public AudioClip mainBgm;
     public AudioClip bossBgm;
+    public AudioClip gameOverJingle;
     public AudioClip[] bgNoiseClips;
 
     private AudioSource audioSource;
@@ -89,6 +90,11 @@ public class BackgroundAudio : MonoBehaviour
 
     }
 
+    public void PlayGameOverMusic()
+    {
+        audioSource.loop = false;
+        StartCoroutine(FadeToNextBgm(audioSource, gameOverJingle, 2.0f, 0.0f, bgmVolume, 1.0f));
+    }
     // Update is called once per frame
     void Update()
     {

@@ -244,6 +244,9 @@ public class PlayerHealth : MonoBehaviour
         // FindObjectOfType<gameManagement>().endGame();
         if (!saveDeleted)
         {
+            //Play gameover music
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<BackgroundAudio>().PlayGameOverMusic();
+            
             SaveSystem.DeletePlayer();
             saveDeleted = true;
         }
