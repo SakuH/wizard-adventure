@@ -34,7 +34,7 @@ public class HpPickup : MonoBehaviour
                 {
                     healthScript.health = healthScript.health + healAmount;
                 }
-               //ääni tänne 
+                healthScript.HpPickUpSound();
                 Destroy(gameObject);
             }
             

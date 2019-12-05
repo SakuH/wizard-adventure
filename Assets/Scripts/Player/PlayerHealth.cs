@@ -47,6 +47,7 @@ public class PlayerHealth : MonoBehaviour
     private Color originalDashColor;
     
     public AudioClip playerTakeDamageClip;
+    public AudioClip playerHpPickUpClip;
 
     private bool canReturnToMainMenu = false;
     private bool saveDeleted;
@@ -301,5 +302,10 @@ public class PlayerHealth : MonoBehaviour
     {
         gameOverUi.SetActive(true);
         canReturnToMainMenu = true;
+    }
+
+    public void HpPickUpSound()
+    {
+        PlayerHealthSound(playerHpPickUpClip);
     }
 }

@@ -877,6 +877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9e50682792ef141b6b2e92f2bc177a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasWeaponEquiped: 0
   player: {fileID: 364221710140522843}
   movementSpeed: 17
   mainCamera: {fileID: 0}
@@ -967,6 +968,7 @@ MonoBehaviour:
   maxPitch: 1.1
   playerTakeDamageClip: {fileID: 8300000, guid: 70414c508cbe9274e9f53070ff311352,
     type: 3}
+  playerHpPickUpClip: {fileID: 8300000, guid: 5545bbbd413e7b74dbbd2bd3fd5092f3, type: 3}
 --- !u!82 &52889209337831504
 AudioSource:
   m_ObjectHideFlags: 0
