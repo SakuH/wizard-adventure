@@ -8637,7 +8637,7 @@ MonoBehaviour:
   bulletSpeed: 15
   weaponDamage: 0
   equipedWeapon: 4
-  timeBetweenShots: 0.3
+  timeBetweenShots: 1.5
   sfxVolume: 0
   minPitch: 0.7
   maxPitch: 1.2
