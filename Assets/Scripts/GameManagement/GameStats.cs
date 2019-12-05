@@ -25,6 +25,10 @@ public class GameStats : MonoBehaviour
             damageDone = data.damageDone;
             enemiesDefeated = data.enemiesDefeated;
         }
+
+        Debug.Log("roomscleared" + roomsCleared);
+        Debug.Log("damagedone" + damageDone);
+        Debug.Log("enemiesdefeated" + enemiesDefeated);
     }
 
     public void SaveStats()
@@ -34,7 +38,7 @@ public class GameStats : MonoBehaviour
 
     public void AddDamageDone(int damage)
     {
-        damageDone = damageDone + damage;
+        damageDone += damage;
     }
 
     public void AddEnemyDefeated()

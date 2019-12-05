@@ -23,6 +23,7 @@ public class EnemyHealth : MonoBehaviour
     public GameObject hpPickup;
 
     private GameObject player;
+    private GameStats gameStats;
     public int dropChance = 10;
     void Start()
     {
@@ -30,6 +31,7 @@ public class EnemyHealth : MonoBehaviour
         //find the base script from the game object
         // turretScript= gameObject.GetComponent<Enemy4WayTurret>();
         player = GameObject.FindGameObjectWithTag("Player");
+        gameStats = GameObject.Find("Player").GetComponentInChildren<GameStats>();
     }
     void Update()
     {
@@ -83,10 +85,16 @@ public class EnemyHealth : MonoBehaviour
             health -= damage;
         //on damage call the animation/sound/or effect you want to display when the enemy takes damage from the base script 
         if (!dead)
-        {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<GameStats>().AddDamageDone(damage);
-
-            if (turretScript != null)
+            {
+                gameStats.AddDamageDone(damage);
+                //GameObject.FindGameObjectWithTag("Player").GetComponent<GameStats>().AddDamageDone(damage);
+                //GameStats gameStats = GameObject.FindGameObjectWithTag("Player").GetComponent<GameStats>();
+                //gameStats.AddDamageDone(damage);
+                //if (GameObject.FindGameObjectWithTag("Player").GetComponent<GameStats>() != null)
+                //{
+                //    player.GetComponent<GameStats>().AddDamageDone(damage);
+                //}
+                if (turretScript != null)
             {
                 turretScript.takeDamageEffect();
             }        
@@ -119,9 +127,14 @@ public class EnemyHealth : MonoBehaviour
         if (!dead && health <= 0)
         {
             dead = true;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<GameStats>().AddEnemyDefeated();
+            gameStats.AddEnemyDefeated();
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<GameStats>().AddEnemyDefeated();
+            //if (GameObject.FindGameObjectWithTag("Player").GetComponent<GameStats>() != null)
+            //{
+            //    player.GetComponent<GameStats>().AddEnemyDefeated();
+            //}
             //call gameobject destruction function here from the main script instead
-            if(turretScript != null)
+            if (turretScript != null)
             {
                 Destroy(enemyParent, 2);
             }

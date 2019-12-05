@@ -8,9 +8,11 @@ public class RoomInternalBehaviour : MonoBehaviour
     public List<GameObject> doors;
     public bool teleporterRoom = false;
     public bool enemiesInRoom = false;
-    void Start()
-    {   
 
+    private GameStats gameStats;
+    void Start()
+    {
+        gameStats = GameObject.Find("Player").GetComponent<GameStats>();
     }
 
     void Update()
@@ -43,7 +45,12 @@ public class RoomInternalBehaviour : MonoBehaviour
             if (enemies.Count == 0)
             {
                 OpenRoomDoors();
-                GameObject.FindGameObjectWithTag("Player").GetComponent<GameStats>().AddClearedRoom();
+                //GameStats gameStats = GameObject.FindGameObjectWithTag("Player").GetComponent<GameStats>();
+                //if (gameStats != null)
+                //{
+                //    gameStats.AddClearedRoom();
+                //}
+                gameStats.AddClearedRoom();
                 if (teleporterRoom)
                 {
                     GetComponentInChildren<BossTeleporter>().ActivateTeleporter();
