@@ -230,7 +230,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 moveVelocity.z = 0;
             }
-           // Debug.Log("Back");
+          //  Debug.Log("Back");
         }
     }
     public void groundCheck()

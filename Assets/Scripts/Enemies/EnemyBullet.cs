@@ -11,7 +11,7 @@ public class EnemyBullet : MonoBehaviour
     
     void Start()
     {
-        Destroy(gameObject, 5);
+        Destroy(gameObject, 10);
     }
 
     
