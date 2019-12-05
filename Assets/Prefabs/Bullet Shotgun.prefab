@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 5604830854780157621}
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 1.41, z: 1.574}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -113,6 +113,8 @@ MonoBehaviour:
   setZ: 1
   bulletImpact: {fileID: 6191829300876826018, guid: 89723319ed8d05f43bd3233fef648780,
     type: 3}
+  explosionEffect: {fileID: 0}
+  isExplosiveBullet: 0
   sfxVolume: 0
   minPitch: 0.8
   maxPitch: 1.1

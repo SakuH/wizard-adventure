@@ -8632,10 +8632,10 @@ MonoBehaviour:
     type: 3}
   snipperBullet: {fileID: 5604830854780157620, guid: 3af431f0877051f40a2089e85bd39a98,
     type: 3}
+  godBullet: {fileID: 0}
   bulletSpeed: 0
-  weaponDamage: 3
+  weaponDamage: 5
   equipedWeapon: 3
-  playerChildCount: 0
   timeBetweenShots: 0.2
   sfxVolume: 0
   minPitch: 0.7
@@ -8650,7 +8650,7 @@ MonoBehaviour:
   rotatingSpeed: 5
   rotatingHeight: 0.5
   isRotating: 1
-  spawnedFromSpawner: 0
+  equipedOnSpawn: 0
   firePoint: {fileID: 1071188183341234688}
 --- !u!1 &8448731970645126512
 GameObject:
@@ -8727,7 +8727,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.15
+    widthMultiplier: 0.2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -8791,7 +8791,7 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 1
+  m_Intensity: 2
   m_Range: 5.161827
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
