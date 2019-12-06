@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource audioSource;
     private readonly float lowPitchRange = 1.4F;
     private readonly float highPitchRange = 1.8F;
+    public float sfxVolume;
 
     private GameObject mainPlayerHand;
     Vector3 knockbackDirForce;
@@ -71,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        sfxVolume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameAudioSettings>().sfxVolume;
         mainPlayerHand = GameObject.Find ("GameObjectHand");
         LoadPlayerData();
         rb = GetComponent<Rigidbody>();
@@ -316,7 +318,8 @@ public class PlayerMovement : MonoBehaviour
 
                     if (!isDashing)
                     {
-                        PlayDashSound();    
+                        //PlayDashSound();
+                        PlayerSound(dashSound);
 
                         Vector3 dashSpeedVelocity = rb.velocity;
                         dashSpeedVelocity.y = 0;
@@ -388,11 +391,23 @@ public class PlayerMovement : MonoBehaviour
         weaponPickUpText.text = text;
     }
 
-    public void PlayDashSound()
+   /* public void PlayDashSound()
     {
         audioSource.pitch = Random.Range(lowPitchRange, highPitchRange);
         audioSource.volume = Random.Range(0.8f, 1.0f);
         audioSource.PlayOneShot(dashSound);
+    }
+*/
+    void PlayerSound(AudioClip clip)
+    {
+        GameObject clipGameObject = new GameObject("Player Movement Sound");
+        AudioSource source = clipGameObject.AddComponent<AudioSource>();
+        clipGameObject.transform.position = transform.position;
+        source.clip = clip;
+        source.volume = sfxVolume;
+        source.pitch = Random.Range(lowPitchRange, highPitchRange);
+        source.Play();
+        Destroy(clipGameObject, clip.length / source.pitch);
     }
     public void SavePlayerData(int nextFloorIndex)
     {

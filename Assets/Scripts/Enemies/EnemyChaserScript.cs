@@ -24,7 +24,7 @@ public class EnemyChaserScript : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.Find("Player");
         sfxVolume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameAudioSettings>().sfxVolume;
         playerHpScript = player.GetComponent<PlayerHealth>();
     }

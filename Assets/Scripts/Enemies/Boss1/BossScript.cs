@@ -75,7 +75,7 @@ public class BossScript : MonoBehaviour
    
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.Find("Player");
        // attackCooldown = 10;
 
        maxHealth = GetComponent<EnemyHealth>().health;

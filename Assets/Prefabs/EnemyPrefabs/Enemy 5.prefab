@@ -311,6 +311,10 @@ MonoBehaviour:
   whiteColorCooldown: 0
   normalColorMaterial: {fileID: 2100000, guid: 4e664dba35df6874292935032ce0b2ec, type: 2}
   whiteMaterial: {fileID: 2100000, guid: bcc47dcf4b557be4f9bfcef5f30b5219, type: 2}
+  sfxVolume: 0
+  minPitch: 0.9
+  maxPitch: 1.1
+  takeDamageClip: {fileID: 8300000, guid: 9f4ff5b61d18b30488bc1ca566ae1367, type: 3}
 --- !u!114 &1352754251651692463
 MonoBehaviour:
   m_ObjectHideFlags: 0
