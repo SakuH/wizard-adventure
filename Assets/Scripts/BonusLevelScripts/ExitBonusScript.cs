@@ -21,7 +21,9 @@ public class ExitBonusScript : MonoBehaviour
         
         if (other.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene(nextScene);
+            //SceneManager.LoadScene(nextScene);
+
+            other.GetComponent<Transform>().SetPositionAndRotation(GameObject.Find("BonusLevelTeleporter").transform.position, Quaternion.identity);
 
         }
     }
