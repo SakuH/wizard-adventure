@@ -77,7 +77,7 @@ public class BossAnimationSfx : MonoBehaviour
         AudioSource source = clipGameObject.AddComponent<AudioSource>();
         clipGameObject.transform.position = transform.position;
         source.clip = clip;
-        source.volume = sfxVolume * 0.7f;
+        source.volume = sfxVolume * 0.55f;
         source.pitch = Random.Range(minPitch, maxPitch);
         source.Play();
         Destroy(clipGameObject, clip.length / source.pitch);

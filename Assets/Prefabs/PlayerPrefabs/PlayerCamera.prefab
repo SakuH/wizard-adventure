@@ -238,4 +238,5 @@ MonoBehaviour:
   mainBgm: {fileID: 0}
   bossBgm: {fileID: 0}
   gameOverJingle: {fileID: 8300000, guid: 3ac6f6f3c364dd142b409789ed72cedb, type: 3}
+  victoryJingle: {fileID: 8300000, guid: bbc9cd122808540408c4bd43fddd3810, type: 3}
   bgNoiseClips: []

@@ -30,6 +30,7 @@ public class BossRoomTrigger : MonoBehaviour
             }
             if (!enemiesPresent)
             {
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<BackgroundAudio>().PlayVictoryMusic();
                 Debug.Log("Spawn next level teleporter here");
                 gameObject.GetComponentInChildren<NextLevelTeleport>().ActivateTeleporter();
             }

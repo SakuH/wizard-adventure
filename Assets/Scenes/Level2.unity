@@ -16149,7 +16149,7 @@ PrefabInstance:
         type: 3}
       propertyPath: mainBgm
       value: 
-      objectReference: {fileID: 8300000, guid: 509b714987751894ea3ae2ac980e7304, type: 3}
+      objectReference: {fileID: 8300000, guid: cc62eead172ce2a4bbefbde66119962e, type: 3}
     - target: {fileID: -2987580434596915861, guid: dafca0cdb9fc2e643b5e1ac82c20e3f5,
         type: 3}
       propertyPath: bgNoiseClips.Array.data[0]
@@ -16164,7 +16164,7 @@ PrefabInstance:
         type: 3}
       propertyPath: bossBgm
       value: 
-      objectReference: {fileID: 8300000, guid: 1c5047b50b799cc4e82f6cf09039ba76, type: 3}
+      objectReference: {fileID: 8300000, guid: c7bd3f612533f8d44bcf1fbec5300b13, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dafca0cdb9fc2e643b5e1ac82c20e3f5, type: 3}
 --- !u!43 &1996572048

@@ -13,6 +13,7 @@ public class BackgroundAudio : MonoBehaviour
     public AudioClip mainBgm;
     public AudioClip bossBgm;
     public AudioClip gameOverJingle;
+    public AudioClip victoryJingle;
     public AudioClip[] bgNoiseClips;
 
     private AudioSource audioSource;
@@ -90,6 +91,11 @@ public class BackgroundAudio : MonoBehaviour
 
     }
 
+    public void PlayVictoryMusic()
+    {
+        audioSource.loop = false;
+        StartCoroutine(FadeToNextBgm(audioSource, victoryJingle, 2.0f, 0.0f, bgmVolume, 1.0f));
+    }
     public void PlayGameOverMusic()
     {
         audioSource.loop = false;
