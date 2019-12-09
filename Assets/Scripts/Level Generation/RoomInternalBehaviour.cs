@@ -6,8 +6,10 @@ public class RoomInternalBehaviour : MonoBehaviour
 {
     public List<GameObject> enemies;
     public List<GameObject> doors;
+    //public GameObject bonusLevelTeleporter;
     public bool teleporterRoom = false;
     public bool enemiesInRoom = false;
+    public bool bonusLevelRoom = false;
 
     private GameStats gameStats;
     void Start()
@@ -55,6 +57,11 @@ public class RoomInternalBehaviour : MonoBehaviour
                 {
                     GetComponentInChildren<BossTeleporter>().ActivateTeleporter();
                 }
+                if (bonusLevelRoom)
+                {
+                    //bonusLevelTeleporter.SetActive(true);
+                    gameObject.transform.Find("BonusLevelTeleporter").gameObject.SetActive(true);
+                }
                 enemiesInRoom = false;
                 enemies.Clear();
             }
@@ -87,6 +94,11 @@ public class RoomInternalBehaviour : MonoBehaviour
     public void SetAsTeleporterRoom()
     {
         teleporterRoom = true;
+    }
+
+    public void SetAsBonusLevelRoom()
+    {
+        bonusLevelRoom = true;
     }
 
     public void TurnOnRoomLights()
