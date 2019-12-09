@@ -7,10 +7,13 @@ public class BonusLevelDoor : MonoBehaviour
     public GameObject enemies;
     public PlayerCamera playerCameraScript;
     public GameObject teleportLocation;
+    public GameObject playerCam;
     // Start is called before the first frame update
     void Start()
     {
-        playerCameraScript = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<PlayerCamera>(); 
+       // playerCameraScript = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<PlayerCamera>();
+        playerCam = GameObject.Find("PlayerCamera");
+        playerCameraScript = playerCam.GetComponent<PlayerCamera>();
     }
 
     // Update is called once per frame

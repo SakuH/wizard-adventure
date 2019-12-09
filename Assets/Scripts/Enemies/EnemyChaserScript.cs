@@ -102,6 +102,7 @@ public class EnemyChaserScript : MonoBehaviour
                playerHpScript.knockBack(knocbackForce, hitDirection);
                // player.GetComponent<PlayerHealth>().takeDamage(damage);
                playerHpScript.takeDamage(damage);
+               
 
             }
 

@@ -518,11 +518,11 @@ public class BossScript : MonoBehaviour
         Debug.DrawRay(raycastLocation, fwd * raycastLength, Color.green);
         if (Physics.Raycast(raycastLocation, fwd, out objectHit, raycastLength))
         {
-            Debug.Log(objectHit.transform.name);
+            //Debug.Log(objectHit.transform.name);
 
             if (objectHit.transform.tag == "Player")
             {
-                Debug.Log("player");
+                //Debug.Log("player");
                 Vector3 hitDirection = objectHit.transform.position - transform.position;
                 hitDirection.y = 0;
                 hitDirection = hitDirection.normalized;
