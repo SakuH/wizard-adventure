@@ -2183,7 +2183,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-410986
+  m_Name: pb_Mesh-4743066
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3571,7 +3571,7 @@ PrefabInstance:
     - target: {fileID: 5874190183806313184, guid: b6f68693fc5896d4a996d01a8c743d95,
         type: 3}
       propertyPath: equipedWeapon
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6f68693fc5896d4a996d01a8c743d95, type: 3}

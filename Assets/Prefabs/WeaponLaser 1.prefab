@@ -8632,7 +8632,8 @@ MonoBehaviour:
     type: 3}
   snipperBullet: {fileID: 5604830854780157620, guid: 3af431f0877051f40a2089e85bd39a98,
     type: 3}
-  godBullet: {fileID: 0}
+  godBullet: {fileID: 5604830854780157620, guid: b6f6adfa8334b544384e8af59a0ad3ab,
+    type: 3}
   bulletSpeed: 0
   weaponDamage: 5
   equipedWeapon: 3
