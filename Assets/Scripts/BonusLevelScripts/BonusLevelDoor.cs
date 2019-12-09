@@ -29,7 +29,7 @@ public class BonusLevelDoor : MonoBehaviour
             player.transform.position = teleportLocation.transform.position;
             Destroy(enemies, 2);
             playerCameraScript.cameraDistance = 4;
-            playerCameraScript.cameraHeight = 35;
+            playerCameraScript.cameraHeight = 25;
             GameObject playerCam = GameObject.FindGameObjectWithTag("MainCamera");
             playerCam.transform.rotation =  Quaternion.Euler(70, 0, 0);
 
