@@ -25,7 +25,7 @@ public class BonusLevelDoor : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            GameObject player = GameObject.Find("Player");
             player.transform.position = teleportLocation.transform.position;
             Destroy(enemies, 2);
             playerCameraScript.cameraDistance = 4;
