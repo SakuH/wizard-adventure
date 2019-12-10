@@ -438,9 +438,13 @@ MonoBehaviour:
   bossScript: {fileID: 0}
   isAbleToTakeDamage: 1
   itemChanceRolled: 0
+  itemDropped: 0
   hpPickup: {fileID: 6341991011837479614, guid: f9309c6a61e11ae43a46893d96aa5dc0,
     type: 3}
-  dropChance: 10
+  heartPickup: {fileID: 6341991011837479614, guid: ffae7037ac8c09e45ad7679bedfbb1d1,
+    type: 3}
+  hpDropChance: 10
+  heartDropChance: 3
 --- !u!1 &1000219673781912588
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,11 +20,16 @@ public class EnemyHealth : MonoBehaviour
     public bool isAbleToTakeDamage = true;
 
     public bool itemChanceRolled = false;
+
+    public bool itemDropped = false;
     public GameObject hpPickup;
+    public GameObject heartPickup;
 
     private GameObject player;
     private GameStats gameStats;
-    public int dropChance = 10;
+    public int hpDropChance = 10;
+
+    public int heartDropChance = 3;
     void Start()
     {
 
@@ -44,11 +49,20 @@ public class EnemyHealth : MonoBehaviour
                 itemChanceRolled = true;
                 int randomNumber = Random.Range(1,100);
                 Debug.Log(randomNumber);
-                if (randomNumber <= dropChance)
+                if (randomNumber <= heartDropChance && itemDropped == false)
+                {
+                    Vector3 spawnPos = transform.position;
+                    spawnPos.y = player.transform.position.y - 1 ;
+                    Instantiate(heartPickup, spawnPos, Quaternion.identity);
+                    itemDropped = true;
+
+                }
+                if (randomNumber <= hpDropChance && itemDropped == false)
                 {
                     Vector3 spawnPos = transform.position;
                     spawnPos.y = player.transform.position.y - 1 ;
                     Instantiate(hpPickup, spawnPos, Quaternion.identity);
+                    itemDropped = true;
 
                 }
             }

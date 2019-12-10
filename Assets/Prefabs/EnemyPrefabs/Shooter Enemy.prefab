@@ -9728,7 +9728,6 @@ MonoBehaviour:
   shootAnimation: {fileID: 6191829300876826018, guid: 89723319ed8d05f43bd3233fef648780,
     type: 3}
   knocbackForce: 0
-  turnSpeed: 0.5
   playerDistanceOffset: 0
   raycastLength: 1
   timeBetweenShots: 0.8
@@ -9764,9 +9763,13 @@ MonoBehaviour:
   bossScript: {fileID: 0}
   isAbleToTakeDamage: 1
   itemChanceRolled: 0
+  itemDropped: 0
   hpPickup: {fileID: 6341991011837479614, guid: f9309c6a61e11ae43a46893d96aa5dc0,
     type: 3}
-  dropChance: 20
+  heartPickup: {fileID: 6341991011837479614, guid: ffae7037ac8c09e45ad7679bedfbb1d1,
+    type: 3}
+  hpDropChance: 10
+  heartDropChance: 3
 --- !u!1 &8731726959160155983
 GameObject:
   m_ObjectHideFlags: 0

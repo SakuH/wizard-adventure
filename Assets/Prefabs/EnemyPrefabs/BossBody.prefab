@@ -187,6 +187,8 @@ MonoBehaviour:
   damage: 1
   finalPhase: 0
   bossHealthBar: {fileID: 0}
+  bossHealthBarUi: {fileID: 0}
+  showHp: 1
 --- !u!114 &7012314102864316473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,8 +213,11 @@ MonoBehaviour:
   bossScript: {fileID: 7012314102864316478}
   isAbleToTakeDamage: 1
   itemChanceRolled: 0
+  itemDropped: 0
   hpPickup: {fileID: 0}
-  dropChance: 10
+  heartPickup: {fileID: 0}
+  hpDropChance: 0
+  heartDropChance: 100
 --- !u!1 &7012314103109423605
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,28 +771,6 @@ MonoBehaviour:
   bossParent: {fileID: 7012314102864316471}
   damage: 1
   knockbackForce: 60
---- !u!114 &3846555044990754484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7012314104514581108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d0070292dc183046aba85ea3baa87bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sfxVolume: 0
-  minPitch: 0.7
-  maxPitch: 1.2
-  roarClip: {fileID: 8300000, guid: 316cb0736a07448e6ae074b08ce3750a, type: 3}
-  berserkRoarClip: {fileID: 8300000, guid: 4f4addfe5b3d7446cb4a03c581dc1ec8, type: 3}
-  hit1Clip: {fileID: 8300000, guid: 2e071f5b8b8467d45a5e6e24c23c6ad4, type: 3}
-  hit2Clip: {fileID: 8300000, guid: e1a75776f005439469f89a17a986c567, type: 3}
-  hit3Clip: {fileID: 8300000, guid: 958408b32ccf3714ea02821877b0870c, type: 3}
-  footStepClip: {fileID: 8300000, guid: 4437bc80104f4f84a9149c54a918b984, type: 3}
-  swooshClip: {fileID: 8300000, guid: f23e1400d1f8cef4b9137b2548519d38, type: 3}
 --- !u!82 &7972270512346980672
 AudioSource:
   m_ObjectHideFlags: 0
@@ -884,6 +867,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3846555044990754484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7012314104514581108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0070292dc183046aba85ea3baa87bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxVolume: 0
+  minPitch: 0.7
+  maxPitch: 1.2
+  roarClip: {fileID: 8300000, guid: 316cb0736a07448e6ae074b08ce3750a, type: 3}
+  berserkRoarClip: {fileID: 8300000, guid: 4f4addfe5b3d7446cb4a03c581dc1ec8, type: 3}
+  hit1Clip: {fileID: 8300000, guid: 2e071f5b8b8467d45a5e6e24c23c6ad4, type: 3}
+  hit2Clip: {fileID: 8300000, guid: e1a75776f005439469f89a17a986c567, type: 3}
+  hit3Clip: {fileID: 8300000, guid: 958408b32ccf3714ea02821877b0870c, type: 3}
+  footStepClip: {fileID: 8300000, guid: 4437bc80104f4f84a9149c54a918b984, type: 3}
+  swooshClip: {fileID: 8300000, guid: f23e1400d1f8cef4b9137b2548519d38, type: 3}
 --- !u!1001 &7012314104514725420
 PrefabInstance:
   m_ObjectHideFlags: 0
