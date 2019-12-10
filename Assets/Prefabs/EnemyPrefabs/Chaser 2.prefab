@@ -443,7 +443,13 @@ MonoBehaviour:
     type: 3}
   heartPickup: {fileID: 6341991011837479614, guid: ffae7037ac8c09e45ad7679bedfbb1d1,
     type: 3}
+  objects:
+  - {fileID: 5089723261468602206, guid: 02da697f0232dbc46a42cf0ee69a60ea, type: 3}
+  - {fileID: 5089723261468602206, guid: b6f68693fc5896d4a996d01a8c743d95, type: 3}
+  - {fileID: 5089723261468602206, guid: 692824100683c8746a7af3c8227bccc4, type: 3}
+  - {fileID: 5089723261468602206, guid: 2e3f43ea01ff55041b3fde61abed274e, type: 3}
   hpDropChance: 10
+  weaponDropChance: 20
   heartDropChance: 3
 --- !u!1 &1000219673781912588
 GameObject:

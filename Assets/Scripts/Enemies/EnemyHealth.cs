@@ -27,8 +27,9 @@ public class EnemyHealth : MonoBehaviour
 
     private GameObject player;
     private GameStats gameStats;
+    public GameObject[] objects;
     public int hpDropChance = 10;
-
+    public int weaponDropChance = 20;
     public int heartDropChance = 3;
     void Start()
     {
@@ -65,6 +66,24 @@ public class EnemyHealth : MonoBehaviour
                     itemDropped = true;
 
                 }
+                if (randomNumber <= weaponDropChance && itemDropped == false)
+                {
+                    int rand = Random.Range(0, objects.Length);
+                    Vector3 spawnPos = transform.position;
+                    spawnPos.y = player.transform.position.y + 1 ;
+
+                    if(objects[rand].CompareTag("Weapon"))
+                    {   
+                    GameObject random = objects[rand];
+               
+                    Instantiate(random, spawnPos, Quaternion.identity);
+              
+                    }
+
+                    itemDropped = true;
+
+                }
+                
             }
        
             if (turretScript != null)
