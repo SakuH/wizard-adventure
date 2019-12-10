@@ -12,6 +12,7 @@ public class TutorialLevelChange : MonoBehaviour
 
    private void OnTriggerEnter(Collider other) {
         //SceneManager.LoadScene(levelNumber);
+        GameObject.Find("Player").GetComponent<PlayerMovement>().SavePlayerData(levelNumber);
         GameObject.Find("LevelChanger").GetComponent<LevelChanger>().FadeToScene(levelNumber);
     }
 }

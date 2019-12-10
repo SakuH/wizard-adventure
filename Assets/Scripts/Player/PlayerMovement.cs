@@ -465,7 +465,14 @@ public class PlayerMovement : MonoBehaviour
 
 
             }
+            else
+            {
+                GameObject spawnedWeapon = weaponList[0];
+                GameObject weaponInstance = Instantiate(spawnedWeapon, new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z + 1f), Quaternion.identity);
+                weaponInstance.GetComponent<GunController>().equipedOnSpawn = true;
+            }
         }
+
     }
 
     public void knockback(Vector3 knockbackDir)
