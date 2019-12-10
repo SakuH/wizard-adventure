@@ -8992,6 +8992,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 364221710140522840, guid: 8d82db82c1295ff44bba0db4d30c4c60,
+        type: 3}
+      propertyPath: health
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 364221710140522840, guid: 8d82db82c1295ff44bba0db4d30c4c60,
+        type: 3}
+      propertyPath: maxHealth
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d82db82c1295ff44bba0db4d30c4c60, type: 3}
 --- !u!43 &1181906123
