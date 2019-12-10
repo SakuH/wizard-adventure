@@ -8,11 +8,6 @@ public class LevelChanger : MonoBehaviour
 
     private int sceneNumberToLoad = -1;
     private string sceneNameToLoad;
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void FadeToNextScene()
     {

@@ -5,13 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class TutorialLevelChange : MonoBehaviour
 {
-    // Start is called before the first frame update
     public int levelNumber;
 
    
 
    private void OnTriggerEnter(Collider other) {
-        //SceneManager.LoadScene(levelNumber);
         GameObject.Find("Player").GetComponent<PlayerMovement>().SavePlayerData(levelNumber);
         GameObject.Find("LevelChanger").GetComponent<LevelChanger>().FadeToScene(levelNumber);
     }

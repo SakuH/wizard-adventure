@@ -20,7 +20,6 @@ public class NextLevelTeleport : MonoBehaviour
             other.GetComponent<PlayerMovement>().currentTowerFloor = nextFloorNumber;
             GameObject.Find("Player").GetComponent<GameStats>().SaveStats();
             GameObject.Find("LevelChanger").GetComponent<LevelChanger>().FadeToScene(nextFloorNumber);
-            //SceneManager.LoadScene(nextFloorNumber);
 
         }
     }
