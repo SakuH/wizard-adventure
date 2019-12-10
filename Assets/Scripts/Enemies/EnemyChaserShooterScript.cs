@@ -28,6 +28,7 @@ public class EnemyChaserShooterScript : MonoBehaviour
     public float maxPitch = 1.1f;
 
     public AudioClip takeDamageClip;
+    public AudioClip shootClip;
 
     void Start()
     {
@@ -57,7 +58,7 @@ public class EnemyChaserShooterScript : MonoBehaviour
 
             if( Time.time > nextFire)
             {
-
+                EnemySound(shootClip);
             Instantiate(projectile,firingPoint.position,firingPoint.rotation);
             
             

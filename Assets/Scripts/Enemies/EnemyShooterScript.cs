@@ -32,6 +32,7 @@ public class EnemyShooterScript : MonoBehaviour
     //int explosionCount = 0;
 
     public AudioClip takeDamageClip;
+    public AudioClip shootClip;
 
     void Start()
     {
@@ -59,7 +60,7 @@ public class EnemyShooterScript : MonoBehaviour
 
             if( Time.time > nextFire)
             {
-
+                EnemySound(shootClip);
             Instantiate(projectile,firingPoint.position,firingPoint.rotation);
            // shootAnimation.transform.localScale += new Vector3(0.1f,0.1f,0.1f);
             Instantiate(shootAnimation, firingPoint.position, firingPoint.rotation);

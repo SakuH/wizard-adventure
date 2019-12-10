@@ -36,6 +36,7 @@ public class Enemy4WayTurret : MonoBehaviour
     public float maxPitch = 1.1f;
 
     public AudioClip takeDamageClip;
+    public AudioClip shootClip;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,7 @@ public class Enemy4WayTurret : MonoBehaviour
 
         if (timeBetweenShot <= 0)
         {
+            EnemySound(shootClip);
             Instantiate(projectile1, firingPoint1.position, firingPoint1.rotation);
             Instantiate(projectile1, firingPoint2.position, firingPoint2.rotation);
             Instantiate(projectile1, firingPoint3.position, firingPoint3.rotation);

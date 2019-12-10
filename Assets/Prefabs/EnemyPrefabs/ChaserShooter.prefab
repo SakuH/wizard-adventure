@@ -449,6 +449,7 @@ MonoBehaviour:
   minPitch: 0.9
   maxPitch: 1.1
   takeDamageClip: {fileID: 8300000, guid: 9f4ff5b61d18b30488bc1ca566ae1367, type: 3}
+  shootClip: {fileID: 8300000, guid: 3c9987a9559020f41a773876fcc55232, type: 3}
 --- !u!1 &3952618124043720987
 GameObject:
   m_ObjectHideFlags: 0
