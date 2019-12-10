@@ -2,14 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
+
 public class FadeToBlackEnding : MonoBehaviour
 {
     public bool fadeToBlack= false;
     public Image backgroundColor;
     public float fadeToBlackColor;
+    public GameObject endingText;
+    public float timeToText;
+    public float timeToTextmax = 2;
+
     void Start()
     {
-        
+        timeToText = timeToTextmax;
     }
 
     // Update is called once per frame
@@ -18,7 +25,21 @@ public class FadeToBlackEnding : MonoBehaviour
         if (fadeToBlack)
         {
             fadeToBlackCanvas();
+            if (timeToText > 0)
+            {
+                timeToText -= Time.deltaTime;
+            }
+            else
+            {
+                endingText.active = true;
+            }
+            if (Input.GetKeyDown("space"))
+            {
+
+                SceneManager.LoadScene("MainMenuFinal");
+            }
         }
+       
     }
     public void fadeToBlackCanvas()
     {
