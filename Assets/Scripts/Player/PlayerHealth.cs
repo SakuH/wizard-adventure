@@ -27,7 +27,6 @@ public class PlayerHealth : MonoBehaviour
     public Image DashBoostPanel;
 
     public Material normalMat;
-   // public Material hatMaterial;
     public Material invulnerableMat;
     public GameObject head;
 
@@ -52,18 +51,15 @@ public class PlayerHealth : MonoBehaviour
     private bool canReturnToMainMenu = false;
     private bool saveDeleted;
 
-    // Start is called before the first frame update
     void Start()
     {
         playerScript = playerParent.GetComponent<PlayerMovement>();
         sfxVolume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameAudioSettings>().sfxVolume;
         knockbackTimeMax = 0.15f;
-        // hatMaterial.SetColor("_Color", Color.white);
         originalBoostColor = SprintBoostPanel.color;
         originalDashColor = DashBoostPanel.color;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(health > maxHealth)
@@ -134,26 +130,15 @@ public class PlayerHealth : MonoBehaviour
            
             SkinnedMeshRenderer gameObjectRenderer = head.GetComponent<SkinnedMeshRenderer>();
             gameObjectRenderer.material = invulnerableMat;
-            if (!dead)
-            {
-              //  hatMaterial.SetColor("_Color", Color.red);
-            }
            
-
         }
         else if (!vulnerable)
         {
             vulnerable = true;
             SkinnedMeshRenderer gameObjectRenderer = head.GetComponent<SkinnedMeshRenderer>();
             gameObjectRenderer.material = normalMat;
-            //hatMaterial.SetColor("_Color", Color.white);
         }
 
-       /*if (isTouchingEnemy)
-        {
-            takeDamage(contactDamage);
-        }
-        */
         if(knockbackTime > 0)
         {
             knockbackTime -= Time.deltaTime;
@@ -172,12 +157,10 @@ public class PlayerHealth : MonoBehaviour
     {
         if (vulnerable && playerScript.isDashing == false)
         {
-            //takeDamageSound();
             PlayerHealthSound(playerTakeDamageClip);
             health -= damage;
             vulnerableCoolDown = vulnerableCoolDownMax;
             vulnerable = false;
-
         }
       
         if (health <= 0)
@@ -193,11 +176,6 @@ public class PlayerHealth : MonoBehaviour
         health = maxHealth;
     }
 
-    //public void takeDamageSound()
-    //{
-    //    AudioManager.PlaySound("playerHit");
-    //}
-
     void PlayerHealthSound(AudioClip clip)
     {
         GameObject clipGameObject = new GameObject("Player Health Sound");
@@ -212,16 +190,14 @@ public class PlayerHealth : MonoBehaviour
 
     public void knockBack(float force, Vector3 enemyPos)
     {
-        //Debug.Log("enemyForce" +force + " enemyPos"+ enemyPos);
         if (vulnerable && playerScript.isDashing == false)
         {
-          //  Debug.Log("knockingBACK");
 
-            knockbackTime = knockbackTimeMax;
+        knockbackTime = knockbackTimeMax;
 
         Vector3 moveDiretion = enemyPos * force;
 
-            playerScript.knockback(moveDiretion);
+        playerScript.knockback(moveDiretion);
 
         }
     
@@ -241,7 +217,6 @@ public class PlayerHealth : MonoBehaviour
         backgroundImage.color = tempColor;
         playerScript.movementSpeed = 0;
 
-        // FindObjectOfType<gameManagement>().endGame();
         if (!saveDeleted)
         {
             //Play gameover music
@@ -250,7 +225,6 @@ public class PlayerHealth : MonoBehaviour
             SaveSystem.DeletePlayer();
             saveDeleted = true;
         }
-        //SaveSystem.DeletePlayer();
         Invoke("showGameOverText", 3);
     }
 

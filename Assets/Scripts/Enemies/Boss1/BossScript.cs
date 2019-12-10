@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 public class BossScript : MonoBehaviour
-{   public callAttackScript animationAttackCallScript;
+{   
     private int health;
     private float maxHealth;
     public float healthPercentage;
@@ -76,15 +76,12 @@ public class BossScript : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-       // attackCooldown = 10;
 
        maxHealth = GetComponent<EnemyHealth>().health;
 
-        // bossHealthBar = FindObjectOfType<TextMeshProUGUI>();
         bossHealthBarUi = GameObject.FindGameObjectWithTag("BossHpBar");
         bossHealthBar = bossHealthBarUi.GetComponent<TextMeshProUGUI>();
         
-
     }
     
     void Update()
@@ -106,7 +103,7 @@ public class BossScript : MonoBehaviour
         {
             finalPhase= true;
 
-            GetComponent<EnemyHealth>().isAbleToTakeDamage = false; //change hp bar color to make it clear that the enemy does not take damage for the duration of the transformation 
+            GetComponent<EnemyHealth>().isAbleToTakeDamage = false;
             attackCooldownMax = midSpinAttackCooldownTimeMaxFinalPhase;
             movementSpeed = movementSpeedFinalPhase;
 
@@ -117,13 +114,10 @@ public class BossScript : MonoBehaviour
         if (lookAtPlayer)
         {
             transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
-            //transform.position += transform.forward * movementSpeed * Time.deltaTime;
         }
 
         if (move)
-        {       
-           
-
+        {          
             float step = movementSpeed * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
         }
@@ -498,10 +492,8 @@ public class BossScript : MonoBehaviour
             hitDirection = hitDirection.normalized;
             player.GetComponent<PlayerHealth>().knockBack(knockbackForce, hitDirection);
 
-            //Debug.Log("hit the player");
             collision.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
-            //Instantiate(bulletImpact, transform.position, Quaternion.identity);
-            //Destroy(gameObject);
+
 
 
 
@@ -518,11 +510,10 @@ public class BossScript : MonoBehaviour
         Debug.DrawRay(raycastLocation, fwd * raycastLength, Color.green);
         if (Physics.Raycast(raycastLocation, fwd, out objectHit, raycastLength))
         {
-            //Debug.Log(objectHit.transform.name);
+
 
             if (objectHit.transform.tag == "Player")
             {
-                //Debug.Log("player");
                 Vector3 hitDirection = objectHit.transform.position - transform.position;
                 hitDirection.y = 0;
                 hitDirection = hitDirection.normalized;
@@ -610,7 +601,6 @@ public class BossScript : MonoBehaviour
             bossAnimator.SetBool("dead", true);
             move = false;
             lookAtPlayer = false;
-            //Instantiate(deathExplosion, transform.position,transform.rotation);
             explosionCount++;
         }
     }

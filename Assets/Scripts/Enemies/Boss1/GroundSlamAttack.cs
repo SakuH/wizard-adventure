@@ -7,12 +7,6 @@ public class GroundSlamAttack : MonoBehaviour
 
     public float speed;
     public int damage = 1;
-   
-    void Start()
-    {
-       
-    }
-
     
     void Update()
     {

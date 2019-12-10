@@ -8,16 +8,6 @@ public class HammerSpinKnockback : MonoBehaviour
     public int damage = 1;
     public float knockbackForce = 60;
 
-    void Start()
-    {
-        
-    }
-
-  
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,15 +20,10 @@ public class HammerSpinKnockback : MonoBehaviour
 
             Debug.Log("hit the player");
             other.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
-            //Instantiate(bulletImpact, transform.position, Quaternion.identity);
-            //Destroy(gameObject);
 
 
 
-        }
-        if (other.gameObject.tag == "Wall")
-        {
-            //Destroy(gameObject);
+
         }
 
     }

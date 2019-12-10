@@ -19,7 +19,6 @@ public class FadeToBlackEnding : MonoBehaviour
         timeToText = timeToTextmax;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (fadeToBlack)
