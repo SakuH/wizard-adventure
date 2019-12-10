@@ -6,19 +6,12 @@ public class Trap : MonoBehaviour
 {
 
     public GameObject player;
-
     public int damage;
-
     private float nextFire;
-
     private bool canTakeDamage;
-
     public bool enemyCanTakeDamage;
-
     public float timeBetweenShots;
-
-
-    // Start is called before the first frame update
+   
     void Start()
     {
         canTakeDamage = false;
@@ -26,8 +19,7 @@ public class Trap : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
+     void Update()
     {
         if(Time.time > nextFire && canTakeDamage)
         {
@@ -36,8 +28,7 @@ public class Trap : MonoBehaviour
               
         player.GetComponent<PlayerHealth>().takeDamage(damage);
 
-        }
-        
+        }  
         
     }
 
