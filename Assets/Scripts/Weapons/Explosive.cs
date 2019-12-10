@@ -7,24 +7,11 @@ public class Explosive : MonoBehaviour
     bool hasExploded = false;
     public int health;
     public float explosionForce = 100;
-
     public int explosionEnemyDamage = 50;
-
     public int explosionPlayerDamage = 2;
-
     public float explosionRadius = 5f;
-
-
-
     public GameObject explosionEffect;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if ( health <= 0 && hasExploded == false)

@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
 
 
     public int setDamage;
-    // Start is called before the first frame update
+    
     void Start()
     {
         
@@ -36,18 +36,11 @@ public class Bullet : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-       
-       // transform.Translate(Vector3.forward * bulletspeed * Time.deltaTime);
         transform.Translate(new Vector3(setX,setY,setZ) * bulletspeed * Time.deltaTime);
     }
-    void FixedUpdate()
-    {
-        
 
-    }
     private void OnCollisionEnter(Collision collision)
     {
         
@@ -97,9 +90,8 @@ public class Bullet : MonoBehaviour
     private void OnDestroy() {
            if(isExplosiveBullet)
             {
-              //explode();
+              
               this.GetComponent<Explosive>().Explode();
-                
                 
             }
     }
