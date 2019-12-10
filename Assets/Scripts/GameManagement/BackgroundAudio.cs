@@ -19,7 +19,6 @@ public class BackgroundAudio : MonoBehaviour
     private AudioSource audioSource;
     private float currentInterval;
 
-    // Start is called before the first frame update
     void Start()
     {
         sfxVolume = GetComponent<GameAudioSettings>().sfxVolume;
@@ -86,7 +85,6 @@ public class BackgroundAudio : MonoBehaviour
 
     public void PlayBossMusic()
     {
-        //audioSource.Stop();
         StartCoroutine(FadeToNextBgm(audioSource, bossBgm, 2.0f, 0.0f, bgmVolume, 2.0f));
 
     }
@@ -101,9 +99,5 @@ public class BackgroundAudio : MonoBehaviour
         audioSource.loop = false;
         StartCoroutine(FadeToNextBgm(audioSource, gameOverJingle, 2.0f, 0.0f, bgmVolume, 1.0f));
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

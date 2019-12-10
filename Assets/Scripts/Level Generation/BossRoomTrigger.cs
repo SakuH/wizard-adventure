@@ -6,13 +6,7 @@ public class BossRoomTrigger : MonoBehaviour
 {
     public List<GameObject> enemies;
     public bool enemiesPresent = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         if(enemiesPresent)
@@ -51,24 +45,5 @@ public class BossRoomTrigger : MonoBehaviour
 
     }
 
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.CompareTag("Enemy"))
-    //    {
-    //        enemiesPresent = false;
-    //    }
-    //}
 
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    bool enemy = false;
-    //    if (other.CompareTag("Enemy"))
-    //    {
-    //        if (other.gameObject.GetComponentInChildren<EnemyHealth>().dead)
-    //        {
-    //            enemy = false;
-    //        }
-    //        enemiesPresent = true;
-    //    }
-    //}
 }

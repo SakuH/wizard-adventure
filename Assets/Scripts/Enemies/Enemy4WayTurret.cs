@@ -38,13 +38,12 @@ public class Enemy4WayTurret : MonoBehaviour
     public AudioClip takeDamageClip;
     public AudioClip shootClip;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         sfxVolume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameAudioSettings>().sfxVolume;
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.Rotate(Vector3.up* rotationSpeed * Time.deltaTime);
@@ -103,7 +102,6 @@ public class Enemy4WayTurret : MonoBehaviour
     }
     public void takeDamageEffect()
     {
-        //takeDamageSound();
         EnemySound(takeDamageClip);
         if (normalColor && !whiteColorCooldown)
         {

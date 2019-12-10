@@ -6,7 +6,7 @@ public class RoomInternalBehaviour : MonoBehaviour
 {
     public List<GameObject> enemies;
     public List<GameObject> doors;
-    //public GameObject bonusLevelTeleporter;
+
     public bool teleporterRoom = false;
     public bool enemiesInRoom = false;
     public bool bonusLevelRoom = false;
@@ -27,12 +27,6 @@ public class RoomInternalBehaviour : MonoBehaviour
                 {
                     foreach (GameObject enemy in enemies)
                     {
-                        /*if (!enemy.GetComponent<EnemyAsPartOfRoom>().GetAliveStatus())
-                        {
-                            Destroy(enemy, 2f);
-                            enemies.Remove(enemy);
-                        }
-                        */
                         if (enemy.GetComponentInChildren<EnemyHealth>().dead)
                         {
                             enemies.Remove(enemy);
@@ -47,11 +41,6 @@ public class RoomInternalBehaviour : MonoBehaviour
             if (enemies.Count == 0)
             {
                 OpenRoomDoors();
-                //GameStats gameStats = GameObject.FindGameObjectWithTag("Player").GetComponent<GameStats>();
-                //if (gameStats != null)
-                //{
-                //    gameStats.AddClearedRoom();
-                //}
                 gameStats.AddClearedRoom();
                 if (teleporterRoom)
                 {

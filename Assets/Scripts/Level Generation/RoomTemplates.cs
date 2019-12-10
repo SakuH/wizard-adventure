@@ -35,8 +35,6 @@ public class RoomTemplates : MonoBehaviour
     {
         if(waitTime <= 0 && spawnedTeleporter == false)
         {
-
-            //Instantiate(bossTeleporter, rooms[rooms.Count - 1].transform.position + new Vector3(0,2), Quaternion.identity);
             rooms[rooms.Count - 1].GetComponent<RoomInternalBehaviour>().SetAsTeleporterRoom();
             rooms[Random.Range(1, rooms.Count - 2)].GetComponent<RoomInternalBehaviour>().SetAsBonusLevelRoom();
             spawnedTeleporter = true;

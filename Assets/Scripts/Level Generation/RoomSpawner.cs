@@ -119,13 +119,7 @@ public class RoomSpawner : MonoBehaviour
        
        if (other.CompareTag("RoomSpawnPoint")){
 
-            //if (other.GetComponent<Destroyer>() != null)
-            //{
-            //    Debug.Log("spawn point met destroyer");
-            //    Destroy(gameObject);
-            //}
-            //else
-            //{
+
 
                 try
                 {
@@ -144,13 +138,13 @@ public class RoomSpawner : MonoBehaviour
                 }
                 catch
                 {
-                    //Destroy(gameObject);
+                    
                 }
 
 
             }
             spawned = true;
-        //}
+      
     }
 
 
