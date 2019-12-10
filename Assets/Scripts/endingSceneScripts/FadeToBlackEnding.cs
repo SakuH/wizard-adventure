@@ -30,7 +30,7 @@ public class FadeToBlackEnding : MonoBehaviour
             }
             else
             {
-                endingText.active = true;
+                endingText.SetActive(true);
             }
             if (Input.GetKeyDown("space"))
             {
