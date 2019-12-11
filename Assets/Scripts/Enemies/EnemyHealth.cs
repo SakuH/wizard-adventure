@@ -43,7 +43,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (dead)
         {
-            //call death animations from script 
+            
             // enemyParent.transform.position = new Vector3(transform.position.x, transform.position.y + deathJumpSpeed * Time.deltaTime, transform.position.z);
             if (!itemChanceRolled&& hpPickup != null)
             {
@@ -89,14 +89,17 @@ public class EnemyHealth : MonoBehaviour
             if (turretScript != null)
             {
                 //death animation here
+                 enemyParent.transform.position = new Vector3(transform.position.x, transform.position.y + deathJumpSpeed * Time.deltaTime, transform.position.z);
             }
             if (chaserScript != null)
             {
-               
+                enemyParent.transform.position = new Vector3(transform.position.x, transform.position.y + deathJumpSpeed * Time.deltaTime, transform.position.z);
+                Destroy(enemyParent, 1);
             }
             if (chaserShooterScript != null)
             {
-                
+                enemyParent.transform.position = new Vector3(transform.position.x, transform.position.y + deathJumpSpeed * Time.deltaTime, transform.position.z);
+                Destroy(enemyParent, 1);
             }
             if (bossScript != null)
             {
