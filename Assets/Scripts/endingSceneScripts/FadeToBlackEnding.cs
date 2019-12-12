@@ -13,6 +13,7 @@ public class FadeToBlackEnding : MonoBehaviour
     public GameObject endingText;
     public float timeToText;
     public float timeToTextmax = 2;
+    public bool saveDeleted = false;
 
     void Start()
     {
@@ -21,6 +22,12 @@ public class FadeToBlackEnding : MonoBehaviour
 
     void Update()
     {
+        if (!saveDeleted)
+        {
+            SaveSystem.DeletePlayer();
+            saveDeleted = true;
+        }
+        
         if (fadeToBlack)
         {
             fadeToBlackCanvas();
